@@ -9,7 +9,14 @@
   font-weight: 450;
   letter-spacing: 0.01em;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.1s ease;
+}
+.primary:active:not(:disabled),
+.secondary:active:not(:disabled),
+.tertiary:active:not(:disabled) {
+  transform: scale(0.95);
 }
 
 .sm {
