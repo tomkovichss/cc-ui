@@ -58,10 +58,18 @@ Distribution (npm registry vs. git dependency) hasn't been set up yet — pick o
 | Component | Notes |
 |---|---|
 | `Button` | Primary/secondary variants with ripple-fill hover, extracted from the `.btn-primary`/`.btn-secondary` global classes used in `ConfirmDialog` |
+| `Card` | Visual shell only (surface, radius, hover ring, `completed`/`stacked`/`interactive`/`dragging` states), generalized from `ShiftCard`. Drag-and-drop and content stay with the consumer. |
+| `Tag` | Generalizes the repeated tag/pill/badge pattern found in `ShiftCard`, `WorkerRow`, `BpoRow`, `BacklogSidebar`, `VideoPanel`, `AppHeader`, `FiltersMenu`. Variants: `neutral`, `pill`, `accent`, `success`, `danger`, `count`. |
 | `Checkbox` | Custom animated checkbox |
 | `HighlightText` | Wraps matching substrings in `<mark>` |
 | `FilterSection` | Generic labeled option list with optional search + select-all |
 | `UiElementsSidebar` | Static nav sidebar for a component catalog page |
 | icons (`ChevronLeftIcon`, etc.) | Inline SVG icon set |
 
-More components from the source app (`Board`, `ShiftCard`, `VideoPanel`, etc.) are coupled to app-specific state/data and haven't been extracted yet — they'd need a props/callback-driven refactor first.
+More components from the source app (`Board`, full `ShiftCard` composition, `VideoPanel`, etc.) are coupled to app-specific state/data and haven't been extracted yet — they'd need a props/callback-driven refactor first.
+
+### Notes on token cleanup
+
+While extracting `Tag`, two untokenized colors from the source app were reconciled:
+- `#e3f6ea` / `#2f8a52` (success bg/text, used for "completed"/"time spent" states) → added as `--success-bg` (paired with the existing `--success-text`).
+- `#fbe2e2` / `#b23a3a` (a second, undocumented "danger" pair used for the idle-worker stat) → consolidated into the existing `--danger-bg`/`--danger-text` tokens rather than kept as a duplicate. If the source app's visual distinction between these two reds was intentional, flag it before porting `Tag`'s danger variant back.

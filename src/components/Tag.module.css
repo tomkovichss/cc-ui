@@ -1,0 +1,72 @@
+.neutral,
+.pill,
+.accent,
+.success,
+.danger,
+.count {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Square tags — e.g. day badges, worker names, video panel tags */
+.neutral {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  background: var(--bg);
+  border-radius: 6px;
+  padding: 2px 7px;
+}
+
+/* Pill tags — e.g. BPO group labels, total-duration tags */
+.pill {
+  background: var(--card-surface);
+  box-shadow: inset 0 0 0 1px var(--border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 3px 11px;
+  border-radius: 999px;
+}
+
+/* Accent pill — e.g. "current" stat, read-only banner badge */
+.accent {
+  background: var(--accent-light);
+  color: var(--accent-hover);
+  font-size: 0.8rem;
+  padding: 3px 11px;
+  border-radius: 999px;
+}
+
+/* Success pill — e.g. "time spent" stat */
+.success {
+  background: var(--success-bg);
+  color: var(--success-text);
+  font-size: 0.8rem;
+  padding: 3px 11px;
+  border-radius: 999px;
+}
+
+/* Danger — square (e.g. ASAP tag) reuses the same token pair as the
+   pill-shaped status variant; only the shape differs by context. */
+.danger {
+  color: var(--danger-text);
+  font-size: 0.75rem;
+  background: var(--danger-bg);
+  border-radius: 6px;
+  padding: 2px 7px;
+}
+
+/* Count badge — small solid circle, e.g. active-filter count */
+.count {
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.65rem;
+  line-height: 16px;
+  text-align: center;
+}
