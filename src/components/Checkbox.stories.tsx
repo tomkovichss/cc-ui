@@ -18,9 +18,11 @@ export const Checked: Story = {
   args: { checked: true, ariaLabel: 'Example checkbox' },
 };
 
+function InteractiveCheckbox() {
+  const [checked, setChecked] = useState(false);
+  return <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)} ariaLabel="Interactive checkbox" />;
+}
+
 export const Interactive: Story = {
-  render: () => {
-    const [checked, setChecked] = useState(false);
-    return <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)} ariaLabel="Interactive checkbox" />;
-  },
+  render: () => <InteractiveCheckbox />,
 };

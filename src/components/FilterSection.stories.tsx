@@ -12,52 +12,52 @@ type Story = StoryObj<typeof FilterSection>;
 
 const OPTIONS = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo'];
 
+function toggleInSet(prev: Set<string>, opt: string): Set<string> {
+  const next = new Set(prev);
+  if (next.has(opt)) {
+    next.delete(opt);
+  } else {
+    next.add(opt);
+  }
+  return next;
+}
+
+function DefaultDemo() {
+  const [active, setActive] = useState(new Set(['Alpha']));
+  return (
+    <div style={{ width: 260 }}>
+      <FilterSection
+        label="Farms"
+        options={OPTIONS}
+        optionLabel={(o) => o}
+        activeSet={active}
+        onToggle={(opt) => setActive((prev) => toggleInSet(prev, opt))}
+        onSetAll={(opts) => setActive(new Set(opts))}
+      />
+    </div>
+  );
+}
+
+function SearchableDemo() {
+  const [active, setActive] = useState(new Set<string>());
+  return (
+    <div style={{ width: 260 }}>
+      <FilterSection
+        label="Workers"
+        options={OPTIONS}
+        optionLabel={(o) => o}
+        activeSet={active}
+        onToggle={(opt) => setActive((prev) => toggleInSet(prev, opt))}
+        searchable
+      />
+    </div>
+  );
+}
+
 export const Default: Story = {
-  render: () => {
-    const [active, setActive] = useState(new Set(['Alpha']));
-    const toggle = (opt: string) => {
-      setActive((prev) => {
-        const next = new Set(prev);
-        next.has(opt) ? next.delete(opt) : next.add(opt);
-        return next;
-      });
-    };
-    return (
-      <div style={{ width: 260 }}>
-        <FilterSection
-          label="Farms"
-          options={OPTIONS}
-          optionLabel={(o) => o}
-          activeSet={active}
-          onToggle={toggle}
-          onSetAll={(opts) => setActive(new Set(opts))}
-        />
-      </div>
-    );
-  },
+  render: () => <DefaultDemo />,
 };
 
 export const Searchable: Story = {
-  render: () => {
-    const [active, setActive] = useState(new Set<string>());
-    const toggle = (opt: string) => {
-      setActive((prev) => {
-        const next = new Set(prev);
-        next.has(opt) ? next.delete(opt) : next.add(opt);
-        return next;
-      });
-    };
-    return (
-      <div style={{ width: 260 }}>
-        <FilterSection
-          label="Workers"
-          options={OPTIONS}
-          optionLabel={(o) => o}
-          activeSet={active}
-          onToggle={toggle}
-          searchable
-        />
-      </div>
-    );
-  },
+  render: () => <SearchableDemo />,
 };
