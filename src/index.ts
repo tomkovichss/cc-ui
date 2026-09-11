@@ -1,3 +1,4 @@
+export { Button } from './components/Button';
 export { Checkbox } from './components/Checkbox';
 export { HighlightText } from './components/HighlightText';
 export { FilterSection } from './components/FilterSection';

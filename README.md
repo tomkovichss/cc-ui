@@ -57,6 +57,7 @@ Distribution (npm registry vs. git dependency) hasn't been set up yet — pick o
 
 | Component | Notes |
 |---|---|
+| `Button` | Primary/secondary variants with ripple-fill hover, extracted from the `.btn-primary`/`.btn-secondary` global classes used in `ConfirmDialog` |
 | `Checkbox` | Custom animated checkbox |
 | `HighlightText` | Wraps matching substrings in `<mark>` |
 | `FilterSection` | Generic labeled option list with optional search + select-all |
