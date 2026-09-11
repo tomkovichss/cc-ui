@@ -49,11 +49,11 @@
 }
 
 .primary {
-  background: var(--accent);
+  background: var(--accent-hover);
   color: #fff;
 }
 .primary::before {
-  background: var(--accent-hover);
+  background: var(--accent-active);
 }
 
 .secondary {
