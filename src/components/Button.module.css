@@ -47,7 +47,7 @@
   color: var(--text);
 }
 .secondary::before {
-  background: var(--accent-light);
+  background: rgba(var(--accent-rgb), 0.16);
 }
 .secondary:hover {
   color: var(--accent);
@@ -58,7 +58,7 @@
   color: var(--text);
 }
 .tertiary::before {
-  background: var(--accent-light);
+  background: rgba(var(--accent-rgb), 0.16);
 }
 .tertiary:hover {
   color: var(--accent);
