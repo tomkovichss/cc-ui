@@ -13,10 +13,10 @@ Components are typed and documented via Storybook stories (`*.stories.tsx`) colo
 
 ### Font
 
-Components assume the **Inter** font (400/500) is loaded by the consuming app, e.g.:
+Components assume the **Inter** font is loaded by the consuming app. Load the variable weight range (not a discrete list) so any `font-weight` value — including in-between ones like `450` — renders correctly instead of snapping to the nearest loaded static weight:
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
 ```
 
 It is not bundled with this package.
