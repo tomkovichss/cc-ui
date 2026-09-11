@@ -1,5 +1,6 @@
 .primary,
-.secondary {
+.secondary,
+.tertiary {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -13,7 +14,8 @@
   transition: color 0.2s ease;
 }
 .primary::before,
-.secondary::before {
+.secondary::before,
+.tertiary::before {
   content: '';
   position: absolute;
   left: 50%;
@@ -27,7 +29,8 @@
   pointer-events: none;
 }
 .primary:hover::before,
-.secondary:hover::before {
+.secondary:hover::before,
+.tertiary:hover::before {
   transform: translate(-50%, 15%) scale(8);
 }
 
@@ -40,12 +43,23 @@
 }
 
 .secondary {
-  background: var(--bg);
+  background: var(--surface-muted);
   color: var(--text);
 }
 .secondary::before {
   background: var(--accent-light);
 }
 .secondary:hover {
+  color: var(--accent);
+}
+
+.tertiary {
+  background: var(--bg);
+  color: var(--text);
+}
+.tertiary::before {
+  background: var(--accent-light);
+}
+.tertiary:hover {
   color: var(--accent);
 }

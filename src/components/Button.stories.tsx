@@ -20,6 +20,10 @@ export const Secondary: Story = {
   args: { variant: 'secondary', children: 'Cancel' },
 };
 
+export const Tertiary: Story = {
+  args: { variant: 'tertiary', children: 'Cancel' },
+};
+
 export const Disabled: Story = {
   args: { variant: 'primary', disabled: true },
 };
