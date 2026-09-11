@@ -1,0 +1,6 @@
+.highlight {
+  background: var(--accent-light);
+  color: var(--accent-hover);
+  border-radius: 3px;
+  padding: 0 1px;
+}

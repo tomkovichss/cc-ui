@@ -1,0 +1,18 @@
+:root {
+  --bg: #f7f7f7;
+  --header-bg: var(--accent-hover);
+  --text: #090b0b;
+  --text-secondary: #5c5f61;
+  --text-muted: #666e73;
+  --accent: #0090d9;
+  --accent-hover: #007ebd;
+  --accent-light: #e0f5ff;
+  --border: #e0e0e0;
+  --border-input: #e0e0e0;
+  --card-surface: #fff;
+  --surface-sunken: #f8f9fa;
+  --danger-bg: #fdeaea;
+  --danger-text: #d92d20;
+  --success-text: #2f8a52;
+  --warning-text: #9a6400;
+}
