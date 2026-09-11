@@ -5,14 +5,27 @@
   isolation: isolate;
   overflow: hidden;
   border: none;
-  border-radius: 12px;
-  padding: 12px 16px;
   font-family: inherit;
-  font-size: 0.9rem;
   font-weight: 450;
   letter-spacing: 0.01em;
   cursor: pointer;
   transition: color 0.2s ease;
+}
+
+.sm {
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 0.8rem;
+}
+.base {
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+}
+.lg {
+  border-radius: 14px;
+  padding: 16px 22px;
+  font-size: 1rem;
 }
 .primary::before,
 .secondary::before,

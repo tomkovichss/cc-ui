@@ -28,6 +28,30 @@ export const Disabled: Story = {
   args: { variant: 'primary', disabled: true },
 };
 
+export const Small: Story = {
+  args: { variant: 'primary', size: 'sm' },
+};
+
+export const Large: Story = {
+  args: { variant: 'primary', size: 'lg' },
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <Button variant="primary" size="sm">
+        Small
+      </Button>
+      <Button variant="primary" size="base">
+        Base
+      </Button>
+      <Button variant="primary" size="lg">
+        Large
+      </Button>
+    </div>
+  ),
+};
+
 export const ConfirmDialogActions: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 8, background: 'var(--card-surface)', padding: 16, borderRadius: 16 }}>

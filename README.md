@@ -57,7 +57,7 @@ Distribution (npm registry vs. git dependency) hasn't been set up yet — pick o
 
 | Component | Notes |
 |---|---|
-| `Button` | Primary/secondary variants with ripple-fill hover, extracted from the `.btn-primary`/`.btn-secondary` global classes used in `ConfirmDialog` |
+| `Button` | `primary`/`secondary`/`tertiary` variants with ripple-fill hover (originally from `ConfirmDialog`'s `.btn-primary`/`.btn-secondary` global classes), `sm`/`base`/`lg` sizes, disabled state |
 | `Card` | Visual shell only (surface, radius, hover ring, `completed`/`stacked`/`interactive`/`dragging` states), generalized from `ShiftCard`. Drag-and-drop and content stay with the consumer. |
 | `Tag` | Generalizes the repeated tag/pill/badge pattern found in `ShiftCard`, `WorkerRow`, `BpoRow`, `BacklogSidebar`, `VideoPanel`, `AppHeader`, `FiltersMenu`. Variants: `neutral`, `pill`, `accent`, `success`, `danger`, `count`. |
 | `Checkbox` | Custom animated checkbox |
