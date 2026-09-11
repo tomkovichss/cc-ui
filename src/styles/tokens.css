@@ -18,4 +18,6 @@
   --success-bg: #e3f6ea;
   --success-text: #2f8a52;
   --warning-text: #9a6400;
+  --disabled-bg: #c4c4c4;
+  --disabled-text: #8a8a8a;
 }

@@ -64,3 +64,21 @@
 .tertiary:hover {
   color: var(--accent);
 }
+
+.primary:disabled,
+.secondary:disabled,
+.tertiary:disabled {
+  background: var(--disabled-bg);
+  color: var(--disabled-text);
+  cursor: not-allowed;
+}
+.primary:disabled:hover,
+.secondary:disabled:hover,
+.tertiary:disabled:hover {
+  color: var(--disabled-text);
+}
+.primary:disabled::before,
+.secondary:disabled::before,
+.tertiary:disabled::before {
+  display: none;
+}
