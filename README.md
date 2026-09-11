@@ -60,6 +60,7 @@ Distribution (npm registry vs. git dependency) hasn't been set up yet — pick o
 | `Button` | `primary`/`secondary`/`tertiary` variants with ripple-fill hover (originally from `ConfirmDialog`'s `.btn-primary`/`.btn-secondary` global classes), `sm`/`base`/`lg` sizes, disabled state |
 | `Card` | Visual shell only (surface, radius, hover ring, `completed`/`stacked`/`interactive`/`dragging` states), generalized from `ShiftCard`. Drag-and-drop and content stay with the consumer. |
 | `Tag` | Generalizes the repeated tag/pill/badge pattern found in `ShiftCard`, `WorkerRow`, `BpoRow`, `BacklogSidebar`, `VideoPanel`, `AppHeader`, `FiltersMenu`. Variants: `neutral`, `pill`, `accent`, `success`, `danger`, `count`. |
+| `Toolbar` | Visual shell only (floating search bar, keyboard-shortcut badge, `children` slot for filter/sort controls), generalized from `Toolbar`. The original's `FiltersBar` content and absolute page positioning stay with the consumer — this only ships the search input + layout shell. |
 | `Checkbox` | Custom animated checkbox |
 | `HighlightText` | Wraps matching substrings in `<mark>` |
 | `FilterSection` | Generic labeled option list with optional search + select-all |

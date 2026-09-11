@@ -1,6 +1,7 @@
 export { Button } from './components/Button';
 export { Card } from './components/Card';
 export { Tag } from './components/Tag';
+export { Toolbar } from './components/Toolbar';
 export { Checkbox } from './components/Checkbox';
 export { HighlightText } from './components/HighlightText';
 export { FilterSection } from './components/FilterSection';
