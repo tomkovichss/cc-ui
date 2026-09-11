@@ -75,6 +75,9 @@
 .secondary::before {
   background: rgba(var(--accent-rgb), 0.16);
 }
+.secondary:active:not(:disabled)::before {
+  background: rgba(var(--accent-rgb), 0.28);
+}
 .secondary:hover {
   color: var(--accent);
 }
@@ -85,6 +88,9 @@
 }
 .tertiary::before {
   background: rgba(var(--accent-rgb), 0.16);
+}
+.tertiary:active:not(:disabled)::before {
+  background: rgba(var(--accent-rgb), 0.28);
 }
 .tertiary:hover {
   color: var(--accent);
