@@ -11,7 +11,7 @@
   cursor: pointer;
   transition:
     color 0.2s ease,
-    transform 0.1s ease;
+    transform 0.2s ease-out;
 }
 .primary:active:not(:disabled),
 .secondary:active:not(:disabled),
