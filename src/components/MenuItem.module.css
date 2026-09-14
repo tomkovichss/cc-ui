@@ -1,0 +1,74 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.15s ease-out,
+    color 0.15s ease-out;
+}
+.item:hover:not(:disabled) {
+  background: var(--bg);
+}
+.item:active:not(:disabled) {
+  background: var(--brand-bg);
+}
+.item:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: -2px;
+}
+.item:disabled {
+  color: var(--disabled-text);
+  cursor: not-allowed;
+}
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+.label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.trailing {
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.selected {
+  background: var(--brand-bg);
+  color: var(--brand-dark);
+}
+.selected .icon {
+  color: var(--brand-dark);
+}
+.destructive {
+  color: var(--danger-text);
+}
+.destructive .icon {
+  color: var(--danger-text);
+}
+.destructive:hover:not(:disabled) {
+  background: var(--danger-bg);
+}

@@ -59,7 +59,7 @@
 .card.interactive:hover {
   box-shadow:
     inset 0 0 0 1px #efefef,
-    0 0 0 2px var(--accent);
+    0 0 0 2px var(--brand-main);
 }
 .card.completed {
   background: var(--success-bg);

@@ -1,0 +1,19 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 180px;
+  width: fit-content;
+  padding: 4px;
+  box-sizing: border-box;
+  background: var(--card-surface);
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 0 1px var(--border),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 6px;
+}

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { ArrowUpDown, Filter } from 'lucide-react';
 import { Toolbar } from './Toolbar';
 import { Button } from './Button';
-import { Tag } from './Tag';
 
 const meta: Meta<typeof Toolbar> = {
   title: 'Components/Toolbar',
@@ -21,10 +21,10 @@ function ToolbarDemo() {
         onSearchChange={setSearch}
         placeholder="Search by worker, BPO, or farm #"
       >
-        <Button variant="tertiary" size="sm">
+        <Button variant="tertiary" size="base" leadingIcon={<ArrowUpDown />}>
           Sort
         </Button>
-        <Button variant="tertiary" size="sm">
+        <Button variant="tertiary" size="base" leadingIcon={<Filter />}>
           Filters
         </Button>
       </Toolbar>
@@ -34,22 +34,4 @@ function ToolbarDemo() {
 
 export const Default: Story = {
   render: () => <ToolbarDemo />,
-};
-
-export const NoShortcutBadge: Story = {
-  render: () => (
-    <div style={{ width: 640 }}>
-      <Toolbar placeholder="Search…" shortcutLabel="">
-        <Tag variant="count">3</Tag>
-      </Toolbar>
-    </div>
-  ),
-};
-
-export const SearchOnly: Story = {
-  render: () => (
-    <div style={{ width: 400 }}>
-      <Toolbar placeholder="Search…" />
-    </div>
-  ),
 };

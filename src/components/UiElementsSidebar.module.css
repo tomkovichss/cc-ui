@@ -33,10 +33,10 @@
 }
 .navLink:hover {
   background: var(--card-surface);
-  color: var(--text);
+  color: var(--text-primary);
 }
 .count {
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   font-size: 0.78rem;
   font-weight: 500;
 }

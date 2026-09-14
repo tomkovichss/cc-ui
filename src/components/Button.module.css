@@ -1,9 +1,14 @@
 .primary,
 .secondary,
-.tertiary {
+.tertiary,
+.dangerous {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   border: none;
   font-family: inherit;
   font-weight: 450;
@@ -15,7 +20,8 @@
 }
 .primary:active:not(:disabled),
 .secondary:active:not(:disabled),
-.tertiary:active:not(:disabled) {
+.tertiary:active:not(:disabled),
+.dangerous:active:not(:disabled) {
   transform: scale(0.95);
 }
 
@@ -34,9 +40,37 @@
   padding: 16px 22px;
   font-size: 1rem;
 }
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.iconOnly {
+  aspect-ratio: 1;
+  box-sizing: border-box;
+}
+.iconOnly.sm {
+  padding: 8px;
+}
+.iconOnly.base {
+  padding: 12px;
+}
+.iconOnly.lg {
+  padding: 16px;
+}
 .primary::before,
 .secondary::before,
-.tertiary::before {
+.tertiary::before,
+.dangerous::before {
   content: '';
   position: absolute;
   left: 50%;
@@ -51,12 +85,13 @@
 }
 .primary:hover::before,
 .secondary:hover::before,
-.tertiary:hover::before {
+.tertiary:hover::before,
+.dangerous:hover::before {
   transform: translate(-50%, 15%) scale(8);
 }
 
 .primary {
-  background: var(--accent-hover);
+  background: var(--brand-dark);
   color: #fff;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -70,46 +105,64 @@
 
 .secondary {
   background: var(--surface-muted);
-  color: var(--text);
+  color: var(--text-primary);
 }
 .secondary::before {
-  background: rgba(var(--accent-rgb), 0.16);
+  background: rgba(var(--brand-main-rgb), 0.16);
 }
 .secondary:active:not(:disabled)::before {
-  background: rgba(var(--accent-rgb), 0.28);
+  background: rgba(var(--brand-main-rgb), 0.28);
 }
 .secondary:hover {
-  color: var(--accent);
+  color: var(--brand-main);
 }
 
 .tertiary {
-  background: var(--bg);
-  color: var(--text);
+  background: transparent;
+  color: var(--text-secondary);
 }
 .tertiary::before {
-  background: rgba(var(--accent-rgb), 0.16);
+  background: rgba(var(--brand-main-rgb), 0.16);
 }
 .tertiary:active:not(:disabled)::before {
-  background: rgba(var(--accent-rgb), 0.28);
+  background: rgba(var(--brand-main-rgb), 0.28);
+}
+.tertiary:hover,
+.tertiary:active:not(:disabled) {
+  background: var(--bg);
 }
 .tertiary:hover {
-  color: var(--accent);
+  color: var(--brand-main);
+}
+
+.dangerous {
+  background: var(--danger-bg);
+  color: var(--danger-text-dark);
+}
+.dangerous::before {
+  background: rgba(var(--danger-rgb), 0.16);
+}
+.dangerous:active:not(:disabled)::before {
+  background: rgba(var(--danger-rgb), 0.28);
 }
 
 .primary:disabled,
 .secondary:disabled,
-.tertiary:disabled {
+.tertiary:disabled,
+.dangerous:disabled {
   background: var(--disabled-bg);
   color: var(--disabled-text);
   cursor: not-allowed;
 }
 .primary:disabled:hover,
 .secondary:disabled:hover,
-.tertiary:disabled:hover {
+.tertiary:disabled:hover,
+.dangerous:disabled:hover {
   color: var(--disabled-text);
 }
 .primary:disabled::before,
 .secondary:disabled::before,
-.tertiary:disabled::before {
+.tertiary:disabled::before,
+.dangerous:disabled::before {
   display: none;
 }

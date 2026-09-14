@@ -1,5 +1,5 @@
 import { useEffect, useRef, type ChangeEvent, type ReactNode } from 'react';
-import { SearchIcon } from './icons';
+import { Search } from 'lucide-react';
 import styles from './Toolbar.module.css';
 
 interface ToolbarProps {
@@ -39,7 +39,7 @@ export function Toolbar({
     <div className={styles.toolbar}>
       <div className={styles.searchWrap}>
         <span className={styles.searchIcon}>
-          <SearchIcon />
+          <Search />
         </span>
         <input
           ref={searchRef}

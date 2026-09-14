@@ -1,4 +1,4 @@
-.checkbox {
+.radio {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -15,13 +15,13 @@
   opacity: 0;
   cursor: pointer;
 }
-.box {
+.circle {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 16px;
   height: 16px;
-  border-radius: 6px;
+  border-radius: 50%;
   background: var(--surface-sunken);
   box-shadow: inset 0 0 0 1px var(--border);
   transition:
@@ -29,35 +29,28 @@
     box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1),
     transform 0.1s cubic-bezier(0, 0, 0.2, 1);
 }
-.input:hover + .box {
+.input:hover + .circle {
   box-shadow: inset 0 0 0 1px var(--brand-main);
 }
-.input:focus-visible + .box {
+.input:focus-visible + .circle {
   outline: 2px solid var(--brand-main);
   outline-offset: 2px;
 }
-.input:active + .box {
+.input:active + .circle {
   transform: scale(0.88);
 }
-.input:checked + .box {
+.input:checked + .circle {
   background: var(--brand-main);
   box-shadow: inset 0 0 0 1px var(--brand-main);
 }
-.icon {
-  width: 10px;
-  height: 10px;
-  overflow: visible;
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  transform: scale(0);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.icon polyline {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 2.5px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 22px;
-  stroke-dashoffset: 22px;
-  transition: stroke-dashoffset 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.input:checked + .box .icon polyline {
-  stroke-dashoffset: 0px;
+.input:checked + .circle .dot {
+  transform: scale(1);
 }
