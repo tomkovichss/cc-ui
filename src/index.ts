@@ -13,3 +13,5 @@ export { UiElementsSidebar } from './components/UiElementsSidebar';
 export { formatDuration, formatDurationHMS } from './utils/format';
 
 import './styles/tokens.css';
+import './styles/fonts.css';
+import './styles/typography.css';

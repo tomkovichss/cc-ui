@@ -5,7 +5,9 @@ Shared, presentational React components extracted from [cc-workers-schedule](../
 ## What's here
 
 - `src/components/` — presentational components (props in, JSX out, CSS Modules). No app state, no data-layer imports.
-- `src/styles/tokens.css` — shared design tokens (CSS custom properties: colors, surfaces, borders).
+- `src/styles/tokens.css` — shared color tokens (CSS custom properties: brand, text, surfaces, borders, status).
+- `src/styles/fonts.css` — shared typography tokens (CSS custom properties: font family, size, weight, line height).
+- `src/styles/typography.css` — composable text-style utility classes (`.text-base`, `.text-bold`, `.text-sm`, `.text-lg`, `.text-2-line`) built on the font tokens.
 - `src/utils/format.ts` — small formatting helpers.
 - `src/index.ts` — the package's public entry point (barrel export).
 

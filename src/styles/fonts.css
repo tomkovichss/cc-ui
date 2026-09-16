@@ -1,0 +1,17 @@
+:root {
+  /* Font family */
+  --font-family-base: 'Inter', sans-serif;
+
+  /* Font size */
+  --font-size-sm: 0.75rem;
+  --font-size-base: 0.875rem;
+  --font-size-lg: 1rem;
+
+  /* Font weight */
+  --font-weight-regular: 400;
+  --font-weight-bold: 500;
+
+  /* Line height */
+  --line-height-base: 1.5;
+  --line-height-tight: 1.25;
+}

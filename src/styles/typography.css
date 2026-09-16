@@ -1,0 +1,29 @@
+/*
+ * Composable text-style utility classes, built on the typography tokens in
+ * tokens.css. `.text-base` is the starting point for almost all text;
+ * modifiers (`.text-bold`, `.text-sm`, `.text-lg`, `.text-2-line`) can be
+ * combined freely on top of it, e.g. `text-base text-bold text-lg`.
+ */
+
+.text-base {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+}
+
+.text-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+
+.text-2-line {
+  line-height: var(--line-height-tight);
+}

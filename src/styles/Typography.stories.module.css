@@ -1,0 +1,44 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  align-items: center;
+  padding: 20px 24px;
+  background: var(--card-surface);
+  box-shadow: inset 0 0 0 1px var(--border);
+  border-radius: 12px;
+}
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.useCase {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.code {
+  margin-top: 4px;
+  align-self: flex-start;
+  padding: 2px 8px;
+  background: var(--surface-sunken);
+  box-shadow: inset 0 0 0 1px var(--border);
+  border-radius: 6px;
+  font-family: ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+.preview {
+  color: var(--text-primary);
+}
