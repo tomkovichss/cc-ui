@@ -1,7 +1,11 @@
 {
   "name": "cattle-care-ui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomkovichss/cc-ui"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
