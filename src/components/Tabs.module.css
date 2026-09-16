@@ -1,0 +1,113 @@
+.line,
+.box {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tab {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  font-family: inherit;
+  font-weight: 450;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s ease-out, background 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.tab::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 40%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, 100%) scale(1);
+  transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(var(--brand-main-rgb), 0.16);
+}
+.tab:hover:not(:disabled)::before {
+  transform: translate(-50%, 15%) scale(4);
+}
+.tab:active:not(:disabled)::before {
+  background: rgba(var(--brand-main-rgb), 0.28);
+}
+
+.tab:disabled {
+  color: var(--disabled-text);
+  cursor: not-allowed;
+}
+.tab:disabled::before {
+  display: none;
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: 2px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Line variant */
+
+.line {
+  box-shadow: inset 0 -1px 0 0 var(--border);
+}
+
+.line .tab {
+  background: transparent;
+  padding: 10px 4px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  box-shadow: inset 0 -2px 0 0 transparent;
+}
+.line .tab:hover:not(:disabled) {
+  color: var(--brand-main);
+}
+.line .tab.selected {
+  color: var(--text-primary);
+  box-shadow: inset 0 -2px 0 0 var(--brand-main);
+}
+
+/* Box variant */
+
+.box {
+  background: rgba(16, 24, 32, 0.04);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 2px;
+}
+
+.box .tab {
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--text-secondary);
+}
+.box .tab:hover:not(:disabled) {
+  color: var(--brand-main);
+}
+.box .tab.selected {
+  background: var(--card-surface);
+  color: var(--text-primary);
+}
