@@ -50,10 +50,28 @@ This repo has the `@chromatic-com/storybook` addon and a `chromatic` script wire
 
 ## Consuming from another project
 
-Distribution (npm registry vs. git dependency) hasn't been set up yet — pick one when a second project needs to consume this package:
+This package is published to the public npm registry.
 
-- **npm via GitHub Packages**: publish with a GitHub Actions workflow on tag/release, install with `npm install @<scope>/cattle-care-ui`.
-- **Git dependency**: `npm install github:tomkovichss/cattle-care-ui`, no publish step, but versioning is by commit/tag only.
+```sh
+npm install cattle-care-ui react react-dom
+```
+
+`react` and `react-dom` are peer dependencies — install matching versions (React 19) in your app if not already present.
+
+Import the compiled stylesheet once (e.g. in your app's root entry file) and import components as named exports — no CSS Modules bundler configuration is required on the consuming side, everything is pre-compiled into a single stylesheet:
+
+```tsx
+import 'cattle-care-ui/style.css';
+import { Button, Tabs } from 'cattle-care-ui';
+```
+
+> If your app already defines global CSS custom properties with the same names as this library's design tokens (e.g. `--text-primary`, `--border`), import order matters: whichever stylesheet is imported last wins for those variable names. This library doesn't namespace its tokens.
+
+### Publishing a new version
+
+Releases are published automatically by `.github/workflows/publish.yml` when a GitHub Release is published (requires an `NPM_TOKEN` repo secret with npm publish access, added under Settings → Secrets and variables → Actions). To cut a release: bump `version` in `package.json`, commit, then draft a new GitHub Release with a matching tag.
+
+To build the package locally without publishing: `npm run build` (outputs to `dist/`).
 
 ## Components currently included
 
