@@ -1,8 +1,35 @@
 .line,
 .box {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 4px;
+}
+
+.indicator {
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  transition: translate 0.25s cubic-bezier(0.39, 0.575, 0.565, 1), width 0.25s ease,
+    scale 0.125s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.indicator.settling {
+  transition: scale 0.1s linear;
+}
+
+.indicatorLine {
+  bottom: 0;
+  height: 2px;
+  background: var(--brand-main);
+}
+
+.indicatorBox {
+  top: 4px;
+  bottom: 4px;
+  border-radius: 8px;
+  background: var(--card-surface);
+  box-shadow: 0 0 1px 0.5px var(--border);
 }
 
 .tab {
@@ -83,14 +110,12 @@
   padding: 12px 6px;
   font-size: 1rem;
   color: var(--text-secondary);
-  box-shadow: inset 0 -2px 0 0 transparent;
 }
 .line .tab:hover:not(:disabled) {
   color: var(--brand-main);
 }
 .line .tab.selected {
   color: var(--text-primary);
-  box-shadow: inset 0 -2px 0 0 var(--brand-main);
   font-weight: 550;
 }
 
@@ -101,6 +126,7 @@
   border-radius: 10px;
   padding: 4px;
   gap: 4px;
+  box-shadow: inset 0 0 0.5px 1px #e3e3e3;
 }
 
 .box .tab {
@@ -115,9 +141,7 @@
   /* box-shadow: 0 0 0px 1px var(--brand-main-30); */
 }
 .box .tab.selected {
-  background: var(--card-surface);
   color: var(--text-primary);
-  box-shadow: 0 0 1px 0.5px var(--border);
   font-weight: 550;
 }
 

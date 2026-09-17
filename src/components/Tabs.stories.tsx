@@ -35,6 +35,14 @@ export const Box: Story = {
   },
 };
 
+export const BoxSm: Story = {
+  name: 'Box - Small',
+  render: () => {
+    const [value, setValue] = useState('all');
+    return <Tabs items={items} value={value} onChange={setValue} variant="box" size="sm" />;
+  },
+};
+
 export const WithIcons: Story = {
   render: () => {
     const iconItems = [
