@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import { Check } from 'lucide-react';
 import styles from './MenuItem.module.css';
 
 interface MenuItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
@@ -19,6 +20,11 @@ export function MenuItem({ icon, trailing, selected, destructive, children, ...r
       {icon && <span className={styles.icon}>{icon}</span>}
       <span className={styles.label}>{children}</span>
       {trailing && <span className={styles.trailing}>{trailing}</span>}
+      {selected && (
+        <span className={styles.check}>
+          <Check />
+        </span>
+      )}
     </button>
   );
 }

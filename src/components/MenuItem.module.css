@@ -18,10 +18,15 @@
     color 0.15s ease-out;
 }
 .item:hover:not(:disabled) {
-  background: var(--bg);
+  background: var(--brand-bg);
+  color: var(--brand-dark);
+}
+.item:hover:not(:disabled) .icon,
+.item:hover:not(:disabled) .check {
+  color: var(--brand-dark);
 }
 .item:active:not(:disabled) {
-  background: var(--brand-bg);
+  background: var(--brand-main-20);
 }
 .item:focus-visible {
   outline: 2px solid var(--brand-main);
@@ -57,11 +62,25 @@
   flex-shrink: 0;
 }
 .selected {
-  background: var(--brand-bg);
-  color: var(--brand-dark);
+  color: var(--text-primary);
+  font-weight: 550;
 }
 .selected .icon {
-  color: var(--brand-dark);
+  color: var(--text-primary);
+}
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+.check svg {
+  width: 100%;
+  height: 100%;
 }
 .destructive {
   color: var(--danger-text);
@@ -71,4 +90,8 @@
 }
 .destructive:hover:not(:disabled) {
   background: var(--danger-bg);
+  color: var(--danger-text);
+}
+.destructive:hover:not(:disabled) .icon {
+  color: var(--danger-text);
 }

@@ -2,6 +2,7 @@ import type { KeyboardEvent, ReactNode } from 'react';
 import styles from './Tabs.module.css';
 
 type TabsVariant = 'line' | 'box';
+type TabsSize = 'base' | 'sm';
 
 interface TabItem {
   value: string;
@@ -15,10 +16,11 @@ interface TabsProps {
   value: string;
   onChange: (value: string) => void;
   variant?: TabsVariant;
+  size?: TabsSize;
   'aria-label'?: string;
 }
 
-export function Tabs({ items, value, onChange, variant = 'line', ...rest }: TabsProps) {
+export function Tabs({ items, value, onChange, variant = 'line', size = 'base', ...rest }: TabsProps) {
   const enabledValues = items.filter((item) => !item.disabled).map((item) => item.value);
 
   function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
@@ -40,7 +42,14 @@ export function Tabs({ items, value, onChange, variant = 'line', ...rest }: Tabs
   }
 
   return (
-    <div role="tablist" className={styles[variant]} onKeyDown={handleKeyDown} {...rest}>
+    <div
+      role="tablist"
+      className={[styles[variant], variant === 'box' && size === 'sm' && styles.sm]
+        .filter(Boolean)
+        .join(' ')}
+      onKeyDown={handleKeyDown}
+      {...rest}
+    >
       {items.map((item) => {
         const selected = item.value === value;
         return (
