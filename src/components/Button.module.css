@@ -107,11 +107,17 @@
   background: var(--surface-muted);
   color: var(--text-primary);
 }
+.secondary .icon {
+  color: var(--text-secondary);
+}
 .secondary::before {
-  background: rgba(var(--brand-main-rgb), 0.16);
+  background: rgba(var(--brand-main-rgb), 0.08);
 }
 .secondary:active:not(:disabled)::before {
   background: rgba(var(--brand-main-rgb), 0.28);
+}
+.secondary:hover .icon {
+  color: var(--brand-main);
 }
 .secondary:hover {
   color: var(--brand-main);
