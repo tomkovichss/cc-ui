@@ -97,7 +97,7 @@
 }
 
 .secondary {
-  background: var(--surface-muted);
+  background: var(--ink-5);
   color: var(--text-primary);
 }
 .secondary .icon {

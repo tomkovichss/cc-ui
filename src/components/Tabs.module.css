@@ -107,7 +107,7 @@
 
 .line .tab {
   background: transparent;
-  padding: 12px 6px;
+  padding: 12px 8px;
   font-size: 1rem;
   color: var(--text-secondary);
 }
@@ -122,7 +122,8 @@
 /* Box variant */
 
 .box {
-  background: rgba(16, 24, 32, 0.04);
+  box-sizing: border-box;
+  background: var(--ink-5);
   border-radius: var(--radius-base);
   padding: 4px;
   gap: 4px;
@@ -146,11 +147,13 @@
 }
 
 .box.sm {
+  height: var(--control-height-sm);
   border-radius: var(--radius-sm);
 }
 .box.sm .tab {
+  height: calc(var(--control-height-sm) - 8px);
   border-radius: 6px;
-  padding: 4px 14px;
+  padding: 0 14px;
 }
 .box.sm .indicatorBox {
   border-radius: 6px;

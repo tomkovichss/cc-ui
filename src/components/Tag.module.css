@@ -14,7 +14,7 @@
 .neutral {
   color: var(--text-tertiary);
   font-size: 0.75rem;
-  background: var(--bg);
+  background: var(--ink-5);
   border-radius: 6px;
   padding: 2px 7px;
 }

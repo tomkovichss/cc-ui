@@ -23,6 +23,8 @@
   --surface-muted: #e5e7e9;
   --border: #e0e0e0;
   --border-input: #e0e0e0;
+  --ink-rgb: 16, 24, 32;
+  --ink-5: rgba(var(--ink-rgb), 0.05);
 
   /* Status */
   --danger-bg: #fdeaea;
