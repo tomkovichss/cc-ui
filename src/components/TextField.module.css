@@ -30,26 +30,51 @@
   background: var(--surface-muted);
 }
 
+.toolbar {
+  background: none;
+  box-shadow: none;
+}
+.toolbar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--brand-main);
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+.toolbar:focus-within {
+  box-shadow: none;
+}
+.toolbar:focus-within::after {
+  opacity: 1;
+}
+.toolbar.errorWrap,
+.toolbar.errorWrap:focus-within {
+  box-shadow: none;
+}
+.toolbar.errorWrap::after {
+  background: var(--danger-text);
+  opacity: 1;
+}
+
 .sm {
-  border-radius: 10px;
+  height: var(--control-height-sm);
+  border-radius: var(--radius-sm);
 }
 .sm .input {
-  padding: 8px 12px;
-  font-size: 0.8rem;
-}
-.base {
-  border-radius: 12px;
-}
-.base .input {
-  padding: 12px 14px;
+  padding: 0 12px;
   font-size: 0.9rem;
 }
-.lg {
-  border-radius: 14px;
+.base {
+  height: var(--control-height-base);
+  border-radius: var(--radius-base);
 }
-.lg .input {
-  padding: 16px 16px;
-  font-size: 1rem;
+.base .input {
+  padding: 0 14px;
+  font-size: 0.9rem;
 }
 .inputWrap:has(.icon) .input {
   padding-left: 8px;

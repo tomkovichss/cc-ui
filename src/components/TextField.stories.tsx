@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { TextField } from './TextField';
+import { Dropdown } from './Dropdown';
+import { Button } from './Button';
 import { Search } from 'lucide-react';
 
 const meta: Meta<typeof TextField> = {
@@ -12,6 +14,10 @@ export default meta;
 type Story = StoryObj<typeof TextField>;
 
 export const Default: Story = {
+  args: { placeholder: 'e.g. Green Valley Farm' },
+};
+
+export const WithLabel: Story = {
   args: { label: 'Farm name', placeholder: 'e.g. Green Valley Farm' },
 };
 
@@ -35,12 +41,36 @@ export const WithError: Story = {
   },
 };
 
+export const ToolbarStyle: Story = {
+  args: {
+    variant: 'toolbar',
+    placeholder: 'Search by worker, BPO, or farm #',
+    leadingIcon: <Search />,
+  },
+};
+
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 280 }}>
       <TextField size="sm" placeholder="Small" />
       <TextField size="base" placeholder="Base" />
-      <TextField size="lg" placeholder="Large" />
+    </div>
+  ),
+};
+
+const rowOptions = [{ value: 'north', label: 'North paddock' }];
+
+export const RowAlignment: Story = {
+  name: 'Row alignment (TextField + Dropdown + Button)',
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      {(['sm', 'base'] as const).map((size) => (
+        <div key={size} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+          <TextField size={size} placeholder={size} />
+          <Dropdown size={size} options={rowOptions} value="north" onChange={() => {}} />
+          <Button size={size}>Save</Button>
+        </div>
+      ))}
     </div>
   ),
 };

@@ -24,16 +24,14 @@ function RadioGroupDemo() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       {options.map((opt) => (
-        <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
-          <RadioButton
-            checked={selected === opt}
-            onChange={() => setSelected(opt)}
-            name="cadence"
-            value={opt}
-            ariaLabel={opt}
-          />
-          <span>{opt}</span>
-        </label>
+        <RadioButton
+          key={opt}
+          checked={selected === opt}
+          onChange={() => setSelected(opt)}
+          name="cadence"
+          value={opt}
+          label={opt}
+        />
       ))}
     </div>
   );

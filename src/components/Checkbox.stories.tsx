@@ -26,3 +26,14 @@ function InteractiveCheckbox() {
 export const Interactive: Story = {
   render: () => <InteractiveCheckbox />,
 };
+
+function WithLabelCheckbox() {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)} label="Send me email updates" />
+  );
+}
+
+export const WithLabel: Story = {
+  render: () => <WithLabelCheckbox />,
+};

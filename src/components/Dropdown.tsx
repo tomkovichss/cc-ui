@@ -4,7 +4,7 @@ import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
 import styles from './Dropdown.module.css';
 
-type DropdownSize = 'sm' | 'base' | 'lg';
+type DropdownSize = 'sm' | 'base';
 
 interface DropdownOption<T extends string> {
   value: T;

@@ -97,7 +97,6 @@ export const Sizes: Story = {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 280 }}>
         <Dropdown size="sm" options={paddocks} value={value} onChange={setValue} />
         <Dropdown size="base" options={paddocks} value={value} onChange={setValue} />
-        <Dropdown size="lg" options={paddocks} value={value} onChange={setValue} />
       </div>
     );
   },

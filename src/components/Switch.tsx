@@ -1,39 +1,41 @@
 import type { ChangeEvent, ReactNode } from 'react';
-import styles from './RadioButton.module.css';
+import styles from './Switch.module.css';
 
-interface RadioButtonProps {
+type SwitchSize = 'sm' | 'base';
+
+interface SwitchProps {
   checked: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  name?: string;
-  value?: string;
+  size?: SwitchSize;
   label?: ReactNode;
   ariaLabel?: string;
+  disabled?: boolean;
   className?: string;
 }
 
-export function RadioButton({
+export function Switch({
   checked,
   onChange,
-  name,
-  value,
+  size = 'base',
   label,
   ariaLabel,
+  disabled,
   className,
-}: RadioButtonProps) {
+}: SwitchProps) {
   return (
-    <label className={`${styles.radio} ${className ?? ''}`}>
-      <span className={styles.control}>
+    <label className={`${styles.switch} ${className ?? ''}`}>
+      <span className={`${styles.control} ${styles[size]}`}>
         <input
-          type="radio"
+          type="checkbox"
+          role="switch"
           className={styles.input}
           checked={checked}
           onChange={onChange}
-          name={name}
-          value={value}
           aria-label={ariaLabel}
+          disabled={disabled}
         />
-        <span className={styles.circle}>
-          <span className={styles.dot} />
+        <span className={styles.track}>
+          <span className={styles.thumb} />
         </span>
       </span>
       {label && <span className={styles.labelText}>{label}</span>}

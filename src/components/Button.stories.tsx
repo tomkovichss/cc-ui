@@ -24,22 +24,18 @@ export const AllIconButtons: Story = {
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         <Button variant="primary" size="sm" leadingIcon={<Plus />} aria-label="Add" />
         <Button variant="primary" size="base" leadingIcon={<Plus />} aria-label="Add" />
-        <Button variant="primary" size="lg" leadingIcon={<Plus />} aria-label="Add" />
       </div>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         <Button variant="secondary" size="sm" leadingIcon={<Plus />} aria-label="Add" />
         <Button variant="secondary" size="base" leadingIcon={<Plus />} aria-label="Add" />
-        <Button variant="secondary" size="lg" leadingIcon={<Plus />} aria-label="Add" />
       </div>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         <Button variant="tertiary" size="sm" leadingIcon={<Plus />} aria-label="Add" />
         <Button variant="tertiary" size="base" leadingIcon={<Plus />} aria-label="Add" />
-        <Button variant="tertiary" size="lg" leadingIcon={<Plus />} aria-label="Add" />
       </div>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         <Button variant="dangerous" size="sm" leadingIcon={<Plus />} aria-label="Add" />
         <Button variant="dangerous" size="base" leadingIcon={<Plus />} aria-label="Add" />
-        <Button variant="dangerous" size="lg" leadingIcon={<Plus />} aria-label="Add" />
       </div>
     </div>
   ),
@@ -56,9 +52,6 @@ export const AllButtons: Story = {
         <Button variant="primary" size="base">
           Base
         </Button>
-        <Button variant="primary" size="lg">
-          Large
-        </Button>
       </div>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         <Button variant="secondary" size="sm">
@@ -66,9 +59,6 @@ export const AllButtons: Story = {
         </Button>
         <Button variant="secondary" size="base">
           Base
-        </Button>
-        <Button variant="secondary" size="lg">
-          Large
         </Button>
       </div>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
@@ -78,9 +68,6 @@ export const AllButtons: Story = {
         <Button variant="tertiary" size="base">
           Base
         </Button>
-        <Button variant="tertiary" size="lg">
-          Large
-        </Button>
       </div>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         <Button variant="dangerous" size="sm">
@@ -89,9 +76,6 @@ export const AllButtons: Story = {
         <Button variant="dangerous" size="base">
           Base
         </Button>
-        <Button variant="dangerous" size="lg">
-          Large
-        </Button>
       </div>
       <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
         <Button variant="primary" size="sm" disabled>
@@ -99,9 +83,6 @@ export const AllButtons: Story = {
         </Button>
         <Button variant="primary" size="base" disabled>
           Base
-        </Button>
-        <Button variant="primary" size="lg" disabled>
-          Large
         </Button>
       </div>
     </div>

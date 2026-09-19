@@ -1,4 +1,10 @@
 .checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.control {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -6,7 +12,14 @@
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  cursor: pointer;
+}
+.labelText {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  transition: color 0.2s ease-out;
+}
+.checkbox:hover .labelText {
+  color: var(--brand-main);
 }
 .input {
   position: absolute;
@@ -29,8 +42,8 @@
     box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1),
     transform 0.1s cubic-bezier(0, 0, 0.2, 1);
 }
-.input:hover + .box {
-  box-shadow: inset 0 0 0 1px var(--brand-main);
+.checkbox:hover .box {
+  box-shadow: 0 0 0 1px var(--brand-main);
 }
 .input:focus-visible + .box {
   outline: 2px solid var(--brand-main);
@@ -42,6 +55,9 @@
 .input:checked + .box {
   background: var(--brand-main);
   box-shadow: inset 0 0 0 1px var(--brand-main);
+}
+.checkbox:hover .input:checked + .box {
+  box-shadow: 0 0 0 1px var(--brand-main);
 }
 .icon {
   width: 10px;

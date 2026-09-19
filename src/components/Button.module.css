@@ -26,21 +26,17 @@
 }
 
 .sm {
-  border-radius: 10px;
-  padding: 8px 12px;
-  font-size: 0.8rem;
-}
-.base {
-  border-radius: 12px;
-  padding: 12px 16px;
+  height: var(--control-height-sm);
+  border-radius: var(--radius-sm);
+  padding: 0 12px;
   font-size: 0.9rem;
 }
-.lg {
-  border-radius: 14px;
-  padding: 16px 22px;
-  font-size: 1rem;
+.base {
+  height: var(--control-height-base);
+  border-radius: var(--radius-base);
+  padding: 0 16px;
+  font-size: 0.9rem;
 }
-
 .icon {
   display: flex;
   align-items: center;
@@ -55,17 +51,14 @@
 }
 
 .iconOnly {
-  aspect-ratio: 1;
   box-sizing: border-box;
+  padding: 0;
 }
 .iconOnly.sm {
-  padding: 8px;
+  width: var(--control-height-sm);
 }
 .iconOnly.base {
-  padding: 12px;
-}
-.iconOnly.lg {
-  padding: 16px;
+  width: var(--control-height-base);
 }
 .primary::before,
 .secondary::before,

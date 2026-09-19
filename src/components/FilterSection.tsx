@@ -55,10 +55,13 @@ export function FilterSection<T extends string>({
       <div className={styles.optionsList}>
         {matches.length === 0 && <div className={styles.empty}>No match</div>}
         {matches.map((opt) => (
-          <label key={opt} className={styles.option}>
-            <Checkbox checked={activeSet.has(opt)} onChange={() => onToggle(opt)} />
-            <span>{optionLabel(opt)}</span>
-          </label>
+          <Checkbox
+            key={opt}
+            className={styles.option}
+            checked={activeSet.has(opt)}
+            onChange={() => onToggle(opt)}
+            label={optionLabel(opt)}
+          />
         ))}
       </div>
     </div>

@@ -38,25 +38,20 @@
 }
 
 .sm {
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 }
 .sm.trigger {
-  padding: 8px 12px;
-  font-size: 0.8rem;
-}
-.base {
-  border-radius: 12px;
-}
-.base.trigger {
-  padding: 12px 14px;
+  height: var(--control-height-sm);
+  padding: 0 12px;
   font-size: 0.9rem;
 }
-.lg {
-  border-radius: 14px;
+.base {
+  border-radius: var(--radius-base);
 }
-.lg.trigger {
-  padding: 16px 16px;
-  font-size: 1rem;
+.base.trigger {
+  height: var(--control-height-base);
+  padding: 0 14px;
+  font-size: 0.9rem;
 }
 
 .icon {

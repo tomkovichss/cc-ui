@@ -1,13 +1,15 @@
 import { useId, type InputHTMLAttributes, type ReactNode } from 'react';
 import styles from './TextField.module.css';
 
-type TextFieldSize = 'sm' | 'base' | 'lg';
+type TextFieldSize = 'sm' | 'base';
+type TextFieldVariant = 'default' | 'toolbar';
 
 interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'className' | 'size'> {
   label?: string;
   helperText?: string;
   error?: string;
   size?: TextFieldSize;
+  variant?: TextFieldVariant;
   leadingIcon?: ReactNode;
 }
 
@@ -16,6 +18,7 @@ export function TextField({
   helperText,
   error,
   size = 'base',
+  variant = 'default',
   leadingIcon,
   id,
   ...rest
@@ -30,7 +33,9 @@ export function TextField({
           {label}
         </label>
       )}
-      <div className={`${styles.inputWrap} ${styles[size]} ${error ? styles.errorWrap : ''}`}>
+      <div
+        className={`${styles.inputWrap} ${styles[variant]} ${styles[size]} ${error ? styles.errorWrap : ''}`}
+      >
         {leadingIcon && <span className={styles.icon}>{leadingIcon}</span>}
         <input id={inputId} className={styles.input} {...rest} />
       </div>

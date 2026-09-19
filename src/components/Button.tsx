@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './Button.module.css';
 
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'dangerous';
-type ButtonSize = 'sm' | 'base' | 'lg';
+type ButtonSize = 'sm' | 'base';
 
 interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
   variant?: ButtonVariant;

@@ -34,4 +34,10 @@
   --warning-text: #9a6400;
   --disabled-bg: #c4c4c4;
   --disabled-text: #8a8a8a;
+
+  /* Control sizing */
+  --control-height-sm: 36px;
+  --control-height-base: 44px;
+  --radius-sm: 10px;
+  --radius-base: 12px;
 }
