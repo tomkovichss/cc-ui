@@ -123,6 +123,7 @@
 
 .box {
   box-sizing: border-box;
+  height: var(--control-height-base);
   background: var(--ink-5);
   border-radius: var(--radius-base);
   padding: 4px;
@@ -131,8 +132,9 @@
 }
 
 .box .tab {
+  height: calc(var(--control-height-base) - 8px);
   border-radius: 8px;
-  padding: 8px 14px;
+  padding: 0 14px;
   font-size: 0.9rem;
   background: transparent;
   color: var(--text-secondary);
