@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { RadioButton } from './RadioButton';
+import { RadioButton, RadioGroup } from './RadioButton';
 
 const meta: Meta<typeof RadioButton> = {
   title: 'Components/RadioButton',
@@ -18,22 +18,16 @@ export const Checked: Story = {
   args: { checked: true, ariaLabel: 'Example radio' },
 };
 
+const items = [
+  { value: 'daily', label: 'Daily' },
+  { value: 'weekly', label: 'Weekly' },
+  { value: 'monthly', label: 'Monthly' },
+];
+
 function RadioGroupDemo() {
-  const options = ['Daily', 'Weekly', 'Monthly'] as const;
-  const [selected, setSelected] = useState<(typeof options)[number]>('Daily');
+  const [value, setValue] = useState('daily');
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      {options.map((opt) => (
-        <RadioButton
-          key={opt}
-          checked={selected === opt}
-          onChange={() => setSelected(opt)}
-          name="cadence"
-          value={opt}
-          label={opt}
-        />
-      ))}
-    </div>
+    <RadioGroup label="Cadence" name="cadence" items={items} value={value} onChange={setValue} />
   );
 }
 

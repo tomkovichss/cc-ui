@@ -1,5 +1,6 @@
 import type { ChangeEvent, ReactNode } from 'react';
 import styles from './Checkbox.module.css';
+import groupStyles from './OptionGroup.module.css';
 
 interface CheckboxProps {
   checked: boolean;
@@ -28,5 +29,41 @@ export function Checkbox({ checked, onChange, label, ariaLabel, className }: Che
       </span>
       {label && <span className={styles.labelText}>{label}</span>}
     </label>
+  );
+}
+
+interface CheckboxGroupItem {
+  value: string;
+  label: ReactNode;
+}
+
+interface CheckboxGroupProps {
+  label?: ReactNode;
+  items: CheckboxGroupItem[];
+  value: string[];
+  onChange: (value: string[]) => void;
+  'aria-label'?: string;
+}
+
+export function CheckboxGroup({ label, items, value, onChange, ...rest }: CheckboxGroupProps) {
+  function toggle(itemValue: string) {
+    const next = value.includes(itemValue)
+      ? value.filter((v) => v !== itemValue)
+      : [...value, itemValue];
+    onChange(next);
+  }
+
+  return (
+    <div role="group" aria-label={label ? undefined : rest['aria-label']} className={groupStyles.group}>
+      {label && <span className={groupStyles.label}>{label}</span>}
+      {items.map((item) => (
+        <Checkbox
+          key={item.value}
+          checked={value.includes(item.value)}
+          onChange={() => toggle(item.value)}
+          label={item.label}
+        />
+      ))}
+    </div>
   );
 }

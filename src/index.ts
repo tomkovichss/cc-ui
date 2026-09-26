@@ -1,11 +1,13 @@
 export { Button } from './components/Button';
 export { Card } from './components/Card';
 export { Tag } from './components/Tag';
+export { TagGroup } from './components/TagGroup';
 export { Toolbar } from './components/Toolbar';
-export { Checkbox } from './components/Checkbox';
-export { RadioButton } from './components/RadioButton';
+export { Checkbox, CheckboxGroup } from './components/Checkbox';
+export { RadioButton, RadioGroup } from './components/RadioButton';
 export { Switch } from './components/Switch';
 export { TextField } from './components/TextField';
+export { NumberField } from './components/NumberField';
 export { Dropdown } from './components/Dropdown';
 export { Menu, MenuDivider } from './components/Menu';
 export { MenuItem } from './components/MenuItem';

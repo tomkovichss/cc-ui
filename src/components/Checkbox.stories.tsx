@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Checkbox } from './Checkbox';
+import { Checkbox, CheckboxGroup } from './Checkbox';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',
@@ -36,4 +36,19 @@ function WithLabelCheckbox() {
 
 export const WithLabel: Story = {
   render: () => <WithLabelCheckbox />,
+};
+
+const items = [
+  { value: 'email', label: 'Email' },
+  { value: 'sms', label: 'SMS' },
+  { value: 'push', label: 'Push notifications' },
+];
+
+function CheckboxGroupDemo() {
+  const [value, setValue] = useState<string[]>(['email']);
+  return <CheckboxGroup label="Notify me via" items={items} value={value} onChange={setValue} />;
+}
+
+export const Group: Story = {
+  render: () => <CheckboxGroupDemo />,
 };

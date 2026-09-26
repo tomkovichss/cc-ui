@@ -1,0 +1,108 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.label {
+  font-size: 0.85rem;
+  font-weight: 550;
+  color: var(--text-primary);
+  padding-left: 8px;
+}
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--card-surface);
+  box-shadow: inset 0 0 0 1px var(--border-input);
+  transition: box-shadow 0.2s ease-out;
+}
+.inputWrap:focus-within {
+  box-shadow:
+    inset 0 0 0 0 var(--border-input),
+    0 0 0 2px var(--brand-main);
+}
+.errorWrap,
+.errorWrap:focus-within {
+  box-shadow: inset 0 0 0 1px var(--danger-text);
+}
+.inputWrap:has(.input:disabled) {
+  background: var(--surface-muted);
+}
+
+.sm {
+  height: var(--control-height-sm);
+  border-radius: var(--radius-sm);
+}
+.sm .input {
+  padding: 0 8px;
+  font-size: 0.85rem;
+}
+.base {
+  height: var(--control-height-base);
+  border-radius: var(--radius-base);
+}
+.base .input {
+  padding: 0 10px;
+  font-size: 0.9rem;
+}
+.inputWrap:has(.prefix) .input {
+  padding-left: 4px;
+}
+.inputWrap:has(.suffix) .input {
+  padding-right: 4px;
+}
+
+.prefix,
+.suffix {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--text-tertiary);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+.prefix {
+  margin-left: 10px;
+}
+.suffix {
+  margin-right: 10px;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: var(--text-primary);
+  font-weight: 450;
+  font-variant-numeric: tabular-nums;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input:focus {
+  outline: none;
+}
+.input::placeholder {
+  color: var(--text-tertiary);
+}
+.input:disabled {
+  color: var(--disabled-text);
+  cursor: not-allowed;
+}
+.helperText {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  padding-left: 8px;
+}
+.errorText {
+  font-size: 0.78rem;
+  color: var(--danger-text);
+}
