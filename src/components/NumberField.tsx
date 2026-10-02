@@ -1,5 +1,6 @@
 import { useId, type InputHTMLAttributes, type ReactNode } from 'react';
 import styles from './NumberField.module.css';
+import { FieldLabel } from './FieldLabel';
 
 type NumberFieldSize = 'sm' | 'base';
 
@@ -29,11 +30,7 @@ export function NumberField({
 
   return (
     <div className={styles.field}>
-      {label && (
-        <label className={styles.label} htmlFor={inputId}>
-          {label}
-        </label>
-      )}
+      {label && <FieldLabel htmlFor={inputId}>{label}</FieldLabel>}
       <div className={`${styles.inputWrap} ${styles[size]} ${error ? styles.errorWrap : ''}`}>
         {prefix && <span className={styles.prefix}>{prefix}</span>}
         <input id={inputId} className={styles.input} {...rest} />

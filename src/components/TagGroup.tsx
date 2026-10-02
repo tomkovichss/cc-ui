@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import styles from './TagGroup.module.css';
 import groupStyles from './OptionGroup.module.css';
+import { FieldLabel } from './FieldLabel';
 
 type TagGroupSize = 'sm' | 'base';
 
@@ -65,7 +66,7 @@ export function TagGroup({
 
   return (
     <div className={groupStyles.group} {...rest}>
-      <span className={groupStyles.label}>{label}</span>
+      <FieldLabel className={groupStyles.groupLabel}>{label}</FieldLabel>
       {tags}
     </div>
   );

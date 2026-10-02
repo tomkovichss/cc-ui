@@ -1,6 +1,7 @@
 import type { ChangeEvent, ReactNode } from 'react';
 import styles from './Checkbox.module.css';
 import groupStyles from './OptionGroup.module.css';
+import { FieldLabel } from './FieldLabel';
 
 interface CheckboxProps {
   checked: boolean;
@@ -55,7 +56,7 @@ export function CheckboxGroup({ label, items, value, onChange, ...rest }: Checkb
 
   return (
     <div role="group" aria-label={label ? undefined : rest['aria-label']} className={groupStyles.group}>
-      {label && <span className={groupStyles.label}>{label}</span>}
+      {label && <FieldLabel className={groupStyles.groupLabel}>{label}</FieldLabel>}
       {items.map((item) => (
         <Checkbox
           key={item.value}

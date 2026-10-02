@@ -4,12 +4,6 @@
   flex-direction: column;
   gap: 6px;
 }
-.label {
-  font-size: 0.85rem;
-  font-weight: 550;
-  color: var(--text-primary);
-  padding-left: 8px;
-}
 .trigger {
   display: flex;
   align-items: center;

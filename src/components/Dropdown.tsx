@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode 
 import { ChevronDown } from 'lucide-react';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
+import { FieldLabel } from './FieldLabel';
 import styles from './Dropdown.module.css';
 
 type DropdownSize = 'sm' | 'base';
@@ -97,11 +98,7 @@ export function Dropdown<T extends string>({
 
   return (
     <div className={styles.field} ref={rootRef}>
-      {label && (
-        <label className={styles.label} htmlFor={triggerId}>
-          {label}
-        </label>
-      )}
+      {label && <FieldLabel htmlFor={triggerId}>{label}</FieldLabel>}
       <button
         id={triggerId}
         type="button"

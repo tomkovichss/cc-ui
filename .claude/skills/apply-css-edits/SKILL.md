@@ -1,6 +1,6 @@
 ---
 name: apply-css-edits
-description: Apply CSS edits the user pastes or describes (a diff, a rule change, "make the radius bigger", a whole replacement block, etc.) to this component library's *.module.css files as a background subagent, so the edit doesn't consume the current conversation's turn. Trigger on phrases like "apply this CSS in the background", "update these styles without blocking me", "run this style edit as a background task", or when the user hands over CSS changes and says to handle them separately/async.
+description: Apply CSS edits the user pastes or describes (a diff, a rule change, "make the radius bigger", a whole replacement block, etc.) to this component library's *.module.css files as a background subagent, so the edit doesn't consume the current conversation's turn. Trigger any time the user pastes or describes a CSS change to apply to this library — a raw CSS/diff block, "change X to Y", "make the radius bigger", a full rule replacement — even with no mention of "background" or "async"; that is the default handling for CSS edits here, not an opt-in. Only skip this skill if the user explicitly says to make the edit inline in this chat right now instead of dispatching it.
 ---
 
 # Apply CSS edits in the background

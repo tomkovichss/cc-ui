@@ -1,5 +1,6 @@
 import { useId, type InputHTMLAttributes, type ReactNode } from 'react';
 import styles from './TextField.module.css';
+import { FieldLabel } from './FieldLabel';
 
 type TextFieldSize = 'sm' | 'base';
 type TextFieldVariant = 'default' | 'toolbar';
@@ -28,11 +29,7 @@ export function TextField({
 
   return (
     <div className={styles.field}>
-      {label && (
-        <label className={styles.label} htmlFor={inputId}>
-          {label}
-        </label>
-      )}
+      {label && <FieldLabel htmlFor={inputId}>{label}</FieldLabel>}
       <div
         className={`${styles.inputWrap} ${styles[variant]} ${styles[size]} ${error ? styles.errorWrap : ''}`}
       >

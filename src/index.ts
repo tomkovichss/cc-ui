@@ -7,6 +7,7 @@ export { Checkbox, CheckboxGroup } from './components/Checkbox';
 export { RadioButton, RadioGroup } from './components/RadioButton';
 export { Switch } from './components/Switch';
 export { TextField } from './components/TextField';
+export { FieldLabel } from './components/FieldLabel';
 export { NumberField } from './components/NumberField';
 export { Dropdown } from './components/Dropdown';
 export { Menu, MenuDivider } from './components/Menu';

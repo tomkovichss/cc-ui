@@ -1,6 +1,7 @@
 import type { ChangeEvent, ReactNode } from 'react';
 import styles from './RadioButton.module.css';
 import groupStyles from './OptionGroup.module.css';
+import { FieldLabel } from './FieldLabel';
 
 interface RadioButtonProps {
   checked: boolean;
@@ -63,7 +64,7 @@ export function RadioGroup({ label, name, items, value, onChange, ...rest }: Rad
       aria-label={label ? undefined : rest['aria-label']}
       className={groupStyles.group}
     >
-      {label && <span className={groupStyles.label}>{label}</span>}
+      {label && <FieldLabel className={groupStyles.groupLabel}>{label}</FieldLabel>}
       {items.map((item) => (
         <RadioButton
           key={item.value}

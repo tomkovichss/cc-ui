@@ -39,10 +39,15 @@
   border-radius: 16px;
   padding: 12px 14px;
   cursor: default;
-  transition: box-shadow 0.2s;
+  transition:
+    box-shadow 0.2s,
+    transform 0.1s;
 }
 .card.interactive {
   cursor: pointer;
+}
+.card.interactive:active {
+  transform: scale(0.98, 0.95);
 }
 .card.grabbable {
   cursor: grab;
