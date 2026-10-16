@@ -17,6 +17,7 @@ export { MenuItem } from './components/MenuItem';
 export { HighlightText } from './components/HighlightText';
 export { FilterSection } from './components/FilterSection';
 export { Tabs } from './components/Tabs';
+export { Spinner } from './components/Spinner';
 export { formatDuration, formatDurationHMS } from './utils/format';
 
 import './styles/tokens.css';

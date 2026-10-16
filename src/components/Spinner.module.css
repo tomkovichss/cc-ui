@@ -1,0 +1,53 @@
+.spinner {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+}
+
+.inner,
+.outer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.inner {
+  animation: spin 1s cubic-bezier(0.5, 0, 0.4, 1) infinite;
+}
+
+.outer {
+  animation: spinReverse 1s ease-in-out infinite;
+}
+
+/* Brand logo colors, kept as literals on purpose. */
+.default .inner {
+  fill: #008cd8;
+}
+.default .outer {
+  fill: #4cd5ff;
+}
+
+.subtle .inner,
+.subtle .outer {
+  fill: var(--depth-5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inner,
+  .outer {
+    animation-duration: 3s;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
