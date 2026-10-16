@@ -45,9 +45,9 @@ export function Button({
     .join(' ');
   return (
     <button ref={ref} type="button" className={classes} {...rest}>
-      {leadingIcon && <span className={styles.icon}>{leadingIcon}</span>}
+      {leadingIcon && <span className={`${styles.icon} ${iconOnly ? '' : styles.leadingIcon}`.trim()}>{leadingIcon}</span>}
       {children}
-      {trailingIcon && <span className={styles.icon}>{trailingIcon}</span>}
+      {trailingIcon && <span className={`${styles.icon} ${styles.trailingIcon}`}>{trailingIcon}</span>}
     </button>
   );
 }

@@ -141,6 +141,21 @@ export const WithTrailingIcon: Story = {
   ),
 };
 
+export const WithBothIcons: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <Button variant="primary" leadingIcon={<Plus />} trailingIcon={<ArrowRight />}>
+        Add worker
+      </Button>
+      <Button variant="secondary" leadingIcon={<Plus />} trailingIcon={<ArrowRight />}>
+        Add worker
+      </Button>
+      <Button variant="tertiary" leadingIcon={<Plus />} trailingIcon={<ArrowRight />}>
+        Add worker
+      </Button>
+    </div>
+  ),
+};
 
 export const FullWidth: Story = {
   render: () => (
