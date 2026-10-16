@@ -100,6 +100,17 @@
   height: 100%;
 }
 
+.tab.iconOnly {
+  justify-content: center;
+}
+.tab.iconOnly .icon {
+  margin-left: 0;
+}
+/* Square button: the default 40% hover circle (x4) doesn't reach the top corners */
+.tab.iconOnly::before {
+  width: 60%;
+}
+
 /* Line variant */
 
 .line {
@@ -157,6 +168,14 @@
   height: calc(var(--control-height-sm) - 8px);
   border-radius: 6px;
   padding: 0 14px;
+}
+.box .tab.iconOnly {
+  width: calc(var(--control-height-base) - 8px);
+  padding: 0;
+}
+.box.sm .tab.iconOnly {
+  width: calc(var(--control-height-sm) - 8px);
+  padding: 0;
 }
 .box.sm .indicatorBox {
   border-radius: 6px;

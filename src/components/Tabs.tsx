@@ -11,11 +11,12 @@ import styles from './Tabs.module.css';
 type TabsVariant = 'line' | 'box';
 type TabsSize = 'base' | 'sm';
 
-interface TabItem {
+export interface TabItem {
   value: string;
-  label: ReactNode;
+  label?: ReactNode;
   icon?: ReactNode;
   disabled?: boolean;
+  'aria-label'?: string;
 }
 
 interface TabsProps {
@@ -25,6 +26,7 @@ interface TabsProps {
   variant?: TabsVariant;
   size?: TabsSize;
   'aria-label'?: string;
+  'aria-labelledby'?: string;
 }
 
 export function Tabs({ items, value, onChange, variant = 'line', size = 'base', ...rest }: TabsProps) {
@@ -115,6 +117,7 @@ export function Tabs({ items, value, onChange, variant = 'line', size = 'base', 
       )}
       {items.map((item) => {
         const selected = item.value === value;
+        const iconOnly = !item.label && !!item.icon;
         return (
           <button
             key={item.value}
@@ -125,9 +128,12 @@ export function Tabs({ items, value, onChange, variant = 'line', size = 'base', 
             type="button"
             role="tab"
             aria-selected={selected}
+            aria-label={item['aria-label']}
             disabled={item.disabled}
             tabIndex={selected ? 0 : -1}
-            className={[styles.tab, selected && styles.selected].filter(Boolean).join(' ')}
+            className={[styles.tab, selected && styles.selected, iconOnly && styles.iconOnly]
+              .filter(Boolean)
+              .join(' ')}
             onClick={() => !item.disabled && onChange(item.value)}
           >
             {item.icon && <span className={styles.icon}>{item.icon}</span>}
