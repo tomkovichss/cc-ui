@@ -7,6 +7,8 @@ export { Checkbox, CheckboxGroup } from './components/Checkbox';
 export { RadioButton, RadioGroup } from './components/RadioButton';
 export { Switch } from './components/Switch';
 export { TextField } from './components/TextField';
+export { PasswordField } from './components/PasswordField';
+export { DateField } from './components/DateField';
 export { FieldLabel } from './components/FieldLabel';
 export { NumberField } from './components/NumberField';
 export { Dropdown } from './components/Dropdown';

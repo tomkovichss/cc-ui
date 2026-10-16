@@ -1,4 +1,4 @@
-import { useId, type InputHTMLAttributes, type ReactNode } from 'react';
+import { useId, type InputHTMLAttributes, type ReactNode, type Ref } from 'react';
 import styles from './TextField.module.css';
 import { FieldLabel } from './FieldLabel';
 
@@ -12,6 +12,10 @@ interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'cl
   size?: TextFieldSize;
   variant?: TextFieldVariant;
   leadingIcon?: ReactNode;
+  /** Extra classes for layout around the field — width, flex growth. Appended after its own class. */
+  className?: string;
+  /** Reaches the <input>, e.g. for a form library to focus a field that failed validation. */
+  ref?: Ref<HTMLInputElement>;
 }
 
 export function TextField({
@@ -22,19 +26,21 @@ export function TextField({
   variant = 'default',
   leadingIcon,
   id,
+  className,
+  ref,
   ...rest
 }: TextFieldProps) {
   const generatedId = useId();
   const inputId = id ?? generatedId;
 
   return (
-    <div className={styles.field}>
+    <div className={[styles.field, className].filter(Boolean).join(' ')}>
       {label && <FieldLabel htmlFor={inputId}>{label}</FieldLabel>}
       <div
         className={`${styles.inputWrap} ${styles[variant]} ${styles[size]} ${error ? styles.errorWrap : ''}`}
       >
         {leadingIcon && <span className={styles.icon}>{leadingIcon}</span>}
-        <input id={inputId} className={styles.input} {...rest} />
+        <input ref={ref} id={inputId} className={styles.input} {...rest} />
       </div>
       {error ? (
         <span className={styles.errorText}>{error}</span>

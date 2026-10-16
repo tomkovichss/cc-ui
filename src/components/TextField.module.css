@@ -117,3 +117,41 @@
   font-size: 0.78rem;
   color: var(--danger-text);
 }
+.trailing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.15s ease-out, background 0.15s ease-out;
+}
+.trailing svg {
+  width: 16px;
+  height: 16px;
+}
+.trailing:hover:not(:disabled) {
+  color: var(--brand-main);
+  background: var(--brand-main-5);
+}
+.trailing:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: -2px;
+}
+.trailing:disabled {
+  cursor: not-allowed;
+}
+.pickerInput {
+  cursor: pointer;
+  caret-color: transparent;
+}
+.pickerInput:disabled {
+  cursor: not-allowed;
+}
