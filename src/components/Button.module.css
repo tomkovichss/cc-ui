@@ -18,6 +18,13 @@
     color 0.2s ease,
     transform 0.2s ease-out;
 }
+.primary:focus-visible,
+.secondary:focus-visible,
+.tertiary:focus-visible,
+.dangerous:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: 2px;
+}
 .primary:active:not(:disabled),
 .secondary:active:not(:disabled),
 .tertiary:active:not(:disabled),
@@ -106,7 +113,7 @@
 }
 
 .secondary {
-  background: var(--ink-5);
+  background: var(--depth-5);
   color: var(--text-primary);
 }
 .secondary .icon {

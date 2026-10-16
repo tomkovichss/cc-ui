@@ -26,7 +26,7 @@
     background-color 0.15s ease-out,
     color 0.15s ease-out,
     transform 0.1s ease-out;
-  background: var(--ink-5);
+  background: var(--depth-5);
   color: var(--text-primary);
 }
 

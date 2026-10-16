@@ -23,8 +23,15 @@
   --surface-muted: #e5e7e9;
   --border: #e0e0e0;
   --border-input: #e0e0e0;
-  --ink-rgb: 16, 24, 32;
-  --ink-5: rgba(var(--ink-rgb), 0.05);
+
+  /* Depth */
+  --depth-base: 16, 24, 32;
+  --depth-2: rgba(var(--depth-base), 0.02);
+  --depth-5: rgba(var(--depth-base), 0.05);
+  --depth-10: rgba(var(--depth-base), 0.1);
+  --depth-20: rgba(var(--depth-base), 0.2);
+  --depth-50: rgba(var(--depth-base), 0.5);
+  --depth-75: rgba(var(--depth-base), 0.75);
 
   /* Status */
   --danger-bg: #fdeaea;

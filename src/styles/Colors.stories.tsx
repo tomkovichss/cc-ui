@@ -3,12 +3,13 @@ import tokensRaw from './tokens.css?raw';
 import styles from './Colors.stories.module.css';
 
 const TOKEN_RE = /--([\w-]+):\s*([^;]+);/g;
+const RGB_CHANNELS_RE = /^\d+,\s*\d+,\s*\d+$/;
 
 function getTokens() {
   const tokens: { name: string; value: string }[] = [];
   for (const match of tokensRaw.matchAll(TOKEN_RE)) {
     const [, name, value] = match;
-    if (name.endsWith('-rgb')) continue;
+    if (RGB_CHANNELS_RE.test(value.trim())) continue;
     tokens.push({ name: `--${name}`, value: value.trim() });
   }
   return tokens;

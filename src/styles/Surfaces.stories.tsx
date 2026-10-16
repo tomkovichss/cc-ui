@@ -62,6 +62,40 @@ function SurfaceLevels() {
   );
 }
 
+const depthSteps = [2, 5, 10, 20, 50, 75];
+
+function DepthScale() {
+  return (
+    <div className={styles.list}>
+      <div className={styles.info}>
+        <div className={styles.name}>Depth</div>
+        <div className={styles.description}>
+          Translucent dark overlays for hover/pressed states, wells, and fills that should read as
+          slightly recessed. Because they are transparent, the same token works on any surface —
+          shown here on the card surface and on the body surface.
+        </div>
+      </div>
+      {[
+        { label: 'On card surface', background: 'var(--card-surface)' },
+        { label: 'On body surface', background: 'var(--bg)' },
+      ].map((surface) => (
+        <div key={surface.label}>
+          <div className={styles.surfaceLabel}>{surface.label}</div>
+          <div className={styles.depthRow} style={{ background: surface.background }}>
+            {depthSteps.map((step) => (
+              <div key={step} className={styles.depthItem}>
+                <div className={styles.depthSwatch} style={{ background: `var(--depth-${step})` }} />
+                <div className={styles.depthName}>--depth-{step}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+      <div className={styles.code}>background: var(--depth-5);</div>
+    </div>
+  );
+}
+
 const meta: Meta = {
   title: 'Foundations/Surfaces',
 };
@@ -71,4 +105,8 @@ type Story = StoryObj;
 
 export const Levels: Story = {
   render: () => <SurfaceLevels />,
+};
+
+export const Depth: Story = {
+  render: () => <DepthScale />,
 };

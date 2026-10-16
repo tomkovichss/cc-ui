@@ -125,7 +125,7 @@
 .box {
   box-sizing: border-box;
   height: var(--control-height-base);
-  background: var(--ink-5);
+  background: var(--depth-5);
   border-radius: var(--radius-base);
   padding: 4px;
   gap: 4px;
