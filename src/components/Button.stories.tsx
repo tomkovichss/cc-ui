@@ -141,3 +141,16 @@ export const WithTrailingIcon: Story = {
   ),
 };
 
+
+export const FullWidth: Story = {
+  render: () => (
+    <div style={{ width: 320, display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <Button variant="primary" fullWidth>
+        Save changes
+      </Button>
+      <Button variant="secondary" fullWidth>
+        Cancel
+      </Button>
+    </div>
+  ),
+};

@@ -66,6 +66,9 @@
 .iconOnly.base {
   width: var(--control-height-base);
 }
+.fullWidth {
+  width: 100%;
+}
 .primary::before,
 .secondary::before,
 .tertiary::before,
