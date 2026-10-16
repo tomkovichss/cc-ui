@@ -71,7 +71,7 @@
   background: none;
   font-family: inherit;
   color: var(--text-primary);
-  font-weight: 450;
+  font-weight: var(--font-weight-regular);
   font-variant-numeric: tabular-nums;
   appearance: textfield;
   -moz-appearance: textfield;

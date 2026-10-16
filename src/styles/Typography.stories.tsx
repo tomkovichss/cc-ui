@@ -8,36 +8,81 @@ type Style = {
   sample: string;
 };
 
+// Names follow `.text-{size} [.medium] [.2-line]` and match the text styles in Figma 1:1.
+const multiLine = 'Notes about this worker span more than one line, so the tighter line height keeps it compact.';
+
 const styleList: Style[] = [
   {
-    name: 'base',
-    classNames: 'text-base',
-    useCase: 'Default for almost all text — body copy, labels, descriptions.',
-    sample: 'The quick brown fox jumps over the lazy dog.',
-  },
-  {
-    name: 'base bold',
-    classNames: 'text-base text-bold',
-    useCase: 'Links, buttons, and other interactive or emphasized inline text.',
-    sample: 'View all shifts',
-  },
-  {
-    name: 'base bold lg',
-    classNames: 'text-base text-bold text-lg',
-    useCase: 'Titles — section headers, dialog titles, card headings.',
-    sample: 'Worker schedule',
-  },
-  {
-    name: 'sm',
+    name: '.text-sm',
     classNames: 'text-base text-sm',
     useCase: 'Secondary/supporting text — helper text, captions, timestamps, metadata.',
     sample: 'Last updated 5 minutes ago',
   },
   {
-    name: '2-line',
+    name: '.text-sm .medium',
+    classNames: 'text-base text-medium text-sm',
+    useCase: 'Emphasized small text — badges, tags, small labels.',
+    sample: 'Pending review',
+  },
+  {
+    name: '.text-sm .2-line',
+    classNames: 'text-base text-sm text-2-line',
+    useCase: 'Wrapped small text with a tighter line height, e.g. multi-line captions.',
+    sample: multiLine,
+  },
+  {
+    name: '.text-sm .medium .2-line',
+    classNames: 'text-base text-medium text-sm text-2-line',
+    useCase: 'Wrapped emphasized small text with a tighter line height.',
+    sample: multiLine,
+  },
+  {
+    name: '.text-base',
+    classNames: 'text-base',
+    useCase: 'Default for almost all text — body copy, labels, descriptions.',
+    sample: 'The quick brown fox jumps over the lazy dog.',
+  },
+  {
+    name: '.text-base .medium',
+    classNames: 'text-base text-medium',
+    useCase: 'Links, buttons, and other interactive or emphasized inline text.',
+    sample: 'View all shifts',
+  },
+  {
+    name: '.text-base .2-line',
     classNames: 'text-base text-2-line',
     useCase: 'Multi-line text that needs a tighter line height, e.g. wrapped card descriptions.',
-    sample: 'Notes about this worker span more than one line, so the tighter line height keeps it compact.',
+    sample: multiLine,
+  },
+  {
+    name: '.text-base .medium .2-line',
+    classNames: 'text-base text-medium text-2-line',
+    useCase: 'Wrapped emphasized text with a tighter line height, e.g. two-line button or link labels.',
+    sample: multiLine,
+  },
+  {
+    name: '.text-lg',
+    classNames: 'text-base text-lg',
+    useCase: 'Larger regular text — lead paragraphs, prominent values.',
+    sample: 'Worker schedule',
+  },
+  {
+    name: '.text-lg .medium',
+    classNames: 'text-base text-medium text-lg',
+    useCase: 'Titles — section headers, dialog titles, card headings.',
+    sample: 'Worker schedule',
+  },
+  {
+    name: '.text-lg .2-line',
+    classNames: 'text-base text-lg text-2-line',
+    useCase: 'Wrapped large text with a tighter line height.',
+    sample: multiLine,
+  },
+  {
+    name: '.text-lg .medium .2-line',
+    classNames: 'text-base text-medium text-lg text-2-line',
+    useCase: 'Wrapped titles with a tighter line height, e.g. long dialog or card headings.',
+    sample: multiLine,
   },
 ];
 

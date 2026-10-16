@@ -96,7 +96,7 @@
   background: none;
   font-family: inherit;
   color: var(--text-primary);
-  font-weight: 450;
+  font-weight: var(--font-weight-regular);
 }
 .input:focus {
   outline: none;

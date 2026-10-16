@@ -49,13 +49,13 @@
   background: var(--brand-main, #0a84d8);
   color: #fff;
   font-size: 0.65rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   line-height: 16px;
   text-align: center;
 }
 .value {
   color: var(--text-primary);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 .panel {
   display: none;
@@ -93,7 +93,7 @@
 }
 .sectionLabel {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -104,7 +104,7 @@
   padding: 0;
   font-family: inherit;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--brand-main, #0a84d8);
   cursor: pointer;
 }

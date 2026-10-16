@@ -1,6 +1,6 @@
 .label {
   font-size: 0.85rem;
-  font-weight: 550;
+  font-weight: var(--font-weight-medium);
   color: var(--text-primary);
   padding-left: 4px;
 }

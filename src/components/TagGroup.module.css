@@ -18,7 +18,7 @@
   border: none;
   outline: none;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   white-space: nowrap;
   border-radius: 999px;
   cursor: pointer;

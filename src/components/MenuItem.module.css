@@ -43,7 +43,7 @@
   justify-content: center;
   width: 16px;
   height: 16px;
-  margin-left: -4px;
+  margin-left: -2px;
   color: var(--text-tertiary);
   flex-shrink: 0;
 }
@@ -61,11 +61,12 @@
 .trailing {
   color: var(--text-tertiary);
   font-size: 0.8rem;
+  margin-right: -2px;
   flex-shrink: 0;
 }
 .selected {
   color: var(--text-primary);
-  font-weight: 550;
+  font-weight: var(--font-weight-medium);
 }
 .selected .icon {
   color: var(--text-primary);
