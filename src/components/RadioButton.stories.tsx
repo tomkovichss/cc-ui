@@ -18,6 +18,14 @@ export const Checked: Story = {
   args: { checked: true, ariaLabel: 'Example radio' },
 };
 
+export const Disabled: Story = {
+  args: { checked: false, ariaLabel: 'Example radio', label: 'Unavailable option', disabled: true },
+};
+
+export const DisabledChecked: Story = {
+  args: { checked: true, ariaLabel: 'Example radio', label: 'Locked option', disabled: true },
+};
+
 const items = [
   { value: 'daily', label: 'Daily' },
   { value: 'weekly', label: 'Weekly' },

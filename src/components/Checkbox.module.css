@@ -78,3 +78,19 @@
 .input:checked + .box .icon polyline {
   stroke-dashoffset: 0px;
 }
+.checkbox:has(.input:disabled),
+.input:disabled {
+  cursor: not-allowed;
+}
+.checkbox:has(.input:disabled) .labelText {
+  color: var(--disabled-text);
+}
+.checkbox:has(.input:disabled) .box {
+  background: var(--surface-muted);
+  box-shadow: inset 0 0 0 1px var(--border);
+  transform: none;
+}
+.checkbox:has(.input:disabled) .input:checked + .box {
+  background: var(--disabled-bg);
+  box-shadow: inset 0 0 0 1px var(--disabled-bg);
+}

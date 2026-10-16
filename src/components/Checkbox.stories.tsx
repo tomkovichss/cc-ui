@@ -18,6 +18,14 @@ export const Checked: Story = {
   args: { checked: true, ariaLabel: 'Example checkbox' },
 };
 
+export const Disabled: Story = {
+  args: { checked: false, ariaLabel: 'Example checkbox', label: 'Unavailable option', disabled: true },
+};
+
+export const DisabledChecked: Story = {
+  args: { checked: true, ariaLabel: 'Example checkbox', label: 'Locked option', disabled: true },
+};
+
 function InteractiveCheckbox() {
   const [checked, setChecked] = useState(false);
   return <Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)} ariaLabel="Interactive checkbox" />;

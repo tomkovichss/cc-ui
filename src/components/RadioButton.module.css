@@ -71,3 +71,19 @@
 .input:checked + .circle .dot {
   transform: scale(1);
 }
+.radio:has(.input:disabled),
+.input:disabled {
+  cursor: not-allowed;
+}
+.radio:has(.input:disabled) .labelText {
+  color: var(--disabled-text);
+}
+.radio:has(.input:disabled) .circle {
+  background: var(--surface-muted);
+  box-shadow: inset 0 0 0 1px var(--border);
+  transform: none;
+}
+.radio:has(.input:disabled) .input:checked + .circle {
+  background: var(--disabled-bg);
+  box-shadow: inset 0 0 0 1px var(--disabled-bg);
+}
