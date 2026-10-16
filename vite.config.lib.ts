@@ -27,6 +27,9 @@ export default defineConfig({
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: { react: 'React', 'react-dom': 'ReactDOM' },
+        // Components use hooks and context, so React Server Components frameworks
+        // (Next.js app router) must treat the whole bundle as client code.
+        banner: "'use client';",
       },
     },
     sourcemap: true,
