@@ -105,3 +105,37 @@ export const Sizes: Story = {
 export const Disabled: Story = {
   args: { label: 'Paddock', options: paddocks, placeholder: 'Select a paddock…', disabled: true },
 };
+
+const farms = [
+  'Dairy No 001 A',
+  'Dairy No 002 B',
+  'Dairy No 003 D',
+  'Green Valley',
+  'Hillside',
+  'North Pasture',
+  'Oak Ridge',
+  'River Bend',
+  'Riverside East',
+  'Sunny Acres',
+  'West Meadow',
+].map((name) => ({ value: name, label: name }));
+
+function SearchableDemo() {
+  const [value, setValue] = useState<string | undefined>('Dairy No 003 D');
+  return <Dropdown aria-label="Farm" searchable options={farms} value={value} onChange={setValue} />;
+}
+
+export const Searchable: Story = {
+  render: () => <SearchableDemo />,
+};
+
+function DefaultOpenDemo() {
+  const [value, setValue] = useState<string | undefined>();
+  return (
+    <Dropdown label="Paddock" options={paddocks} value={value} onChange={setValue} defaultOpen autoFocus />
+  );
+}
+
+export const DefaultOpen: Story = {
+  render: () => <DefaultOpenDemo />,
+};
