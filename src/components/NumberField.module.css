@@ -30,7 +30,7 @@
 }
 .sm .input {
   padding: 0 8px;
-  font-size: 0.85rem;
+  font-size: var(--control-font-size);
 }
 .base {
   height: var(--control-height-base);
@@ -38,7 +38,7 @@
 }
 .base .input {
   padding: 0 10px;
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
 }
 .inputWrap:has(.prefix) .input {
   padding-left: 4px;

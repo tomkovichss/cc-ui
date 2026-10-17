@@ -13,6 +13,7 @@ import { ChevronDown } from 'lucide-react';
 import { Button } from './Button';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
+import { CheckboxIndicator } from './Checkbox';
 import { FieldLabel } from './FieldLabel';
 import styles from './Dropdown.module.css';
 
@@ -28,7 +29,7 @@ interface DropdownOption<T extends string> {
   searchText?: string;
 }
 
-interface DropdownProps<T extends string> {
+interface CommonProps<T extends string> {
   /**
    * What opens the menu: a text-field-style trigger (`field`), a secondary or
    * tertiary `Button`, or a `pill` styled like a pill `Tag`.
@@ -46,8 +47,6 @@ interface DropdownProps<T extends string> {
   size?: DropdownSize;
   placeholder?: string;
   options: DropdownOption<T>[];
-  value?: T;
-  onChange: (value: T) => void;
   disabled?: boolean;
   /** Show a search field at the top of the open menu that filters options by their text. */
   searchable?: boolean;
@@ -71,41 +70,84 @@ interface DropdownProps<T extends string> {
   'data-testid'?: string;
 }
 
+/**
+ * `multiple` switches the dropdown to multi-select: `value` becomes an array in the
+ * order options were picked, and the menu stays open while options are toggled.
+ */
+type DropdownProps<T extends string> = CommonProps<T> &
+  (
+    | {
+        multiple?: false;
+        value?: T;
+        onChange: (value: T) => void;
+        triggerPrefix?: never;
+        renderTriggerLabel?: never;
+        moreText?: never;
+      }
+    | {
+        multiple: true;
+        value?: T[];
+        onChange: (value: T[]) => void;
+        /** Static, muted text before the value in the trigger, e.g. "Compare with:". */
+        triggerPrefix?: ReactNode;
+        /**
+         * Trigger content when at least one option is selected, in selection order.
+         * Defaults to the label of a single selection, or "First and N more".
+         * An empty selection always shows the placeholder.
+         */
+        renderTriggerLabel?: (selected: DropdownOption<T>[]) => ReactNode;
+        /** Builds the "and N more" suffix of the default trigger label. */
+        moreText?: (count: number) => string;
+      }
+  );
+
 function optionText(opt: DropdownOption<string>): string {
   if (opt.searchText !== undefined) return opt.searchText;
   return typeof opt.label === 'string' || typeof opt.label === 'number' ? String(opt.label) : '';
 }
 
-export function Dropdown<T extends string>({
-  variant = 'field',
-  triggerLabel,
-  menuAlign = 'start',
-  label,
-  helperText,
-  error,
-  size = 'base',
-  placeholder = 'Select…',
-  options,
-  value,
-  onChange,
-  disabled,
-  searchable,
-  searchPlaceholder = 'Search…',
-  noResultsText = 'No matches',
-  defaultOpen = false,
-  autoFocus,
-  className,
-  labelClassName,
-  'aria-label': ariaLabel,
-  'data-testid': dataTestId,
-}: DropdownProps<T>) {
+/** Plain text for a selected option in the trigger: its string label, else `searchText`. */
+function labelText(opt: DropdownOption<string>): string | undefined {
+  if (typeof opt.label === 'string' || typeof opt.label === 'number') return String(opt.label);
+  return opt.searchText;
+}
+
+const defaultMoreText = (count: number) => `and ${count} more`;
+
+export function Dropdown<T extends string>(props: DropdownProps<T>) {
+  const {
+    variant = 'field',
+    triggerLabel,
+    menuAlign = 'start',
+    label,
+    helperText,
+    error,
+    size = 'base',
+    placeholder = 'Select…',
+    options,
+    disabled,
+    searchable,
+    searchPlaceholder = 'Search…',
+    noResultsText = 'No matches',
+    defaultOpen = false,
+    autoFocus,
+    className,
+    labelClassName,
+    'aria-label': ariaLabel,
+    'data-testid': dataTestId,
+  } = props;
+  const multiple = props.multiple === true;
   const [open, setOpen] = useState(defaultOpen);
   // Stays true while the close animation plays so the menu can animate out before unmounting.
   const [present, setPresent] = useState(defaultOpen);
   const [query, setQuery] = useState('');
   const [openUpward, setOpenUpward] = useState(false);
   // Hover highlight that glides between options; `instant` skips the slide on first appearance.
-  const [highlight, setHighlight] = useState<{ top: number; height: number; instant: boolean } | null>(null);
+  const [highlight, setHighlight] = useState<{
+    top: number;
+    height: number;
+    instant: boolean;
+  } | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -113,7 +155,13 @@ export function Dropdown<T extends string>({
   const triggerId = useId();
   const listboxId = useId();
 
-  const selected = options.find((opt) => opt.value === value);
+  const value = props.multiple ? undefined : props.value;
+  const selectedValues: T[] = (props.multiple && props.value) || [];
+  // Selection order, not option order.
+  const selectedOptions = selectedValues
+    .map((v) => options.find((opt) => opt.value === v))
+    .filter((opt): opt is DropdownOption<T> => opt !== undefined);
+  const selected = multiple ? undefined : options.find((opt) => opt.value === value);
   const trimmedQuery = query.trim().toLowerCase();
   const visibleOptions =
     searchable && trimmedQuery
@@ -140,7 +188,8 @@ export function Dropdown<T extends string>({
       searchRef.current?.focus();
       return;
     }
-    const focusValue = value ?? enabledValues[0];
+    const focusValue =
+      (multiple ? selectedOptions.find((opt) => !opt.disabled)?.value : value) ?? enabledValues[0];
     const el = rootRef.current?.querySelector<HTMLButtonElement>(`[data-value="${focusValue}"]`);
     el?.focus();
   }, [open]);
@@ -166,6 +215,8 @@ export function Dropdown<T extends string>({
         close();
         triggerRef.current?.focus();
       }
+      // Multi-select keeps focus in the menu after a pick, so Tab has to dismiss it.
+      if (e.key === 'Tab' && multiple) close();
     }
     window.addEventListener('pointerdown', onPointerDown);
     window.addEventListener('keydown', onKeyDown);
@@ -173,7 +224,7 @@ export function Dropdown<T extends string>({
       window.removeEventListener('pointerdown', onPointerDown);
       window.removeEventListener('keydown', onKeyDown);
     };
-  }, [open]);
+  }, [open, multiple]);
 
   function focusOption(optionValue: T | undefined) {
     if (optionValue === undefined) return;
@@ -222,16 +273,47 @@ export function Dropdown<T extends string>({
   }
 
   function glideTo(el: HTMLElement) {
-    setHighlight((prev) => ({ top: el.offsetTop, height: el.offsetHeight, instant: !prev }));
+    setHighlight((prev) => ({
+      top: el.offsetTop,
+      height: el.offsetHeight,
+      instant: !prev,
+    }));
   }
 
   function select(optionValue: T) {
-    onChange(optionValue);
+    if (props.multiple) {
+      const current = props.value ?? [];
+      props.onChange(
+        current.includes(optionValue) ? current.filter((v) => v !== optionValue) : [...current, optionValue],
+      );
+      return;
+    }
+    props.onChange(optionValue);
     close();
     triggerRef.current?.focus();
   }
 
-  const triggerText = triggerLabel ?? (selected ? selected.label : placeholder);
+  function multipleLabel(): ReactNode {
+    if (props.multiple && props.renderTriggerLabel) return props.renderTriggerLabel(selectedOptions);
+    const first = selectedOptions[0];
+    if (selectedOptions.length === 1) return first.label;
+    const text = labelText(first);
+    if (text === undefined) return `${selectedOptions.length} selected`;
+    const more = (props.multiple && props.moreText) || defaultMoreText;
+    return `${text} ${more(selectedOptions.length - 1)}`;
+  }
+
+  const showPlaceholder = triggerLabel === undefined && (multiple ? selectedOptions.length === 0 : !selected);
+  const prefix =
+    multiple && props.triggerPrefix ? <span className={styles.prefix}>{props.triggerPrefix} </span> : null;
+  const valueText =
+    triggerLabel ?? (showPlaceholder ? placeholder : multiple ? multipleLabel() : selected?.label);
+  const triggerText = (
+    <>
+      {prefix}
+      {valueText}
+    </>
+  );
   const triggerProps = {
     'aria-haspopup': 'listbox' as const,
     'aria-expanded': open,
@@ -264,7 +346,7 @@ export function Dropdown<T extends string>({
           {...triggerProps}
         >
           {selected?.icon && <span className={styles.icon}>{selected.icon}</span>}
-          <span className={`${styles.value} ${!selected && triggerLabel === undefined ? styles.placeholder : ''}`}>
+          <span className={`${styles.value} ${showPlaceholder ? styles.placeholder : ''}`}>
             {triggerText}
           </span>
           <span className={`${styles.chevron} ${open ? styles.chevronOpen : ''}`}>
@@ -272,7 +354,13 @@ export function Dropdown<T extends string>({
           </span>
         </button>
       ) : variant === 'pill' ? (
-        <button ref={triggerRef} id={triggerId} type="button" className={styles.pillTrigger} {...triggerProps}>
+        <button
+          ref={triggerRef}
+          id={triggerId}
+          type="button"
+          className={styles.pillTrigger}
+          {...triggerProps}
+        >
           {selected?.icon && <span className={styles.pillIcon}>{selected.icon}</span>}
           {triggerText}
           <span className={`${styles.pillChevron} ${open ? styles.chevronOpen : ''}`}>
@@ -302,6 +390,7 @@ export function Dropdown<T extends string>({
           className={[
             styles.menuWrap,
             !isField && styles.menuWrapAuto,
+            !isField && multiple && styles.menuWrapMultiple,
             !isField && menuAlign === 'end' && styles.menuWrapEnd,
             openUpward && styles.menuWrapUp,
             !open && styles.menuWrapClosing,
@@ -336,6 +425,7 @@ export function Dropdown<T extends string>({
             <div
               id={listboxId}
               role="listbox"
+              aria-multiselectable={multiple || undefined}
               aria-label={label ?? ariaLabel}
               className={styles.list}
               onMouseLeave={() => setHighlight(null)}
@@ -347,7 +437,10 @@ export function Dropdown<T extends string>({
                 <span
                   aria-hidden="true"
                   className={`${styles.highlight} ${highlight.instant ? styles.highlightInstant : ''}`}
-                  style={{ transform: `translateY(${highlight.top}px)`, height: highlight.height }}
+                  style={{
+                    transform: `translateY(${highlight.top}px)`,
+                    height: highlight.height,
+                  }}
                 />
               )}
               {visibleOptions.length === 0 ? (
@@ -361,9 +454,17 @@ export function Dropdown<T extends string>({
                     style={{ '--i': Math.min(index, 8) } as CSSProperties}
                     data-value={opt.value}
                     role="option"
-                    aria-selected={opt.value === value}
+                    aria-selected={multiple ? selectedValues.includes(opt.value) : opt.value === value}
                     icon={opt.icon}
-                    selected={opt.value === value}
+                    leading={
+                      multiple ? (
+                        <CheckboxIndicator
+                          checked={selectedValues.includes(opt.value)}
+                          disabled={opt.disabled}
+                        />
+                      ) : undefined
+                    }
+                    selected={!multiple && opt.value === value}
                     disabled={opt.disabled}
                     onClick={() => select(opt.value)}
                     onMouseEnter={(e) => !opt.disabled && glideTo(e.currentTarget)}

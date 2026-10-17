@@ -5,7 +5,7 @@
 }
 
 .label {
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
   color: var(--text-secondary);
   font-weight: var(--font-weight-regular);
   white-space: nowrap;

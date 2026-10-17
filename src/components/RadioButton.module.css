@@ -15,7 +15,7 @@
   flex-shrink: 0;
 }
 .labelText {
-  font-size: 0.85rem;
+  font-size: var(--control-font-size);
   color: var(--text-primary);
   transition: color 0.2s ease-out;
 }

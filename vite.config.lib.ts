@@ -10,7 +10,7 @@ export default defineConfig({
       entryRoot: 'src',
       tsconfigPath: './tsconfig.lib.json',
       include: ['src'],
-      exclude: ['src/**/*.stories.tsx', 'src/**/*.stories.module.css'],
+      exclude: ['src/**/*.stories.tsx', 'src/**/*.stories.module.css', 'src/**/*.test.ts'],
       insertTypesEntry: true,
       rollupTypes: false,
     }),

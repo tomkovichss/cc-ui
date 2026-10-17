@@ -63,7 +63,7 @@
 .sm.trigger {
   height: var(--control-height-sm);
   padding: 0 12px;
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
 }
 .base {
   border-radius: var(--radius-base);
@@ -71,7 +71,7 @@
 .base.trigger {
   height: var(--control-height-base);
   padding: 0 14px;
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
 }
 
 .icon {
@@ -316,7 +316,7 @@
   background: var(--card-surface);
   box-shadow: inset 0 0 0 1px var(--border-input);
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
   color: var(--text-primary);
   outline: none;
 }
@@ -325,7 +325,7 @@
 }
 .noResults {
   padding: 8px 12px;
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
   color: var(--text-tertiary);
 }
 .helperText {
@@ -336,4 +336,12 @@
 .errorText {
   font-size: 0.78rem;
   color: var(--danger-text);
+}
+
+.prefix {
+  color: var(--text-tertiary);
+}
+/* Multi-select menus need room for names like "002 Night shift" */
+.menuWrapMultiple {
+  min-width: max(100%, 240px);
 }

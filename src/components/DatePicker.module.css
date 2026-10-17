@@ -1,0 +1,27 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-popover);
+  box-sizing: border-box;
+  width: 276px; /* 7 × 36px columns + 12px padding either side */
+  max-width: calc(100vw - 16px);
+  padding: 12px;
+  border-radius: var(--radius-base);
+  background: var(--card-surface);
+  box-shadow:
+    inset 0 0 0 1px var(--border),
+    0 8px 24px var(--depth-10);
+}
+
+/* Phones: a bottom sheet spanning the screen with 8px margins. */
+@media (max-width: 480px) {
+  .popup {
+    top: auto;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+    max-width: none;
+  }
+}

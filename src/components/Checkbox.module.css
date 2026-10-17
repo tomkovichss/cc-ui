@@ -15,7 +15,7 @@
   flex-shrink: 0;
 }
 .labelText {
-  font-size: 0.85rem;
+  font-size: var(--control-font-size);
   color: var(--text-primary);
   transition: color 0.2s ease-out;
 }
@@ -91,6 +91,26 @@
   transform: none;
 }
 .checkbox:has(.input:disabled) .input:checked + .box {
+  background: var(--disabled-bg);
+  box-shadow: inset 0 0 0 1px var(--disabled-bg);
+}
+
+/* CheckboxIndicator — same visuals driven by data attributes instead of an input */
+.indicator[data-checked='true'] {
+  background: var(--brand-main);
+  box-shadow: inset 0 0 0 1px var(--brand-main);
+}
+.indicator[data-checked='true'] .icon polyline {
+  stroke-dashoffset: 0px;
+}
+button:is(:hover, :focus-visible):not(:disabled) .indicator {
+  box-shadow: 0 0 0 1px var(--brand-main);
+}
+.indicator[data-disabled] {
+  background: var(--surface-muted);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+.indicator[data-disabled][data-checked='true'] {
   background: var(--disabled-bg);
   box-shadow: inset 0 0 0 1px var(--disabled-bg);
 }

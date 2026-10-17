@@ -10,7 +10,7 @@
   border-radius: 8px;
   padding: 8px 12px;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
   color: var(--text-primary);
   text-align: left;
   cursor: pointer;
@@ -36,6 +36,12 @@
 .item:disabled {
   color: var(--disabled-text);
   cursor: not-allowed;
+}
+.leading {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: -2px;
 }
 .icon {
   display: flex;

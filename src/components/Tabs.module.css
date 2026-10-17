@@ -113,7 +113,7 @@
 .line .tab {
   background: transparent;
   padding: 12px 8px;
-  font-size: 1rem;
+  font-size: var(--control-font-size);
   color: var(--text-secondary);
 }
 .line .tab:hover:not(:disabled) {
@@ -140,7 +140,7 @@
   height: calc(var(--control-height-base) - 8px);
   border-radius: 8px;
   padding: 0 14px;
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
   background: transparent;
   color: var(--text-secondary);
 }

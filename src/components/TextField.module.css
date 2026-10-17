@@ -74,7 +74,7 @@
 }
 .sm .input {
   padding: 0 12px;
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
 }
 .base {
   height: var(--control-height-base);
@@ -82,7 +82,7 @@
 }
 .base .input {
   padding: 0 14px;
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
 }
 .inputWrap:has(.icon) .input {
   padding-left: 8px;

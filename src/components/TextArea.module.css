@@ -45,7 +45,7 @@
   border-radius: inherit;
   background: none;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: var(--control-font-size);
   line-height: 1.4;
   color: var(--text-primary);
   font-weight: var(--font-weight-regular);

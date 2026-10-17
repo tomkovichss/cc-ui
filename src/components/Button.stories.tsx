@@ -42,7 +42,7 @@ export const AllIconButtons: Story = {
 };
 
 const sizes = ['base', 'sm', 'xs'] as const;
-const variants = ['primary', 'secondary', 'outline', 'tertiary', 'dangerous', 'onDark'] as const;
+const variants = ['primary', 'secondary', 'tertiary', 'dangerous', 'onDark'] as const;
 const rows = [...variants.map((variant) => ({ variant, disabled: false })), { variant: 'primary' as const, disabled: true }];
 
 export const FigmaMatrix: Story = {
@@ -81,10 +81,6 @@ export const Secondary: Story = {
 
 export const Tertiary: Story = {
   args: { variant: 'tertiary', children: 'Cancel' },
-};
-
-export const Outline: Story = {
-  args: { variant: 'outline', children: 'Cancel' },
 };
 
 export const OnDark: Story = {
@@ -163,6 +159,81 @@ export const FullWidth: Story = {
       <Button variant="secondary" fullWidth>
         Cancel
       </Button>
+    </div>
+  ),
+};
+
+const linkText = 'Click to resend text message with verification code';
+
+export const Link: Story = {
+  name: 'Link',
+  render: () => (
+    <p style={{ maxWidth: 420, fontSize: 14, lineHeight: '20px' }}>
+      Didn't get the code? <Button variant="link" onClick={() => {}}>Resend it</Button> or contact support.
+    </p>
+  ),
+};
+
+export const LinkUnderlineHover: Story = {
+  render: () => (
+    <p style={{ fontSize: 14, lineHeight: '20px' }}>
+      <Button variant="link" underline="hover">English</Button> | <Button variant="link" underline="hover">Español</Button>
+    </p>
+  ),
+};
+
+export const LinkMultiline: Story = {
+  render: () => (
+    <div style={{ width: 200, fontSize: 14, lineHeight: '20px', outline: '1px dashed #ccc' }}>
+      <Button variant="link">{linkText}</Button>
+    </div>
+  ),
+};
+
+export const LinkDisabled: Story = {
+  render: () => (
+    <p style={{ fontSize: 14, lineHeight: '20px' }}>
+      <Button variant="link" disabled>English</Button> | <Button variant="link" underline="hover" disabled>Español</Button>
+    </p>
+  ),
+};
+
+export const LinkInsideSmallText: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+      <p style={{ fontSize: 12, lineHeight: '16px' }}>
+        Small text with <Button variant="link">an inline link</Button> inside.
+      </p>
+      <p style={{ fontSize: 20, lineHeight: '28px' }}>
+        Large text with <Button variant="link">an inline link</Button> inside.
+      </p>
+    </div>
+  ),
+};
+
+export const LinkInForm: Story = {
+  render: () => (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        alert('Form submitted');
+      }}
+      style={{ fontSize: 14, lineHeight: '20px' }}
+    >
+      <p>
+        Clicking the link must not submit the form: <Button variant="link">Resend</Button>
+      </p>
+      <Button type="submit">Submit</Button>
+    </form>
+  ),
+};
+
+export const LinkDarkTheme: Story = {
+  name: 'Link - Dark Theme',
+  render: () => (
+    <div style={{ background: '#111', color: '#eee', padding: 16, fontSize: 14, lineHeight: '20px', maxWidth: 320 }}>
+      Dark surface with <Button variant="link">a link</Button>, <Button variant="link" underline="hover">a hover link</Button>{' '}
+      and <Button variant="link" disabled>a disabled link</Button>.
     </div>
   ),
 };

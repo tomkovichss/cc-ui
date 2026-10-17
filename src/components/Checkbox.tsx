@@ -51,6 +51,25 @@ export function Checkbox({
   );
 }
 
+/**
+ * The checkbox visual without an input, for rows that already carry the state
+ * themselves (e.g. multi-select menu options). Purely decorative.
+ */
+export function CheckboxIndicator({ checked, disabled }: { checked: boolean; disabled?: boolean }) {
+  return (
+    <span
+      className={`${styles.box} ${styles.indicator}`}
+      data-checked={checked}
+      data-disabled={disabled || undefined}
+      aria-hidden="true"
+    >
+      <svg className={styles.icon} viewBox="0 0 17 18" aria-hidden="true">
+        <polyline points="1 9 7 14 15 4" />
+      </svg>
+    </span>
+  );
+}
+
 interface CheckboxGroupItem {
   value: string;
   label: ReactNode;

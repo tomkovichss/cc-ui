@@ -1,0 +1,89 @@
+.calendar {
+  width: 100%;
+  max-width: 100%;
+  font-family: inherit;
+  color: var(--text-primary);
+}
+.header {
+  display: grid;
+  grid-template-columns: var(--control-height-sm) 1fr var(--control-height-sm);
+  align-items: center;
+  margin-bottom: 8px;
+}
+.header .navButton {
+  border-radius: 50%;
+}
+/* Disabled tertiary buttons turn into a grey disc; here they should just fade. */
+.header .navButton:disabled {
+  background: transparent;
+  box-shadow: none;
+}
+.title {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+.grid {
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  user-select: none;
+}
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.15s ease-out;
+}
+.day:hover:not(.selected, .disabled) {
+  background: var(--brand-main-5);
+}
+.day:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: 1px;
+}
+.outside {
+  color: var(--text-tertiary);
+}
+.today {
+  color: var(--brand-main);
+}
+.selected,
+.selected.outside,
+.selected.today {
+  background: var(--brand-main);
+  color: #fff;
+  font-weight: var(--font-weight-medium);
+}
+.day.disabled {
+  color: var(--disabled-text);
+  cursor: not-allowed;
+}
+@media (prefers-reduced-motion: reduce) {
+  .day {
+    transition: none;
+  }
+}

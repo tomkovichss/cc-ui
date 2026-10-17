@@ -10,6 +10,8 @@ export { TextField } from './components/TextField';
 export { TextArea } from './components/TextArea';
 export { PasswordField } from './components/PasswordField';
 export { DateField } from './components/DateField';
+export { DatePicker } from './components/DatePicker';
+export { Calendar } from './components/Calendar';
 export { FieldLabel } from './components/FieldLabel';
 export { NumberField } from './components/NumberField';
 export { Dropdown } from './components/Dropdown';

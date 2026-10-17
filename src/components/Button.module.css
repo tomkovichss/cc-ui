@@ -1,7 +1,6 @@
 .primary,
 .secondary,
 .tertiary,
-.outline,
 .onDark,
 .dangerous {
   position: relative;
@@ -23,7 +22,6 @@
 .primary:focus-visible,
 .secondary:focus-visible,
 .tertiary:focus-visible,
-.outline:focus-visible,
 .onDark:focus-visible,
 .dangerous:focus-visible {
   outline: 2px solid var(--brand-main);
@@ -32,7 +30,6 @@
 .primary:hover:not(:disabled),
 .secondary:hover:not(:disabled),
 .tertiary:hover:not(:disabled),
-.outline:hover:not(:disabled),
 .onDark:hover:not(:disabled),
 .dangerous:hover:not(:disabled) {
   box-shadow: 0 0 0 2px var(--btn-glow, transparent);
@@ -40,7 +37,6 @@
 .primary:active:not(:disabled),
 .secondary:active:not(:disabled),
 .tertiary:active:not(:disabled),
-.outline:active:not(:disabled),
 .onDark:active:not(:disabled),
 .dangerous:active:not(:disabled) {
   box-shadow: 0 0 0 0 var(--btn-glow, transparent);
@@ -50,19 +46,19 @@
   height: var(--control-height-xs);
   border-radius: var(--radius-xs);
   padding: 0 16px;
-  font-size: 14px;
+  font-size: var(--control-font-size);
 }
 .sm {
   height: var(--control-height-sm);
   border-radius: var(--radius-sm);
   padding: 0 16px;
-  font-size: 16px;
+  font-size: var(--control-font-size);
 }
 .base {
   height: var(--control-height-base);
   border-radius: var(--radius-base);
   padding: 0 20px;
-  font-size: 16px;
+  font-size: var(--control-font-size);
 }
 .icon {
   display: flex;
@@ -102,7 +98,6 @@
 .primary::after,
 .secondary::after,
 .tertiary::after,
-.outline::after,
 .onDark::after,
 .dangerous::after {
   content: '';
@@ -126,26 +121,6 @@
   background: var(--brand-dark);
 }
 
-.secondary {
-  --btn-ring: rgba(0, 0, 0, 0.05);
-  --btn-glow: var(--brand-main-30);
-  background: rgba(0, 0, 0, 0.08);
-  color: var(--text-primary);
-}
-.secondary .icon {
-  color: var(--text-secondary);
-}
-.secondary:hover:not(:disabled) {
-  background: var(--brand-main-5);
-  color: var(--brand-main);
-}
-.secondary:hover:not(:disabled) .icon {
-  color: var(--brand-main);
-}
-.secondary:active:not(:disabled) {
-  background: var(--brand-main-15);
-}
-
 .tertiary {
   --btn-glow: var(--brand-main-10);
   background: transparent;
@@ -159,24 +134,24 @@
   background: var(--brand-main-15);
 }
 
-.outline {
+.secondary {
   --btn-ring: rgba(0, 0, 0, 0.08);
   --btn-ring-width: 1.5px;
   --btn-glow: var(--brand-main-30);
   background: transparent;
   color: var(--text-primary);
 }
-.outline .icon {
+.secondary .icon {
   color: var(--text-secondary);
 }
-.outline:hover:not(:disabled) {
+.secondary:hover:not(:disabled) {
   background: var(--brand-main-5);
   color: var(--brand-main);
 }
-.outline:hover:not(:disabled) .icon {
+.secondary:hover:not(:disabled) .icon {
   color: var(--brand-main);
 }
-.outline:active:not(:disabled) {
+.secondary:active:not(:disabled) {
   background: var(--brand-main-15);
 }
 
@@ -210,11 +185,49 @@
 .primary:disabled,
 .secondary:disabled,
 .tertiary:disabled,
-.outline:disabled,
 .onDark:disabled,
 .dangerous:disabled {
   --btn-ring: transparent;
   background: var(--disabled-bg);
   color: var(--disabled-text);
+  cursor: not-allowed;
+}
+
+/* link: inline text in a flow of copy — none of the block-button rules above apply */
+.link {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--brand-main);
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  white-space: normal;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.link:hover:not(:disabled) {
+  color: var(--brand-dark);
+}
+.link:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.link.underlineHover {
+  text-decoration: none;
+}
+.link.underlineHover:hover:not(:disabled),
+.link.underlineHover:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.link:disabled {
+  color: var(--disabled-text);
+  text-decoration: none;
   cursor: not-allowed;
 }
