@@ -6,6 +6,7 @@
   --brand-main-rgb: 0, 144, 217;
   --brand-main-5: rgba(var(--brand-main-rgb), 0.05);
   --brand-main-10: rgba(var(--brand-main-rgb), 0.1);
+  --brand-main-15: rgba(var(--brand-main-rgb), 0.15);
   --brand-main-20: rgba(var(--brand-main-rgb), 0.2);
   --brand-main-30: rgba(var(--brand-main-rgb), 0.3);
   --brand-main-50: rgba(var(--brand-main-rgb), 0.5);
@@ -46,8 +47,10 @@
   --disabled-text: #8a8a8a;
 
   /* Control sizing */
+  --control-height-xs: 28px;
   --control-height-sm: 36px;
   --control-height-base: 44px;
+  --radius-xs: 8px;
   --radius-sm: 10px;
   --radius-base: 12px;
 }

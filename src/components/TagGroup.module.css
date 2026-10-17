@@ -11,6 +11,7 @@
 }
 
 .chip {
+  composes: chip from './ChipBase.module.css';
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -22,12 +23,6 @@
   white-space: nowrap;
   border-radius: 999px;
   cursor: pointer;
-  transition:
-    background-color 0.15s ease-out,
-    color 0.15s ease-out,
-    transform 0.1s ease-out;
-  background: var(--depth-5);
-  color: var(--text-primary);
 }
 
 .group.base .chip {
@@ -42,35 +37,10 @@
   font-size: 0.75rem;
 }
 
-.chip:hover:not(:disabled) {
-  background: var(--surface-muted);
-}
-
 .chip:active:not(:disabled) {
   transform: scale(0.95);
-  background: var(--surface-muted);
 }
 
-.chip:focus-visible {
-  outline: 2px solid var(--brand-main);
-  outline-offset: 2px;
-}
-
-.chip.selected {
-  background: var(--brand-bg);
-  color: var(--brand-main);
-}
-
-.chip.selected:hover:not(:disabled) {
-  background: var(--brand-main-20);
-}
-
-.chip.selected:active:not(:disabled) {
-  background: var(--brand-main-30);
-}
-
-.chip:disabled {
-  background: var(--disabled-bg);
-  color: var(--disabled-text);
-  cursor: not-allowed;
+.selected {
+  composes: selected from './ChipBase.module.css';
 }

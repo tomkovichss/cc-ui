@@ -139,3 +139,68 @@ function DefaultOpenDemo() {
 export const DefaultOpen: Story = {
   render: () => <DefaultOpenDemo />,
 };
+
+function VariantDemo(props: Partial<React.ComponentProps<typeof Dropdown>>) {
+  const [value, setValue] = useState<string | undefined>('south');
+  return <Dropdown options={paddocks} value={value} onChange={setValue} {...props} />;
+}
+
+export const SecondaryButton: Story = {
+  render: () => <VariantDemo variant="secondary" />,
+};
+
+export const TertiaryButton: Story = {
+  render: () => <VariantDemo variant="tertiary" />,
+};
+
+export const Pill: Story = {
+  render: () => <VariantDemo variant="pill" />,
+};
+
+export const ButtonSizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+      <VariantDemo variant="secondary" size="sm" />
+      <VariantDemo variant="secondary" size="base" />
+      <VariantDemo variant="tertiary" size="sm" />
+      <VariantDemo variant="tertiary" size="base" />
+    </div>
+  ),
+};
+
+export const FixedTriggerLabel: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+      <VariantDemo variant="secondary" triggerLabel="Actions" />
+      <VariantDemo variant="pill" triggerLabel="Herd" />
+    </div>
+  ),
+};
+
+export const MenuAlignEnd: Story = {
+  render: () => (
+    <div style={{ display: 'flex', justifyContent: 'flex-end', width: 360, paddingBottom: 220 }}>
+      <VariantDemo variant="secondary" menuAlign="end" triggerLabel="Actions" />
+    </div>
+  ),
+};
+
+function ButtonWithIconsDemo() {
+  const [value, setValue] = useState<string | undefined>('cow');
+  return (
+    <Dropdown
+      variant="secondary"
+      value={value}
+      onChange={setValue}
+      options={[
+        { value: 'cow', label: 'Dairy cow', icon: <Milk /> },
+        { value: 'calf', label: 'Calf', icon: <Tractor /> },
+        { value: 'pasture', label: 'Pasture', icon: <MapPin /> },
+      ]}
+    />
+  );
+}
+
+export const ButtonWithIcons: Story = {
+  render: () => <ButtonWithIconsDemo />,
+};

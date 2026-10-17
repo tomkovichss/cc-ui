@@ -1,8 +1,9 @@
 import type { ButtonHTMLAttributes, ReactNode, Ref } from 'react';
 import styles from './Button.module.css';
 
-type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'dangerous';
-type ButtonSize = 'sm' | 'base';
+/** `onDark` is for buttons placed on dark surfaces. */
+type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'outline' | 'onDark' | 'dangerous';
+type ButtonSize = 'xs' | 'sm' | 'base';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;

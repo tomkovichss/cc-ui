@@ -2,6 +2,10 @@ import styles from './Spinner.module.css';
 
 type SpinnerVariant = 'default' | 'subtle';
 
+/**
+ * Always centered (vertically and horizontally) in its parent container.
+ * The parent must be positioned (`position: relative`, `absolute` or `fixed`) and have a size.
+ */
 interface SpinnerProps {
   /** `default` uses the brand logo blues; `subtle` uses a faint depth tint for busy surfaces. */
   variant?: SpinnerVariant;
@@ -9,7 +13,7 @@ interface SpinnerProps {
   size?: number;
   /** Accessible name announced by screen readers. */
   label?: string;
-  /** Extra classes for layout around the spinner. Appended after the variant classes. */
+  /** Extra classes appended after the variant classes. Do not override the centering position. */
   className?: string;
   'data-testid'?: string;
 }

@@ -5,16 +5,19 @@ import {
   useRef,
   useState,
   type ChangeEvent,
+  type CSSProperties,
   type KeyboardEvent,
   type ReactNode,
 } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { Button } from './Button';
 import { Menu } from './Menu';
 import { MenuItem } from './MenuItem';
 import { FieldLabel } from './FieldLabel';
 import styles from './Dropdown.module.css';
 
 type DropdownSize = 'sm' | 'base';
+type DropdownVariant = 'field' | 'secondary' | 'tertiary' | 'pill';
 
 interface DropdownOption<T extends string> {
   value: T;
@@ -26,9 +29,20 @@ interface DropdownOption<T extends string> {
 }
 
 interface DropdownProps<T extends string> {
+  /**
+   * What opens the menu: a text-field-style trigger (`field`), a secondary or
+   * tertiary `Button`, or a `pill` styled like a pill `Tag`.
+   * `label`, `helperText` and `error` only apply to `field`.
+   */
+  variant?: DropdownVariant;
+  /** Fixed trigger text (e.g. "Actions"). Defaults to the selected option's label, or the placeholder. */
+  triggerLabel?: ReactNode;
+  /** Which trigger edge the menu lines up with. Ignored for `field`, where the menu spans the trigger. */
+  menuAlign?: 'start' | 'end';
   label?: string;
   helperText?: string;
   error?: string;
+  /** Applies to `field`, `secondary` and `tertiary`; `pill` has a single size. */
   size?: DropdownSize;
   placeholder?: string;
   options: DropdownOption<T>[];
@@ -63,6 +77,9 @@ function optionText(opt: DropdownOption<string>): string {
 }
 
 export function Dropdown<T extends string>({
+  variant = 'field',
+  triggerLabel,
+  menuAlign = 'start',
   label,
   helperText,
   error,
@@ -83,8 +100,12 @@ export function Dropdown<T extends string>({
   'data-testid': dataTestId,
 }: DropdownProps<T>) {
   const [open, setOpen] = useState(defaultOpen);
+  // Stays true while the close animation plays so the menu can animate out before unmounting.
+  const [present, setPresent] = useState(defaultOpen);
   const [query, setQuery] = useState('');
   const [openUpward, setOpenUpward] = useState(false);
+  // Hover highlight that glides between options; `instant` skips the slide on first appearance.
+  const [highlight, setHighlight] = useState<{ top: number; height: number; instant: boolean } | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -99,6 +120,13 @@ export function Dropdown<T extends string>({
       ? options.filter((opt) => optionText(opt).toLowerCase().includes(trimmedQuery))
       : options;
   const enabledValues = visibleOptions.filter((opt) => !opt.disabled).map((opt) => opt.value);
+
+  const isField = variant === 'field';
+
+  function openMenu() {
+    setPresent(true);
+    setOpen(true);
+  }
 
   function close() {
     setOpen(false);
@@ -119,12 +147,10 @@ export function Dropdown<T extends string>({
 
   // Open upward when there is not enough room below and more room above.
   useLayoutEffect(() => {
-    if (!open || !menuRef.current || !rootRef.current) {
-      setOpenUpward(false);
-      return;
-    }
+    if (!open || !menuRef.current || !rootRef.current) return;
     const rootRect = rootRef.current.getBoundingClientRect();
-    const menuHeight = menuRef.current.getBoundingClientRect().height;
+    // offsetHeight ignores the entrance animation's scale transform.
+    const menuHeight = menuRef.current.offsetHeight;
     const spaceBelow = window.innerHeight - rootRect.bottom;
     const spaceAbove = rootRect.top;
     setOpenUpward(spaceBelow < menuHeight + 8 && spaceAbove > spaceBelow);
@@ -157,7 +183,7 @@ export function Dropdown<T extends string>({
   function handleTriggerKeyDown(e: KeyboardEvent<HTMLButtonElement>) {
     if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      setOpen(true);
+      openMenu();
     }
   }
 
@@ -195,49 +221,100 @@ export function Dropdown<T extends string>({
     }
   }
 
+  function glideTo(el: HTMLElement) {
+    setHighlight((prev) => ({ top: el.offsetTop, height: el.offsetHeight, instant: !prev }));
+  }
+
   function select(optionValue: T) {
     onChange(optionValue);
     close();
     triggerRef.current?.focus();
   }
 
+  const triggerText = triggerLabel ?? (selected ? selected.label : placeholder);
+  const triggerProps = {
+    'aria-haspopup': 'listbox' as const,
+    'aria-expanded': open,
+    'aria-controls': open ? listboxId : undefined,
+    'aria-label': label ? undefined : ariaLabel,
+    autoFocus,
+    disabled,
+    onClick: () => (open ? close() : openMenu()),
+    onKeyDown: handleTriggerKeyDown,
+  };
+
   return (
     <div
-      className={[styles.field, className].filter(Boolean).join(' ')}
+      className={[isField ? styles.field : styles.fieldInline, className].filter(Boolean).join(' ')}
       ref={rootRef}
       data-testid={dataTestId}
     >
-      {label && (
+      {isField && label && (
         <FieldLabel htmlFor={triggerId} className={labelClassName}>
           {label}
         </FieldLabel>
       )}
-      <button
-        ref={triggerRef}
-        id={triggerId}
-        type="button"
-        role="combobox"
-        className={`${styles.trigger} ${styles[size]} ${error ? styles.errorWrap : ''}`}
-        aria-haspopup="listbox"
-        aria-expanded={open}
-        aria-controls={open ? listboxId : undefined}
-        aria-label={label ? undefined : ariaLabel}
-        autoFocus={autoFocus}
-        disabled={disabled}
-        onClick={() => (open ? close() : setOpen(true))}
-        onKeyDown={handleTriggerKeyDown}
-      >
-        {selected?.icon && <span className={styles.icon}>{selected.icon}</span>}
-        <span className={`${styles.value} ${!selected ? styles.placeholder : ''}`}>
-          {selected ? selected.label : placeholder}
-        </span>
-        <span className={`${styles.chevron} ${open ? styles.chevronOpen : ''}`}>
-          <ChevronDown />
-        </span>
-      </button>
-      {open && (
-        <div ref={menuRef} className={`${styles.menuWrap} ${openUpward ? styles.menuWrapUp : ''}`}>
-          <Menu role="presentation" style={{ width: '100%' }}>
+      {isField ? (
+        <button
+          ref={triggerRef}
+          id={triggerId}
+          type="button"
+          role="combobox"
+          className={`${styles.trigger} ${styles[size]} ${error ? styles.errorWrap : ''}`}
+          {...triggerProps}
+        >
+          {selected?.icon && <span className={styles.icon}>{selected.icon}</span>}
+          <span className={`${styles.value} ${!selected && triggerLabel === undefined ? styles.placeholder : ''}`}>
+            {triggerText}
+          </span>
+          <span className={`${styles.chevron} ${open ? styles.chevronOpen : ''}`}>
+            <ChevronDown />
+          </span>
+        </button>
+      ) : variant === 'pill' ? (
+        <button ref={triggerRef} id={triggerId} type="button" className={styles.pillTrigger} {...triggerProps}>
+          {selected?.icon && <span className={styles.pillIcon}>{selected.icon}</span>}
+          {triggerText}
+          <span className={`${styles.pillChevron} ${open ? styles.chevronOpen : ''}`}>
+            <ChevronDown />
+          </span>
+        </button>
+      ) : (
+        <Button
+          ref={triggerRef}
+          id={triggerId}
+          variant={variant}
+          size={size}
+          leadingIcon={selected?.icon}
+          trailingIcon={
+            <span className={`${styles.buttonChevron} ${open ? styles.chevronOpen : ''}`}>
+              <ChevronDown />
+            </span>
+          }
+          {...triggerProps}
+        >
+          {triggerText}
+        </Button>
+      )}
+      {present && (
+        <div
+          ref={menuRef}
+          className={[
+            styles.menuWrap,
+            !isField && styles.menuWrapAuto,
+            !isField && menuAlign === 'end' && styles.menuWrapEnd,
+            openUpward && styles.menuWrapUp,
+            !open && styles.menuWrapClosing,
+          ]
+            .filter(Boolean)
+            .join(' ')}
+          onAnimationEnd={(e) => {
+            if (open || e.target !== e.currentTarget) return;
+            setPresent(false);
+            setOpenUpward(false);
+          }}
+        >
+          <Menu role="presentation" style={isField ? { width: '100%' } : undefined}>
             {searchable && (
               <input
                 ref={searchRef}
@@ -249,19 +326,39 @@ export function Dropdown<T extends string>({
                 aria-controls={listboxId}
                 autoComplete="off"
                 spellCheck={false}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setQuery(e.target.value);
+                  setHighlight(null);
+                }}
                 onKeyDown={handleSearchKeyDown}
               />
             )}
-            <div id={listboxId} role="listbox" aria-label={label ?? ariaLabel} className={styles.list}>
+            <div
+              id={listboxId}
+              role="listbox"
+              aria-label={label ?? ariaLabel}
+              className={styles.list}
+              onMouseLeave={() => setHighlight(null)}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setHighlight(null);
+              }}
+            >
+              {highlight && visibleOptions.length > 0 && (
+                <span
+                  aria-hidden="true"
+                  className={`${styles.highlight} ${highlight.instant ? styles.highlightInstant : ''}`}
+                  style={{ transform: `translateY(${highlight.top}px)`, height: highlight.height }}
+                />
+              )}
               {visibleOptions.length === 0 ? (
                 <div className={styles.noResults} role="presentation">
                   {noResultsText}
                 </div>
               ) : (
-                visibleOptions.map((opt) => (
+                visibleOptions.map((opt, index) => (
                   <MenuItem
                     key={opt.value}
+                    style={{ '--i': Math.min(index, 8) } as CSSProperties}
                     data-value={opt.value}
                     role="option"
                     aria-selected={opt.value === value}
@@ -269,6 +366,8 @@ export function Dropdown<T extends string>({
                     selected={opt.value === value}
                     disabled={opt.disabled}
                     onClick={() => select(opt.value)}
+                    onMouseEnter={(e) => !opt.disabled && glideTo(e.currentTarget)}
+                    onFocus={(e) => glideTo(e.currentTarget)}
                     onKeyDown={(e) => handleOptionKeyDown(e, opt.value)}
                   >
                     {opt.label}
@@ -279,9 +378,9 @@ export function Dropdown<T extends string>({
           </Menu>
         </div>
       )}
-      {error ? (
+      {isField && error ? (
         <span className={styles.errorText}>{error}</span>
-      ) : helperText ? (
+      ) : isField && helperText ? (
         <span className={styles.helperText}>{helperText}</span>
       ) : null}
     </div>

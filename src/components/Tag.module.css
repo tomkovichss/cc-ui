@@ -2,8 +2,10 @@
 .pill,
 .accent,
 .success,
+.warning,
 .danger,
-.count {
+.count,
+.chip {
   display: inline-flex;
   align-items: center;
   font-weight: var(--font-weight-medium);
@@ -19,14 +21,19 @@
   padding: 2px 7px;
 }
 
-/* Pill tags — e.g. BPO group labels, total-duration tags */
+/* Pill tags — unfilled outline, e.g. BPO group labels, chart-axis pills */
 .pill {
-  background: var(--card-surface);
+  background: none;
   box-shadow: inset 0 0 0 1px var(--border);
   color: var(--text-tertiary);
   font-size: 0.8rem;
   padding: 3px 11px;
   border-radius: 999px;
+}
+
+.pill.pressed {
+  box-shadow: inset 0 0 0 1px var(--brand-main);
+  color: var(--brand-main);
 }
 
 /* Accent pill — e.g. "current" stat, read-only banner badge */
@@ -44,6 +51,24 @@
   color: var(--success-text);
   font-size: 0.8rem;
   padding: 3px 11px;
+  border-radius: 999px;
+}
+
+/* Warning pill — same shape as success */
+.warning {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+  font-size: 0.8rem;
+  padding: 3px 11px;
+  border-radius: 999px;
+}
+
+/* Chip — filled toggle pill; colours/states come from ChipBase.module.css */
+.chip {
+  justify-content: center;
+  height: 36px;
+  padding: 0 14px;
+  font-size: 0.85rem;
   border-radius: 999px;
 }
 
@@ -69,4 +94,130 @@
   font-size: 0.65rem;
   line-height: 16px;
   text-align: center;
+}
+
+/* Slots (leading / remove) */
+.slots {
+  gap: 6px;
+}
+
+.leading {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Interactive behaviour (pressable and/or removable) */
+.interactive {
+  font-family: inherit;
+  transition:
+    background-color 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    color 0.15s ease-out,
+    transform 0.1s ease-out;
+}
+
+/* Root <button>: reset native chrome. Inherit font-size from the variant, not the UA. */
+.button {
+  appearance: none;
+  border: none;
+  margin: 0;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.interactive:not(.chip) {
+  cursor: pointer;
+}
+
+.interactive:not(.disabled):hover.neutral {
+  background: var(--depth-10);
+}
+
+.interactive:not(.disabled):hover.accent {
+  background: color-mix(in srgb, var(--brand-main) 12%, var(--brand-bg));
+}
+
+.interactive:not(.disabled):hover.success {
+  background: color-mix(in srgb, var(--success-text) 12%, var(--success-bg));
+}
+
+.interactive:not(.disabled):hover.warning {
+  background: color-mix(in srgb, var(--warning-text) 12%, var(--warning-bg));
+}
+
+.interactive:not(.disabled):hover.danger {
+  background: color-mix(in srgb, var(--danger-text) 12%, var(--danger-bg));
+}
+
+.interactive:not(.disabled):hover.pill {
+  background: var(--depth-5);
+}
+
+.interactive:not(.disabled):active {
+  transform: scale(0.97);
+}
+
+.button:focus-visible,
+.main:focus-visible,
+.remove:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: 2px;
+}
+
+.disabled {
+  background: var(--disabled-bg);
+  box-shadow: none;
+  color: var(--disabled-text);
+  cursor: not-allowed;
+}
+
+.disabled.interactive:hover {
+  background: var(--disabled-bg);
+}
+
+/* Removable: span root holds the look; two sibling buttons inside */
+.removable {
+  align-items: center;
+}
+
+.main {
+  display: inline-flex;
+  align-items: center;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border-radius: inherit;
+}
+
+.main:disabled,
+.remove:disabled {
+  cursor: not-allowed;
+}
+
+.remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 2px;
+  margin: 0 -4px 0 0;
+  border-radius: 999px;
+  color: inherit;
+  cursor: pointer;
+}
+
+.remove:hover:not(:disabled) {
+  background: color-mix(in srgb, currentColor 15%, transparent);
+}
+
+.pill.pressed.disabled {
+  box-shadow: none;
+  color: var(--disabled-text);
 }

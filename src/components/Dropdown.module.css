@@ -1,8 +1,18 @@
+.field,
+.fieldInline {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
 .field {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+.fieldInline {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: top;
 }
 .trigger {
   display: flex;
@@ -17,13 +27,29 @@
   cursor: pointer;
   transition: box-shadow 0.2s ease-out;
 }
-.trigger:focus-visible {
+.trigger:hover:not(:disabled, :focus-visible) {
   box-shadow:
-    inset 0 0 0 0 var(--border-input),
-    0 0 0 2px var(--brand-main);
+    inset 0 0 0 1px var(--border-input),
+    0 0 0 2px var(--brand-main-30);
+}
+.trigger:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 0 0 1.5px var(--brand-main),
+    0 0 0 2px var(--border-input);
 }
 .errorWrap {
-  box-shadow: inset 0 0 0 1px var(--danger-text);
+  box-shadow: inset 0 0 0 1px rgba(var(--danger-rgb), 0.2);
+}
+.trigger.errorWrap:focus-visible {
+  box-shadow:
+    inset 0 0 0 1.5px var(--danger-text),
+    0 0 0 2px rgba(var(--danger-rgb), 0.3);
+}
+.trigger.errorWrap:hover:not(:disabled, :focus-visible) {
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--danger-rgb), 0.2),
+    0 0 0 2px rgba(var(--danger-rgb), 0.3);
 }
 .trigger:disabled {
   background: var(--surface-muted);
@@ -82,7 +108,7 @@
   margin-left: 8px;
   color: var(--text-tertiary);
   flex-shrink: 0;
-  transition: transform 0.15s ease-out;
+  transition: transform 0.3s var(--ease-out);
 }
 .chevron svg {
   width: 100%;
@@ -93,17 +119,186 @@
 }
 
 .menuWrap {
+  --menu-dy: -6px;
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
   right: 0;
   z-index: 10;
+  transform-origin: top center;
+  animation: menuIn 0.28s var(--ease-out) both;
+}
+.menuWrapAuto {
+  right: auto;
+  min-width: 100%;
+  width: max-content;
+  transform-origin: top left;
+}
+.menuWrapEnd {
+  left: auto;
+  right: 0;
+  transform-origin: top right;
 }
 .menuWrapUp {
+  --menu-dy: 6px;
   top: auto;
   bottom: calc(100% + 4px);
+  transform-origin: bottom center;
+}
+.menuWrapUp.menuWrapAuto {
+  transform-origin: bottom left;
+}
+.menuWrapUp.menuWrapEnd {
+  transform-origin: bottom right;
+}
+.menuWrapClosing {
+  pointer-events: none;
+  animation: menuOut 0.12s ease-in both;
+}
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(var(--menu-dy)) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes menuOut {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(calc(var(--menu-dy) / 2)) scale(0.96);
+  }
+}
+.list > button {
+  position: relative;
+  z-index: 1;
+  animation: itemIn 0.3s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 18ms + 40ms);
+}
+.menuWrapClosing .list > button {
+  animation: none;
+}
+/* Gliding hover highlight — replaces the per-item hover background */
+.list > button:hover:not(:disabled),
+.list > button:focus-visible:not(:disabled) {
+  background: transparent;
+}
+.list > button:focus-visible {
+  outline: none;
+}
+.highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  border-radius: 8px;
+  background: var(--brand-bg);
+  pointer-events: none;
+  transition:
+    transform 0.28s var(--ease-out),
+    height 0.2s ease-out;
+}
+.highlightInstant {
+  transition: none;
+}
+@keyframes itemIn {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--menu-dy) * 0.75));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .menuWrap,
+  .menuWrapClosing {
+    animation-duration: 0.01ms;
+  }
+  .list > button {
+    animation: none;
+  }
+  .highlight {
+    transition: none;
+  }
+  .chevron,
+  .pillChevron,
+  .buttonChevron {
+    transition: none;
+  }
+}
+
+/* Pill trigger — mirrors the pill Tag, but interactive */
+.pillTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-sizing: border-box;
+  border: none;
+  background: var(--card-surface);
+  box-shadow: inset 0 0 0 1px var(--border);
+  color: var(--text-tertiary);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  padding: 3px 8px 3px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.15s ease-out,
+    color 0.15s ease-out,
+    transform 0.15s ease-out;
+}
+.pillTrigger:hover:not(:disabled) {
+  background: var(--brand-bg);
+  color: var(--brand-dark);
+}
+.pillTrigger:active:not(:disabled) {
+  transform: scale(0.96);
+}
+.pillTrigger:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: 2px;
+}
+.pillTrigger:disabled {
+  color: var(--disabled-text);
+  cursor: not-allowed;
+}
+.pillIcon {
+  display: flex;
+  width: 14px;
+  height: 14px;
+  margin-left: -4px;
+}
+.pillChevron {
+  display: flex;
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s var(--ease-out);
+}
+.buttonChevron {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s var(--ease-out);
+}
+.pillIcon svg,
+.pillChevron svg,
+.buttonChevron svg {
+  width: 100%;
+  height: 100%;
 }
 .list {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2px;

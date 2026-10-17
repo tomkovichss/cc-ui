@@ -51,19 +51,16 @@
 .tab::before {
   content: '';
   position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 40%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  transform: translate(-50%, 100%) scale(1);
-  transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.15s ease-out;
   z-index: -1;
   pointer-events: none;
   background: rgba(var(--brand-main-rgb), 0.08);
 }
 .tab:hover:not(:disabled)::before {
-  transform: translate(-50%, 15%) scale(4);
+  opacity: 1;
 }
 .tab:active:not(:disabled)::before {
   background: rgba(var(--brand-main-rgb), 0.28);
@@ -105,10 +102,6 @@
 }
 .tab.iconOnly .icon {
   margin-left: 0;
-}
-/* Square button: the default 40% hover circle (x4) doesn't reach the top corners */
-.tab.iconOnly::before {
-  width: 60%;
 }
 
 /* Line variant */

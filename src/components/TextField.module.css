@@ -11,14 +11,28 @@
   box-shadow: inset 0 0 0 1px var(--border-input);
   transition: box-shadow 0.2s ease-out;
 }
+.inputWrap:hover:not(:focus-within, :has(.input:disabled), .toolbar) {
+  box-shadow:
+    inset 0 0 0 1px var(--border-input),
+    0 0 0 2px var(--brand-main-30);
+}
 .inputWrap:focus-within {
   box-shadow:
-    inset 0 0 0 0 var(--border-input),
-    0 0 0 2px var(--brand-main);
+    inset 0 0 0 1.5px var(--brand-main),
+    0 0 0 2px var(--border-input);
 }
-.errorWrap,
+.errorWrap {
+  box-shadow: inset 0 0 0 1px rgba(var(--danger-rgb), 0.2);
+}
 .errorWrap:focus-within {
-  box-shadow: inset 0 0 0 1px var(--danger-text);
+  box-shadow:
+    inset 0 0 0 1.5px var(--danger-text),
+    0 0 0 2px rgba(var(--danger-rgb), 0.3);
+}
+.inputWrap.errorWrap:hover:not(:focus-within, :has(.input:disabled), .toolbar) {
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--danger-rgb), 0.2),
+    0 0 0 2px rgba(var(--danger-rgb), 0.3);
 }
 .inputWrap:has(.input:disabled) {
   background: var(--surface-muted);

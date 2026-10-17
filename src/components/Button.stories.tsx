@@ -41,50 +41,32 @@ export const AllIconButtons: Story = {
   ),
 };
 
-export const AllButtons: Story = {
-  name: 'All - Buttons',
+const sizes = ['base', 'sm', 'xs'] as const;
+const variants = ['primary', 'secondary', 'outline', 'tertiary', 'dangerous', 'onDark'] as const;
+const rows = [...variants.map((variant) => ({ variant, disabled: false })), { variant: 'primary' as const, disabled: true }];
+
+export const FigmaMatrix: Story = {
+  name: 'All - Variants × Sizes',
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-        <Button variant="primary" size="sm">
-          Small
-        </Button>
-        <Button variant="primary" size="base">
-          Base
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-        <Button variant="secondary" size="sm">
-          Small
-        </Button>
-        <Button variant="secondary" size="base">
-          Base
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-        <Button variant="tertiary" size="sm">
-          Small
-        </Button>
-        <Button variant="tertiary" size="base">
-          Base
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-        <Button variant="dangerous" size="sm">
-          Small
-        </Button>
-        <Button variant="dangerous" size="base">
-          Base
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-        <Button variant="primary" size="sm" disabled>
-          Small
-        </Button>
-        <Button variant="primary" size="base" disabled>
-          Base
-        </Button>
-      </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      {rows.map(({ variant, disabled }) => (
+        <div
+          key={`${variant}-${disabled}`}
+          style={{
+            display: 'flex',
+            gap: 16,
+            alignItems: 'center',
+            padding: 16,
+            background: variant === 'onDark' ? '#000' : undefined,
+          }}
+        >
+          {sizes.map((size) => (
+            <Button key={size} variant={variant} size={size} disabled={disabled} leadingIcon={<Plus />} trailingIcon={<ArrowRight />}>
+              Button
+            </Button>
+          ))}
+        </div>
+      ))}
     </div>
   ),
 };
@@ -99,6 +81,21 @@ export const Secondary: Story = {
 
 export const Tertiary: Story = {
   args: { variant: 'tertiary', children: 'Cancel' },
+};
+
+export const Outline: Story = {
+  args: { variant: 'outline', children: 'Cancel' },
+};
+
+export const OnDark: Story = {
+  args: { variant: 'onDark', children: 'Cancel' },
+  decorators: [
+    (Story) => (
+      <div style={{ background: '#000', padding: 24 }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const Dangerous: Story = {
