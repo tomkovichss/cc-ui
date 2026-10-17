@@ -124,6 +124,14 @@
   font-weight: var(--font-weight-medium);
 }
 
+/* Line variant, small */
+
+.line.sm .tab {
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 16px;
+}
+
 /* Box variant */
 
 .box {
@@ -172,4 +180,25 @@
 }
 .box.sm .indicatorBox {
   border-radius: 6px;
+}
+
+/* Box variant, large: multi-line labels, height follows content */
+
+.box.lg {
+  align-items: stretch;
+  height: auto;
+  min-height: 61px;
+}
+.box.lg .tab {
+  height: auto;
+  min-height: 53px;
+  padding: 8px 20px;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.25;
+}
+.box.lg .tab.iconOnly {
+  width: auto;
+  padding: 8px;
 }

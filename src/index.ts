@@ -17,11 +17,15 @@ export { NumberField } from './components/NumberField';
 export { Dropdown } from './components/Dropdown';
 export { Menu, MenuDivider } from './components/Menu';
 export { MenuItem } from './components/MenuItem';
+export { NavItem, NavList } from './components/NavItem';
+export { Logo } from './components/Logo';
+export { Sidebar, SidebarFooter, LanguageSwitch } from './components/Sidebar';
 export { HighlightText } from './components/HighlightText';
 export { FilterSection } from './components/FilterSection';
 export { Tabs } from './components/Tabs';
 export { Toggle } from './components/Toggle';
 export { Spinner } from './components/Spinner';
+export { Skeleton } from './components/Skeleton';
 export { formatDuration, formatDurationHMS } from './utils/format';
 
 import './styles/tokens.css';

@@ -9,7 +9,7 @@ import {
 import styles from './Tabs.module.css';
 
 type TabsVariant = 'line' | 'box';
-type TabsSize = 'base' | 'sm';
+type TabsSize = 'base' | 'sm' | 'lg';
 
 export interface TabItem {
   value: string;
@@ -91,7 +91,9 @@ export function Tabs({ items, value, onChange, variant = 'line', size = 'base', 
     <div
       ref={containerRef}
       role="tablist"
-      className={[styles[variant], variant === 'box' && size === 'sm' && styles.sm]
+      className={[styles[variant], variant === 'box' && size === 'sm' && styles.sm,
+        variant === 'box' && size === 'lg' && styles.lg,
+      ]
         .filter(Boolean)
         .join(' ')}
       onKeyDown={handleKeyDown}

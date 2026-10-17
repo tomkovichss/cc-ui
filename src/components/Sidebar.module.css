@@ -1,0 +1,149 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-self: stretch;
+  box-sizing: border-box;
+  background: var(--card-surface);
+  box-shadow: inset -1px 0 0 var(--border);
+  font-family: inherit;
+}
+
+.top {
+  flex-shrink: 0;
+  padding: 16px 16px 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+}
+.header > :last-child:not(:first-child) {
+  flex: 1;
+  min-width: 0;
+}
+
+.switcher {
+  margin-top: 16px;
+}
+/* Tabs fill the sidebar width, tabs share it equally. */
+.switcher > [role='tablist'] {
+  display: flex;
+  width: 100%;
+}
+.switcher > [role='tablist'] > [role='tab'] {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Flush switcher: full-width row under the header with a divider; the tabs keep a 12px side inset. */
+.flush {
+  padding: 16px 0 0;
+}
+.flush .header {
+  padding: 0 16px 12px;
+}
+.flush .switcher {
+  margin-top: 4px;
+  padding: 0 12px;
+  box-shadow: inset 0 -1px 0 var(--border-input);
+}
+.flush .switcher > [role='tablist'] {
+  box-shadow: none;
+  gap: 0;
+}
+.flush .switcher > [role='tablist'] > [role='tab'] {
+  min-width: 0;
+  padding-inline: 2px;
+}
+
+/* Only the navigation scrolls; the header, switcher and footer stay put. */
+.nav {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px;
+}
+.nav > * {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer {
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 var(--border);
+}
+
+.footerRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 16px 16px 20px;
+}
+.footerText {
+  flex: 1;
+  min-width: 0;
+}
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 550;
+  color: var(--text-primary);
+}
+.subtitle {
+  margin-top: 4px;
+}
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.lang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 450;
+}
+.langItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.langSeparator {
+  font-size: 14px;
+  color: #c5c5c5;
+}
+.langCurrent {
+  color: var(--text-secondary);
+}
+.langButton {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: var(--brand-main);
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.langButton:hover {
+  text-decoration-style: solid;
+}
+.langButton:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

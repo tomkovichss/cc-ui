@@ -89,3 +89,16 @@ export const AllVariants: Story = {
     );
   },
 };
+
+export const BoxLarge: Story = {
+  name: 'Box - Large (multi-line)',
+  render: () => {
+    const [value, setValue] = useState('milk');
+    const tallItems = [
+      { value: 'milk', label: <>Milk<br />Barn</> },
+      { value: 'calf', label: <>Calf<br />Barn</> },
+      { value: 'feed', label: <>Feed<br />Center</> },
+    ];
+    return <Tabs items={tallItems} value={value} onChange={setValue} variant="box" size="lg" />;
+  },
+};

@@ -18,7 +18,7 @@ interface ButtonBaseProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 
 interface BlockButtonProps extends ButtonBaseProps {
   variant?: BlockButtonVariant;
   size?: ButtonSize;
-  /** Icon shown before the label. Omit `children` to render an icon-only square button — pass `aria-label` in that case. */
+  /** Icon shown before the label. Omit `children` to render an icon-only square button — pass `aria-label` in that case; it is also shown as a tooltip on hover and keyboard focus. */
   leadingIcon?: ReactNode;
   /** Icon shown after the label. */
   trailingIcon?: ReactNode;
@@ -71,7 +71,13 @@ export function Button({
     .filter(Boolean)
     .join(' ');
   return (
-    <button ref={ref} type="button" className={classes} {...rest}>
+    <button
+      ref={ref}
+      type="button"
+      className={classes}
+      data-tooltip={iconOnly ? rest['aria-label'] : undefined}
+      {...rest}
+    >
       {leadingIcon && <span className={`${styles.icon} ${iconOnly ? '' : styles.leadingIcon}`.trim()}>{leadingIcon}</span>}
       {children}
       {trailingIcon && <span className={`${styles.icon} ${styles.trailingIcon}`}>{trailingIcon}</span>}

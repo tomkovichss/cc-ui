@@ -92,6 +92,34 @@
 .iconOnly.base {
   width: var(--control-height-base);
 }
+.iconOnly[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 8px);
+  z-index: 10;
+  transform: translate(-50%, -4px);
+  padding: 4px 8px;
+  border-radius: var(--radius-xs);
+  background: var(--text-primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: var(--font-weight-regular);
+  line-height: 16px;
+  letter-spacing: 0;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.12s ease-out,
+    transform 0.12s ease-out;
+}
+.iconOnly[data-tooltip]:hover::before,
+.iconOnly[data-tooltip]:focus-visible::before {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  transition-delay: 0.4s;
+}
 .fullWidth {
   width: 100%;
 }
