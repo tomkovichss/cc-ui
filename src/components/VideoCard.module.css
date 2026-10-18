@@ -1,0 +1,237 @@
+.root {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+  border-radius: var(--radius-base);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--border);
+  font-family: var(--font-family-base);
+  color: var(--text-primary);
+  transition:
+    box-shadow 0.2s,
+    transform 0.1s;
+}
+
+.root.hasActions {
+  padding-right: 60px;
+}
+
+/* Last opened video */
+.current {
+  box-shadow: inset 0 0 0 2px var(--brand-main-30);
+}
+
+/* Same hover / press feel as Card */
+.interactive {
+  cursor: pointer;
+}
+.interactive:hover {
+  box-shadow:
+    inset 0 0 0 1px var(--border),
+    0 0 0 2px var(--brand-main);
+}
+.interactive.current:hover {
+  box-shadow:
+    inset 0 0 0 2px var(--brand-main-30),
+    0 0 0 2px var(--brand-main);
+}
+.interactive:active {
+  transform: scale(0.99, 0.97);
+}
+.interactive:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: 2px;
+}
+
+/* Thumbnail column */
+.side {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 72px;
+}
+
+.thumb {
+  width: 72px;
+  height: 48px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.thumbImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background: var(--depth-5);
+  color: var(--text-tertiary);
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+}
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 16px;
+  background: var(--brand-main);
+  color: #fff;
+  font-size: 8px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 12px;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+}
+
+/* Text columns */
+.main {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+  min-width: 0;
+}
+
+.info,
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.aside {
+  gap: 8px;
+}
+
+.date,
+.label {
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 16px;
+  letter-spacing: 0.44px;
+  text-transform: uppercase;
+}
+
+.title,
+.workerName {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: -0.15px;
+}
+
+.description,
+.meta,
+.comment {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  letter-spacing: -0.15px;
+  color: var(--text-secondary);
+}
+
+.description {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.comment {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Worker */
+.worker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.workerRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.photo {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-base);
+  object-fit: cover;
+}
+
+.emptyPhoto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-muted);
+  color: var(--text-tertiary);
+}
+
+.workerText {
+  min-width: 0;
+}
+
+.pending {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+/* Trailing actions: top-right, leaves room for a 44px hit area */
+.actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The worker block is hidden below lg; the text becomes one column. */
+@media (max-width: 1023px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .worker {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .aside:not(:has(.comment)) {
+    display: none;
+  }
+}

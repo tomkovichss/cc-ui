@@ -30,6 +30,7 @@ export { ConfirmDialog } from './components/ConfirmDialog';
 export { Tooltip } from './components/Tooltip';
 export { Skeleton } from './components/Skeleton';
 export { EmptyState } from './components/EmptyState';
+export { VideoCard } from './components/VideoCard';
 export { formatDuration, formatDurationHMS } from './utils/format';
 
 import './styles/tokens.css';
