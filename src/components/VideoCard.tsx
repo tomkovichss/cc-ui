@@ -60,6 +60,8 @@ interface VideoCardProps {
   current?: boolean;
   /** Makes the whole row a button with the hover ring. Omit when the row sits inside a link. */
   onClick?: () => void;
+  /** Hover / press feedback without making the row a button. For rows inside a link, which owns navigation and focus. Implied by `onClick`. */
+  hoverable?: boolean;
   /** Trailing slot, e.g. a bookmark button. It must stop click propagation itself. */
   actions?: ReactNode;
   /** Visible strings, for translation. Missing keys fall back to English. */
@@ -83,6 +85,7 @@ function VideoCardRoot({
   viewed = false,
   current,
   onClick,
+  hoverable,
   actions,
   labels,
   'aria-label': ariaLabel,
@@ -112,7 +115,7 @@ function VideoCardRoot({
 
   const rootClass = [
     styles.root,
-    interactive && styles.interactive,
+    (interactive || hoverable) && styles.interactive,
     current && styles.current,
     actions != null && styles.hasActions,
     className,
@@ -152,11 +155,14 @@ function VideoCardRoot({
                 <Play size={20} aria-hidden="true" />
               ) : (
                 <>
-                  {previewFallback === 'archived' ? (
-                    <Archive size={12} aria-hidden="true" />
-                  ) : (
-                    <Lock size={12} aria-hidden="true" />
-                  )}
+                  {/* `icon` class: host apps with a global `svg` size rule skip `_icon_` wrappers */}
+                  <span className={styles.icon}>
+                    {previewFallback === 'archived' ? (
+                      <Archive size={12} strokeWidth={1} aria-hidden="true" />
+                    ) : (
+                      <Lock size={12} strokeWidth={1} aria-hidden="true" />
+                    )}
+                  </span>
                   <span>{previewFallback === 'archived' ? text.archived : text.inaccessible}</span>
                 </>
               )}
