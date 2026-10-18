@@ -1,6 +1,7 @@
 import { Archive, Lock, Play, User } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { KeyboardEvent, ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { Skeleton } from './Skeleton';
 import styles from './VideoCard.module.css';
 
@@ -21,6 +22,23 @@ const DEFAULT_LABELS: VideoCardLabels = {
   archived: 'Archived',
   new: 'New',
 };
+
+const PHOTO_PREVIEW_SIZE = 120;
+const PHOTO_PREVIEW_OFFSET = 12;
+const PHOTO_PREVIEW_MARGIN = 8;
+
+/** Top-left of the enlarged photo: beside the cursor, flipped to stay inside the viewport. */
+function photoPreviewPosition(x: number, y: number) {
+  const fit = (point: number, limit: number) => {
+    const after = point + PHOTO_PREVIEW_OFFSET;
+    const pos =
+      after + PHOTO_PREVIEW_SIZE + PHOTO_PREVIEW_MARGIN > limit
+        ? point - PHOTO_PREVIEW_OFFSET - PHOTO_PREVIEW_SIZE
+        : after;
+    return Math.max(PHOTO_PREVIEW_MARGIN, pos);
+  };
+  return { left: fit(x, window.innerWidth), top: fit(y, window.innerHeight) };
+}
 
 interface VideoCardWorker {
   name: string;
@@ -95,6 +113,20 @@ function VideoCardRoot({
   const text = { ...DEFAULT_LABELS, ...labels };
   const [failedPreview, setFailedPreview] = useState<string>();
   const [failedPhoto, setFailedPhoto] = useState<string>();
+  const [cursor, setCursor] = useState<{ x: number; y: number } | null>(null);
+
+  // Fixed coordinates go stale on scroll or resize — just dismiss.
+  const previewOpen = cursor !== null;
+  useEffect(() => {
+    if (!previewOpen) return;
+    const hide = () => setCursor(null);
+    window.addEventListener('scroll', hide, true);
+    window.addEventListener('resize', hide);
+    return () => {
+      window.removeEventListener('scroll', hide, true);
+      window.removeEventListener('resize', hide);
+    };
+  }, [previewOpen]);
 
   const showPreview = !!preview && failedPreview !== preview;
   const photo = worker?.photo;
@@ -187,14 +219,34 @@ function VideoCardRoot({
                 <div className={styles.label}>{text.worker}</div>
                 <div className={styles.workerRow}>
                   {showPhoto ? (
-                    <img
-                      className={styles.photo}
-                      src={photo}
-                      alt={`Photo of ${worker.name}`}
-                      loading="lazy"
-                      decoding="async"
-                      onError={() => setFailedPhoto(photo)}
-                    />
+                    <>
+                      <img
+                        className={styles.photo}
+                        src={photo}
+                        alt={`Photo of ${worker.name}`}
+                        loading="lazy"
+                        decoding="async"
+                        onError={() => setFailedPhoto(photo)}
+                        onPointerEnter={(e) => {
+                          if (e.pointerType === 'mouse') setCursor({ x: e.clientX, y: e.clientY });
+                        }}
+                        onPointerMove={(e) => {
+                          if (e.pointerType === 'mouse') setCursor({ x: e.clientX, y: e.clientY });
+                        }}
+                        onPointerLeave={() => setCursor(null)}
+                      />
+                      {cursor &&
+                        createPortal(
+                          <img
+                            className={styles.photoPreview}
+                            src={photo}
+                            alt=""
+                            aria-hidden="true"
+                            style={photoPreviewPosition(cursor.x, cursor.y)}
+                          />,
+                          document.body,
+                        )}
+                    </>
                   ) : (
                     <div className={`${styles.photo} ${styles.emptyPhoto}`} aria-hidden="true">
                       <User size={20} />
