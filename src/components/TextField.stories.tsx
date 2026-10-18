@@ -49,6 +49,10 @@ export const ToolbarStyle: Story = {
   },
 };
 
+export const WithShortcut: Story = {
+  args: { placeholder: 'Search', leadingIcon: <Search />, shortcut: 'mod+k' },
+};
+
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 280 }}>
