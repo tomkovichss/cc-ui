@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { AlertTriangle, CreditCard, Trash2 } from 'lucide-react';
+import { AlertTriangle, Stethoscope, Trash2 } from 'lucide-react';
 import { Modal } from './Modal';
 import { ConfirmDialog } from './ConfirmDialog';
 import { Button } from './Button';
@@ -15,7 +15,7 @@ const meta: Meta<typeof Modal> = {
         component: [
           'A dialog interrupts and disables the app until confirmed, dismissed or a required action is taken. Use it sparingly: to stop destructive actions, confirm irreversible choices, or gather info required to proceed.',
           '',
-          '- Headlines are brief, clear and actionable ("Delete Visa card ending 9012?"). Button labels repeat the action; never a bare Yes / No.',
+          '- Headlines are brief, clear and actionable ("Remove cow #1042 from the herd?"). Button labels repeat the action; never a bare Yes / No.',
           '- Do not add a third action such as "Learn more" that navigates away.',
           '- Field errors go inline next to the field, not in a dialog. Only general failures (network, save failed) use a basic dialog.',
           '- A horizontal dialog without a cover has no ×, so it must have a visible Cancel button.',
@@ -47,14 +47,14 @@ export const Vertical: Story = {
             <Modal.Icon tone="danger">
               <Trash2 />
             </Modal.Icon>
-            <Modal.Title>Delete this card?</Modal.Title>
-            <Modal.Description>The card will be permanently removed from your account.</Modal.Description>
-            <Modal.Hint>This cannot be undone.</Modal.Hint>
+            <Modal.Title>Remove cow #1042 from the herd?</Modal.Title>
+            <Modal.Description>She will leave the active herd list. Her milking history is kept.</Modal.Description>
+            <Modal.Hint>You can restore her from the archive within 30 days.</Modal.Hint>
           </Modal.Message>
           <Modal.Footer>
-            <Button onClick={close}>Keep card</Button>
-            <Button variant="secondary" onClick={close}>No, thanks</Button>
-            <Button variant="dangerous" onClick={close}>Yes, delete this card</Button>
+            <Button onClick={close}>Keep in herd</Button>
+            <Button variant="secondary" onClick={close}>Cancel</Button>
+            <Button variant="dangerous" onClick={close}>Yes, remove cow</Button>
           </Modal.Footer>
         </Modal>
       )}
@@ -68,17 +68,17 @@ export const WithCover: Story = {
       {(open, close) => (
         <Modal open={open} onClose={close} layout="horizontal">
           <Modal.Cover onClose={close}>
-            <CreditCard size={32} />
+            <Stethoscope size={32} />
           </Modal.Cover>
           <Modal.Message>
             <Modal.Icon tone="brand">
-              <CreditCard />
+              <Stethoscope />
             </Modal.Icon>
-            <Modal.Title>Add a payment method</Modal.Title>
-            <Modal.Description>You will not be charged until the trial ends.</Modal.Description>
+            <Modal.Title>Schedule a vet visit</Modal.Title>
+            <Modal.Description>The vet will be notified about the 12 cows in Barn B.</Modal.Description>
           </Modal.Message>
           <Modal.Footer>
-            <Button onClick={close}>Add card</Button>
+            <Button onClick={close}>Schedule visit</Button>
             <Button variant="secondary" onClick={close}>Cancel</Button>
           </Modal.Footer>
         </Modal>
@@ -96,10 +96,10 @@ export const HorizontalWithContent: Story = {
             <Modal.Icon>
               <AlertTriangle />
             </Modal.Icon>
-            <Modal.Title>Rename farm</Modal.Title>
-            <Modal.Description>Choose a name your team will recognise.</Modal.Description>
+            <Modal.Title>Rename cow group</Modal.Title>
+            <Modal.Description>Choose a name your milking team will recognise.</Modal.Description>
             <Modal.Body>
-              <TextField label="Farm name" defaultValue="Bill" error="Farm name already taken." />
+              <TextField label="Group name" defaultValue="Fresh cows" error="A group with this name already exists." />
             </Modal.Body>
           </Modal.Message>
           <Modal.Footer>
@@ -118,13 +118,13 @@ export const LongContent: Story = {
       {(open, close) => (
         <Modal open={open} onClose={close} layout="horizontal">
           <Modal.Message>
-            <Modal.Title>Terms of use</Modal.Title>
+            <Modal.Title>Milking protocol</Modal.Title>
             {Array.from({ length: 24 }, (_, i) => (
-              <Modal.Description key={i}>Paragraph {i + 1}. The message scrolls while the footer stays visible.</Modal.Description>
+              <Modal.Description key={i}>Step {i + 1}. The message scrolls while the footer stays visible.</Modal.Description>
             ))}
           </Modal.Message>
           <Modal.Footer>
-            <Button onClick={close}>Accept</Button>
+            <Button onClick={close}>Mark as read</Button>
             <Button variant="secondary" onClick={close}>Cancel</Button>
           </Modal.Footer>
         </Modal>
@@ -143,12 +143,12 @@ export const MobileFullscreen: Story = {
             <Modal.Icon>
               <AlertTriangle />
             </Modal.Icon>
-            <Modal.Title>Leave without saving?</Modal.Title>
-            <Modal.Description>Your changes will be lost.</Modal.Description>
+            <Modal.Title>Discard milking session?</Modal.Title>
+            <Modal.Description>Yields recorded for this session will be lost.</Modal.Description>
           </Modal.Message>
           <Modal.Footer>
-            <Button variant="dangerous" onClick={close}>Yes, discard changes</Button>
-            <Button variant="secondary" onClick={close}>Keep editing</Button>
+            <Button variant="dangerous" onClick={close}>Yes, discard session</Button>
+            <Button variant="secondary" onClick={close}>Keep recording</Button>
           </Modal.Footer>
         </Modal>
       )}
@@ -166,8 +166,8 @@ export const Confirm: Story = {
           onConfirm={close}
           icon={<Trash2 />}
           tone="dangerous"
-          title="Delete Visa card ending 9012?"
-          confirmLabel="Yes, delete card"
+          title="Remove cow #1042 from the herd?"
+          confirmLabel="Yes, remove cow"
           cancelLabel="No, thanks"
         />
       )}
@@ -185,11 +185,11 @@ export const Stacked: Story = {
             <>
               <Modal open={open} onClose={close} layout="horizontal" isTop={!confirm}>
                 <Modal.Message>
-                  <Modal.Title>Edit user</Modal.Title>
+                  <Modal.Title>Edit cow #1042</Modal.Title>
                   <Modal.Description>Escape closes only the topmost dialog.</Modal.Description>
                 </Modal.Message>
                 <Modal.Footer>
-                  <Button onClick={() => setConfirm(true)}>Delete user</Button>
+                  <Button onClick={() => setConfirm(true)}>Remove cow</Button>
                   <Button variant="secondary" onClick={close}>Cancel</Button>
                 </Modal.Footer>
               </Modal>
@@ -197,8 +197,8 @@ export const Stacked: Story = {
                 open={confirm}
                 onClose={() => setConfirm(false)}
                 onConfirm={() => setConfirm(false)}
-                title="Delete this user?"
-                confirmLabel="Yes, delete user"
+                title="Remove cow #1042 from the herd?"
+                confirmLabel="Yes, remove cow"
                 tone="dangerous"
               />
             </>
