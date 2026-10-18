@@ -27,6 +27,7 @@ export { Toggle } from './components/Toggle';
 export { Spinner } from './components/Spinner';
 export { Modal } from './components/Modal';
 export { ConfirmDialog } from './components/ConfirmDialog';
+export { Tooltip } from './components/Tooltip';
 export { Skeleton } from './components/Skeleton';
 export { formatDuration, formatDurationHMS } from './utils/format';
 

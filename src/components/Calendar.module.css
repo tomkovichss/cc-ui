@@ -71,9 +71,12 @@
 .today {
   color: var(--brand-main);
 }
-.selected,
-.selected.outside,
-.selected.today {
+/* `.day.selected` (0,2,0) rather than `.selected`: Tailwind preflight's
+   `[type='button'] { background-color: transparent }` is (0,1,0) and would win
+   by source order when the app's stylesheet loads after ours. */
+.day.selected,
+.day.selected.outside,
+.day.selected.today {
   background: var(--brand-main);
   color: #fff;
   font-weight: var(--font-weight-medium);

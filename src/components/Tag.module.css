@@ -171,6 +171,16 @@
   cursor: not-allowed;
 }
 
+/* Tailwind preflight's `[type='button'] { background-color: transparent }` is (0,1,0) and beats the
+   lone-class fills above on a pressable <button> when the app's stylesheet loads after ours.
+   Re-assert them at (0,1,1); .disabled comes last so it still overrides the variant. */
+button.neutral { background: var(--depth-5); }
+button.accent { background: var(--brand-bg); }
+button.success { background: var(--success-bg); }
+button.warning { background: var(--warning-bg); }
+button.danger { background: var(--danger-bg); }
+button.disabled { background: var(--disabled-bg); }
+
 .disabled.interactive:hover {
   background: var(--disabled-bg);
 }

@@ -73,6 +73,7 @@ function MoreMenu() {
     <div style={{ position: 'relative' }}>
       <Button
         variant="tertiary"
+        size="sm"
         aria-label="More"
         aria-haspopup="menu"
         aria-expanded={open}

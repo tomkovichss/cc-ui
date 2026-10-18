@@ -70,7 +70,9 @@
   margin-right: -2px;
   flex-shrink: 0;
 }
-.selected {
+/* a doubled class, not a lone one: Tailwind preflight's `[type='button'] { background-color: transparent }`
+   is (0,1,0) and beats a lone class when the app's stylesheet loads after ours. */
+.item.selected {
   background: var(--depth-5);
   color: var(--text-primary);
   font-weight: var(--font-weight-medium);

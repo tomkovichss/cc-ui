@@ -102,34 +102,6 @@
 .iconOnly.lg {
   width: var(--control-height-lg);
 }
-.iconOnly[data-tooltip]::before {
-  content: attr(data-tooltip);
-  position: absolute;
-  left: 50%;
-  top: calc(100% + 8px);
-  z-index: 10;
-  transform: translate(-50%, -4px);
-  padding: 4px 8px;
-  border-radius: var(--radius-xs);
-  background: var(--text-primary);
-  color: #fff;
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-regular);
-  line-height: 16px;
-  letter-spacing: 0;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 0.12s ease-out,
-    transform 0.12s ease-out;
-}
-.iconOnly[data-tooltip]:hover::before,
-.iconOnly[data-tooltip]:focus-visible::before {
-  opacity: 1;
-  transform: translate(-50%, 0);
-  transition-delay: 0.4s;
-}
 .fullWidth {
   width: 100%;
 }
@@ -146,7 +118,9 @@
   pointer-events: none;
 }
 
-.primary {
+/* button.x (0,1,1), not .x: Tailwind preflight's `[type='button'] { background-color: transparent }`
+   is (0,1,0) and beats a lone class when the app's stylesheet loads after ours. */
+button.primary {
   --btn-ring: rgba(0, 0, 0, 0.1);
   --btn-glow: var(--brand-main-30);
   background: var(--brand-dark);
@@ -193,7 +167,7 @@
   background: var(--brand-main-15);
 }
 
-.onDark {
+button.onDark {
   --btn-ring: rgba(255, 255, 255, 0.05);
   --btn-glow: rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.12);

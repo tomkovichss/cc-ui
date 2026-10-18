@@ -1,5 +1,8 @@
 /* Visual core shared by TagGroup's chips and Tag variant="chip" so the two
    cannot drift apart. Sizing and the :active transform stay with each consumer. */
+/* button.x (0,1,1), not .x: Tailwind preflight's `[type='button'] { background-color: transparent }`
+   is (0,1,0) and beats a lone class when the app's stylesheet loads after ours. */
+button.chip,
 .chip {
   background: var(--depth-5);
   color: var(--text-primary);

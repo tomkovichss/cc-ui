@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode, Ref } from 'react';
+import { Tooltip } from './Tooltip';
 import styles from './Button.module.css';
 
 /** `onDark` is for buttons placed on dark surfaces. `link` is inline text in a flow of copy, not a block button. */
@@ -70,17 +71,12 @@ export function Button({
   ]
     .filter(Boolean)
     .join(' ');
-  return (
-    <button
-      ref={ref}
-      type="button"
-      className={classes}
-      data-tooltip={iconOnly ? rest['aria-label'] : undefined}
-      {...rest}
-    >
+  const button = (
+    <button ref={ref} type="button" className={classes} {...rest}>
       {leadingIcon && <span className={`${styles.icon} ${iconOnly ? '' : styles.leadingIcon}`.trim()}>{leadingIcon}</span>}
       {children}
       {trailingIcon && <span className={`${styles.icon} ${styles.trailingIcon}`}>{trailingIcon}</span>}
     </button>
   );
+  return iconOnly ? <Tooltip content={rest['aria-label']}>{button}</Tooltip> : button;
 }

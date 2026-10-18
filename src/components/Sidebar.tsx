@@ -50,7 +50,7 @@ interface SidebarFooterProps {
   title: ReactNode;
   /** Secondary line, e.g. a `LanguageSwitch`. */
   subtitle?: ReactNode;
-  /** Right-hand slot, e.g. a menu trigger button. */
+  /** Right-hand slot, e.g. a menu trigger `Button` with `size="sm"` (36px). */
   action?: ReactNode;
 }
 

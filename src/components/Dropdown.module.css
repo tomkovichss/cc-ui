@@ -14,7 +14,9 @@
   flex-direction: column;
   vertical-align: top;
 }
-.trigger {
+/* button.x (0,1,1), not .x: Tailwind preflight's `[type='button'] { background-color: transparent }`
+   is (0,1,0) and beats a lone class when the app's stylesheet loads after ours. */
+button.trigger {
   display: flex;
   align-items: center;
   width: 100%;
@@ -237,7 +239,7 @@
 }
 
 /* Pill trigger — mirrors the pill Tag, but interactive */
-.pillTrigger {
+button.pillTrigger {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -321,7 +323,7 @@
   outline: none;
 }
 .search:focus {
-  box-shadow: inset 0 0 0 1.5px var(--brand-main);
+  box-shadow: inset 0 0 0 2px var(--brand-main);
 }
 .noResults {
   padding: 8px 12px;
