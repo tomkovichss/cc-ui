@@ -34,15 +34,24 @@
   --depth-50: rgba(var(--depth-base), 0.5);
   --depth-75: rgba(var(--depth-base), 0.75);
 
-  /* Status */
+  /* Status — each tone: -text (ink), -bg (tag / icon fill), -surface (large areas,
+     lighter than -bg), -border (hairline on -surface; text colour at 10%), -rgb (channels). */
+  --danger-surface: #fef5f5;
   --danger-bg: #fdeaea;
   --danger-text: #c8281c;
   --danger-text-dark: #b91c1c;
   --danger-rgb: 200, 40, 28;
+  --danger-border: rgba(var(--danger-rgb), 0.1);
+  --success-surface: #f2fbf5;
   --success-bg: #e3f6ea;
   --success-text: #27794a;
+  --success-rgb: 39, 121, 74;
+  --success-border: rgba(var(--success-rgb), 0.1);
+  --warning-surface: #fff8eb;
   --warning-bg: #fff1d6;
   --warning-text: #8f5d00;
+  --warning-rgb: 143, 93, 0;
+  --warning-border: rgba(var(--warning-rgb), 0.1);
   --disabled-bg: #c4c4c4;
   --disabled-text: #8a8a8a;
 
