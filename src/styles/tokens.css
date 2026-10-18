@@ -50,10 +50,16 @@
   --control-height-xs: 28px;
   --control-height-sm: 36px;
   --control-height-base: 44px;
+  --control-height-lg: 56px;
   --radius-xs: 8px;
   --radius-sm: 10px;
   --radius-base: 12px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-soft: 0 2px 36px var(--depth-5);
 
   /* Layers */
   --z-popover: 1000;
+  --z-modal: 1100;
 }

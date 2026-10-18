@@ -60,6 +60,13 @@
   padding: 0 20px;
   font-size: var(--control-font-size);
 }
+.lg {
+  height: var(--control-height-lg);
+  border-radius: var(--radius-base);
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 28px;
+}
 .icon {
   display: flex;
   align-items: center;
@@ -91,6 +98,9 @@
 }
 .iconOnly.base {
   width: var(--control-height-base);
+}
+.iconOnly.lg {
+  width: var(--control-height-lg);
 }
 .iconOnly[data-tooltip]::before {
   content: attr(data-tooltip);

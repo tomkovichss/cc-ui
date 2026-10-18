@@ -3,7 +3,7 @@ import styles from './Button.module.css';
 
 /** `onDark` is for buttons placed on dark surfaces. `link` is inline text in a flow of copy, not a block button. */
 type BlockButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'onDark' | 'dangerous';
-type ButtonSize = 'xs' | 'sm' | 'base';
+type ButtonSize = 'xs' | 'sm' | 'base' | 'lg';
 
 interface ButtonBaseProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'className' | 'children'> {
   children?: ReactNode;

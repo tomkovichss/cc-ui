@@ -25,6 +25,8 @@ export { FilterSection } from './components/FilterSection';
 export { Tabs } from './components/Tabs';
 export { Toggle } from './components/Toggle';
 export { Spinner } from './components/Spinner';
+export { Modal } from './components/Modal';
+export { ConfirmDialog } from './components/ConfirmDialog';
 export { Skeleton } from './components/Skeleton';
 export { formatDuration, formatDurationHMS } from './utils/format';
 
