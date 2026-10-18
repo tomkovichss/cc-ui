@@ -124,21 +124,21 @@
 
 .title {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--font-size-heading-sm);
   line-height: 24px;
   font-weight: var(--font-weight-medium);
   color: var(--text-primary);
 }
 .description {
   margin: 0;
-  font-size: 16px;
+  font-size: var(--font-size-lg);
   line-height: 24px;
   font-weight: var(--font-weight-regular);
   color: var(--text-secondary);
 }
 .hint {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   line-height: 20px;
   font-weight: var(--font-weight-regular);
   color: var(--text-tertiary);
@@ -190,7 +190,7 @@
     height: 44px;
   }
   .title {
-    font-size: 24px;
+    font-size: var(--font-size-heading-base);
     line-height: 28px;
   }
   .message {

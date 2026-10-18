@@ -53,7 +53,7 @@
   align-items: center;
   flex-shrink: 0;
   color: var(--text-tertiary);
-  font-size: 0.78rem;
+  font-size: var(--font-size-sm);
   white-space: nowrap;
 }
 .prefix {
@@ -92,11 +92,11 @@
   cursor: not-allowed;
 }
 .helperText {
-  font-size: 0.78rem;
+  font-size: var(--font-size-sm);
   color: var(--text-tertiary);
   padding-left: 8px;
 }
 .errorText {
-  font-size: 0.78rem;
+  font-size: var(--font-size-sm);
   color: var(--danger-text);
 }

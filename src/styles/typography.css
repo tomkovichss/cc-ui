@@ -20,6 +20,18 @@
   font-size: var(--font-size-sm);
 }
 
+.text-heading-lg {
+  font-size: var(--font-size-heading-lg);
+}
+
+.text-heading-base {
+  font-size: var(--font-size-heading-base);
+}
+
+.text-heading-sm {
+  font-size: var(--font-size-heading-sm);
+}
+
 .text-lg {
   font-size: var(--font-size-lg);
 }

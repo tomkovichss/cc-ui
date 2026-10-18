@@ -50,7 +50,7 @@
   border: none;
   padding: 16px 52px 16px 36px;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: var(--font-size-lg);
   color: var(--text-primary);
   background: none;
   box-shadow: inset -1px 0 0 var(--border);
@@ -70,7 +70,7 @@
   border-radius: 6px;
   background: var(--bg);
   color: var(--text-tertiary);
-  font-size: 0.75rem;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0.02em;
   pointer-events: none;

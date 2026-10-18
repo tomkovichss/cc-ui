@@ -10,7 +10,7 @@
   border-radius: 12px;
   padding: 12px;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: var(--font-size-lg);
   color: var(--text-primary);
   cursor: pointer;
   transition:
@@ -92,7 +92,7 @@
   padding: 12px 14px 4px;
 }
 .sectionLabel {
-  font-size: 0.75rem;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   color: var(--text-tertiary);
   text-transform: uppercase;
@@ -103,7 +103,7 @@
   border: none;
   padding: 0;
   font-family: inherit;
-  font-size: 0.75rem;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
   color: var(--brand-main, #0a84d8);
   cursor: pointer;
@@ -127,7 +127,7 @@
   gap: 8px;
   padding: 8px;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: var(--font-size-lg);
   cursor: pointer;
 }
 .option:hover {
@@ -142,7 +142,7 @@
   padding: 8px 12px;
   margin: 8px;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: var(--font-size-lg);
   margin-bottom: 0;
 }
 .search:focus {
@@ -155,5 +155,5 @@
 .empty {
   padding: 7px 8px;
   color: var(--text-tertiary);
-  font-size: 0.85rem;
+  font-size: var(--font-size-base);
 }

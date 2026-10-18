@@ -123,12 +123,12 @@
   cursor: not-allowed;
 }
 .helperText {
-  font-size: 0.78rem;
+  font-size: var(--font-size-sm);
   color: var(--text-tertiary);
   padding-left: 8px;
 }
 .errorText {
-  font-size: 0.78rem;
+  font-size: var(--font-size-sm);
   color: var(--danger-text);
 }
 .trailing {

@@ -247,7 +247,7 @@
   box-shadow: inset 0 0 0 1px var(--border);
   color: var(--text-tertiary);
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   white-space: nowrap;
   padding: 3px 8px 3px 11px;
@@ -329,12 +329,12 @@
   color: var(--text-tertiary);
 }
 .helperText {
-  font-size: 0.78rem;
+  font-size: var(--font-size-sm);
   color: var(--text-tertiary);
   padding-left: 8px;
 }
 .errorText {
-  font-size: 0.78rem;
+  font-size: var(--font-size-sm);
   color: var(--danger-text);
 }
 

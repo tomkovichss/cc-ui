@@ -3,12 +3,15 @@
   --font-family-base: 'Inter', sans-serif;
 
   /* Font size */
-  --font-size-sm: 0.75rem;
-  --font-size-base: 0.875rem;
-  --font-size-lg: 1rem;
+  --font-size-sm: 13px;
+  --font-size-base: 15px;
+  --font-size-lg: 17px;
+  --font-size-heading-sm: 19px;
+  --font-size-heading-base: 24px;
+  --font-size-heading-lg: 32px;
 
   /* Shared size for interactive controls: larger on mobile, smaller on desktop */
-  --control-font-size: 16px;
+  --control-font-size: var(--font-size-base);
 
   /* Font weight */
   --font-weight-regular: 450;
@@ -18,10 +21,4 @@
   /* Line height */
   --line-height-base: 1.5;
   --line-height-tight: 1.25;
-}
-
-@media (min-width: 768px) {
-  :root {
-    --control-font-size: 15px;
-  }
 }
