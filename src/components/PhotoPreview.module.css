@@ -1,0 +1,11 @@
+/* Enlarged photo on hover, portaled to body and placed next to the cursor */
+.photoPreview {
+  position: fixed;
+  z-index: 1000;
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+  pointer-events: none;
+}
