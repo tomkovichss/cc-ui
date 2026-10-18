@@ -1,4 +1,4 @@
-import { Archive, Lock, User } from 'lucide-react';
+import { Archive, Lock, Play, User } from 'lucide-react';
 import { useState } from 'react';
 import type { KeyboardEvent, ReactNode } from 'react';
 import { Skeleton } from './Skeleton';
@@ -37,8 +37,8 @@ interface VideoCardWorker {
 interface VideoCardProps {
   /** Thumbnail URL. */
   preview?: string;
-  /** Tile shown when `preview` is missing or fails to load. */
-  previewFallback?: 'inaccessible' | 'archived';
+  /** Tile shown when `preview` is missing or fails to load: a lock + caption, an archive + caption, or a bare play icon. */
+  previewFallback?: 'inaccessible' | 'archived' | 'play';
   /** Called once when the thumbnail fails, e.g. to log it. */
   onPreviewError?: () => void;
   /** Alt text of the thumbnail. Defaults to "Video preview: {comment}". */
@@ -147,13 +147,19 @@ function VideoCardRoot({
               }}
             />
           ) : (
-            <div className={styles.tile}>
-              {previewFallback === 'archived' ? (
-                <Archive size={16} aria-hidden="true" />
+            <div className={`${styles.tile} ${previewFallback === 'play' ? styles.tilePlay : ''}`}>
+              {previewFallback === 'play' ? (
+                <Play size={20} aria-hidden="true" />
               ) : (
-                <Lock size={16} aria-hidden="true" />
+                <>
+                  {previewFallback === 'archived' ? (
+                    <Archive size={12} aria-hidden="true" />
+                  ) : (
+                    <Lock size={12} aria-hidden="true" />
+                  )}
+                  <span>{previewFallback === 'archived' ? text.archived : text.inaccessible}</span>
+                </>
               )}
-              <span>{previewFallback === 'archived' ? text.archived : text.inaccessible}</span>
             </div>
           )}
         </div>
@@ -185,7 +191,7 @@ function VideoCardRoot({
                     />
                   ) : (
                     <div className={`${styles.photo} ${styles.emptyPhoto}`} aria-hidden="true">
-                      <User size={28} />
+                      <User size={20} />
                     </div>
                   )}
                   <div className={styles.workerText}>

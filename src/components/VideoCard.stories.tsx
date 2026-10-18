@@ -18,7 +18,7 @@ const base = {
   dateTime: 'Oct 04, 09:40PM',
   title: 'Wrong order of routine',
   description: 'Left side, Wrong direction of moving on attach (6) (stall 1-3,5-8)',
-  worker: { name: 'Worker-M8', photo: PHOTO },
+  worker: { name: 'Victor Ruiz Morales', photo: PHOTO },
 };
 
 const meta: Meta<typeof VideoCard> = {
@@ -73,7 +73,7 @@ export const WithoutWorker: Story = {
 };
 
 export const WorkerPhotoFailed: Story = {
-  args: { ...base, worker: { name: 'Worker-M8', photo: BROKEN } },
+  args: { ...base, worker: { name: 'Victor Ruiz Morales', photo: BROKEN } },
 };
 
 export const WithComment: Story = {
@@ -100,6 +100,10 @@ export const WithSeverity: Story = {
 
 export const PreviewInaccessible: Story = {
   args: { ...base, preview: undefined, previewFallback: 'inaccessible' },
+};
+
+export const PreviewPlay: Story = {
+  args: { ...base, preview: undefined, previewFallback: 'play', viewed: true },
 };
 
 export const PreviewArchived: Story = {
