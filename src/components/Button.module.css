@@ -220,15 +220,32 @@
   background: rgba(var(--danger-rgb), 0.15);
 }
 
-.primary:disabled,
-.secondary:disabled,
-.tertiary:disabled,
-.onDark:disabled,
-.dangerous:disabled {
+.primary:disabled {
   --btn-ring: transparent;
   background: var(--disabled-bg);
   color: var(--disabled-text);
   cursor: not-allowed;
+}
+
+/* non-primary: keep the background and ring, only fade the content */
+.secondary:disabled,
+.tertiary:disabled,
+.onDark:disabled,
+.dangerous:disabled {
+  cursor: not-allowed;
+}
+.secondary:disabled,
+.secondary:disabled .icon {
+  color: color-mix(in srgb, var(--text-primary) 40%, transparent);
+}
+.tertiary:disabled {
+  color: color-mix(in srgb, var(--text-secondary) 40%, transparent);
+}
+.onDark:disabled {
+  color: rgba(255, 255, 255, 0.4);
+}
+.dangerous:disabled {
+  color: color-mix(in srgb, var(--danger-text-dark) 40%, transparent);
 }
 
 /* link: inline text in a flow of copy — none of the block-button rules above apply */

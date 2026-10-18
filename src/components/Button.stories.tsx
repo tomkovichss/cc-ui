@@ -43,7 +43,7 @@ export const AllIconButtons: Story = {
 
 const sizes = ['base', 'sm', 'xs'] as const;
 const variants = ['primary', 'secondary', 'tertiary', 'dangerous', 'onDark'] as const;
-const rows = [...variants.map((variant) => ({ variant, disabled: false })), { variant: 'primary' as const, disabled: true }];
+const rows = [...variants.map((variant) => ({ variant, disabled: false })), ...variants.map((variant) => ({ variant, disabled: true }))];
 
 export const FigmaMatrix: Story = {
   name: 'All - Variants × Sizes',
