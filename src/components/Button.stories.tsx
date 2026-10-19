@@ -75,6 +75,18 @@ export const Primary: Story = {
   args: { variant: 'primary' },
 };
 
+export const WithShortcut: Story = {
+  name: 'With Shortcut',
+  render: () => (
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <Button variant="primary" shortcut="mod+enter">Save</Button>
+      <Button variant="secondary" shortcut="mod+shift+k">Search</Button>
+      <Button variant="tertiary" shortcut="esc">Cancel</Button>
+      <Button variant="dangerous" shortcut="mod+d" size="sm">Delete</Button>
+    </div>
+  ),
+};
+
 export const Secondary: Story = {
   args: { variant: 'secondary', children: 'Cancel' },
 };

@@ -260,3 +260,29 @@ button.onDark {
   text-decoration: none;
   cursor: not-allowed;
 }
+
+/* shortcut hints: derive colours from the button's own text colour so they fit every variant */
+.shortcut {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: -4px;
+  margin-left: 4px;
+  flex-shrink: 0;
+}
+.kbd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 35%, transparent);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium, 500);
+  line-height: 1;
+  color: color-mix(in srgb, currentColor 75%, transparent);
+}

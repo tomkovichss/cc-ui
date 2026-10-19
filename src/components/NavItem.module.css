@@ -48,7 +48,7 @@
 }
 
 .item.active {
-  background: var(--brand-dark);
+  background: var(--brand-main);
   color: #fff;
 }
 .item.active::after {

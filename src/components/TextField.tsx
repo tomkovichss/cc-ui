@@ -1,6 +1,7 @@
-import { useEffect, useId, useRef, type InputHTMLAttributes, type ReactNode, type Ref } from 'react';
+import { useId, useRef, type InputHTMLAttributes, type ReactNode, type Ref } from 'react';
 import styles from './TextField.module.css';
 import { FieldLabel } from './FieldLabel';
+import { parseShortcut, useShortcut } from './shortcut';
 
 type TextFieldSize = 'sm' | 'base';
 type TextFieldVariant = 'default' | 'toolbar';
@@ -23,20 +24,6 @@ interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'cl
   ref?: Ref<HTMLInputElement>;
 }
 
-const isMac = () => typeof navigator !== 'undefined' && /mac|iphone|ipad/i.test(navigator.platform);
-
-const KEY_SYMBOLS: Record<string, string> = { alt: '⌥', shift: '⇧', ctrl: 'Ctrl', enter: '↵', esc: 'Esc' };
-
-function parseShortcut(shortcut: string) {
-  const mac = isMac();
-  const parts = shortcut.toLowerCase().split('+').map((p) => p.trim());
-  const key = parts[parts.length - 1];
-  const mods = new Set(parts.slice(0, -1));
-  const labels = [...mods].map((m) => (m === 'mod' ? (mac ? '⌘' : 'Ctrl') : (KEY_SYMBOLS[m] ?? m)));
-  labels.push(KEY_SYMBOLS[key] ?? key.toUpperCase());
-  return { key, mods, mac, labels };
-}
-
 export function TextField({
   label,
   helperText,
@@ -54,24 +41,7 @@ export function TextField({
   const inputId = id ?? generatedId;
   const innerRef = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    if (!shortcut) return;
-    const { key, mods, mac } = parseShortcut(shortcut);
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key.toLowerCase() !== key) return;
-      const mod = mac ? e.metaKey : e.ctrlKey;
-      if (
-        mod !== (mods.has('mod') || (mac ? false : mods.has('ctrl'))) ||
-        e.altKey !== mods.has('alt') ||
-        e.shiftKey !== mods.has('shift')
-      )
-        return;
-      e.preventDefault();
-      innerRef.current?.focus();
-    };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [shortcut]);
+  useShortcut(shortcut, () => innerRef.current?.focus());
 
   const setRefs = (node: HTMLInputElement | null) => {
     innerRef.current = node;
