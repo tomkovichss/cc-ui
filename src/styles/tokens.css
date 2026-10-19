@@ -42,10 +42,11 @@
   --danger-text-dark: #b91c1c;
   --danger-rgb: 200, 40, 28;
   --danger-border: rgba(var(--danger-rgb), 0.1);
-  --success-surface: #f2fbf5;
-  --success-bg: #e3f6ea;
-  --success-text: #27794a;
-  --success-rgb: 39, 121, 74;
+  --success-surface: #f3fef0;
+  --success-bg: #e7fde2;
+  --success-text: #1f9108;
+  --success-text-dark: #167006;
+  --success-rgb: 31, 145, 8;
   --success-border: rgba(var(--success-rgb), 0.1);
   --warning-surface: #fff8eb;
   --warning-bg: #fff1d6;

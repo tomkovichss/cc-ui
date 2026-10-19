@@ -100,6 +100,7 @@
   justify-content: center;
   width: 56px;
   height: 56px;
+  margin-bottom: 8px;
   border-radius: 50%;
   color: var(--text-primary);
 }
@@ -131,8 +132,8 @@
 }
 .description {
   margin: 0;
-  font-size: var(--font-size-lg);
-  line-height: 24px;
+  font-size: var(--font-size-base);
+  line-height: 20px;
   font-weight: var(--font-weight-regular);
   color: var(--text-secondary);
 }
@@ -182,16 +183,16 @@
     width: 100%;
   }
   .icon {
-    width: 96px;
-    height: 96px;
+    width: 80px;
+    height: 80px;
   }
   .icon svg {
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
   }
   .title {
-    font-size: var(--font-size-heading-base);
-    line-height: 28px;
+    font-size: var(--font-size-heading-sm);
+    line-height: 24px;
   }
   .message {
     flex-direction: column !important;

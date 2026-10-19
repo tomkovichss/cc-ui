@@ -301,7 +301,7 @@ function Cover({ children, onClose }: CoverProps) {
 
 function Message({ children }: { children: ReactNode }) {
   const items = Children.toArray(children);
-  const icon = items.filter((child) => isValidElement(child) && child.type === Icon);
+  const icon = items.filter((child) => isValidElement(child) && (child.type as { isModalIcon?: boolean }).isModalIcon === true);
   const rest = items.filter((child) => !icon.includes(child));
   return (
     <div className={styles.message}>
@@ -359,7 +359,7 @@ function Footer({ children }: { children: ReactNode }) {
   const items = isMobile
     ? Children.map(children, (child) =>
         isValidElement(child) && child.type === Button
-          ? cloneElement(child as ReactElement<{ size?: string }>, { size: 'lg' })
+          ? cloneElement(child as ReactElement<{ size?: string }>, { size: 'base' })
           : child,
       )
     : children;
@@ -368,6 +368,7 @@ function Footer({ children }: { children: ReactNode }) {
 
 Modal.Cover = Cover;
 Modal.Message = Message;
+Icon.isModalIcon = true;
 Modal.Icon = Icon;
 Modal.Title = Title;
 Modal.Description = Description;
