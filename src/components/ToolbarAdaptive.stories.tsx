@@ -58,7 +58,7 @@ function useWorkersControls() {
 function Filler({ height = 2000 }: { height?: number }) {
   return (
     <div style={{ height, padding: 24, color: 'var(--text-secondary)' }}>
-      Scroll down: after 80px the bar becomes a floating pill, and back at the top.
+      Scroll down: after 16px the bar becomes a floating pill, and back at the top.
     </div>
   );
 }
@@ -78,7 +78,7 @@ function WorkersBar({
 }
 
 export const Playground: Story = {
-  args: { threshold: 80 },
+  args: { threshold: 16 },
   render: (args) => (
     <Page>
       <WorkersBar {...args} />
