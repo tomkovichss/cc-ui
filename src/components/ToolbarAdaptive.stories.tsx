@@ -42,7 +42,7 @@ function useWorkersControls() {
     ),
     right: (
       <>
-        <Tabs items={views} value={view} onChange={setView} variant="box" />
+        <Tabs items={views} value={view} onChange={setView} variant="box" size="sm" />
         <Button variant="tertiary" size="sm" leadingIcon={<Printer />}>
           Print
         </Button>
