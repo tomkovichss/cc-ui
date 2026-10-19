@@ -34,7 +34,7 @@ React major, do not force-install — flag the version mismatch to the user inst
 ## Components available
 
 Import names match the ones re-exported from `src/index.ts` in this repo: `Button`, `Card`, `Tag`,
-`Toolbar`, `Checkbox`, `RadioButton`, `TextField`, `Menu`, `MenuDivider`, `MenuItem`,
+`Toolbar`, `ToolbarAdaptive`, `Checkbox`, `RadioButton`, `TextField`, `Menu`, `MenuDivider`, `MenuItem`,
 `HighlightText`, `FilterSection`, `UiElementsSidebar`, `Tabs`, `Skeleton`, `VideoCard`, `PhotoPreview`, `Modal`, `ConfirmDialog`, plus utility functions
 `formatDuration`, `formatDurationHMS`. Check each component's props via the generated `.d.ts` types
 (editor autocomplete/hover) rather than guessing — the published package includes full TypeScript

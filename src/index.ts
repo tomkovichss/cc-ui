@@ -3,6 +3,7 @@ export { Card } from './components/Card';
 export { Tag } from './components/Tag';
 export { TagGroup } from './components/TagGroup';
 export { Toolbar } from './components/Toolbar';
+export { ToolbarAdaptive } from './components/ToolbarAdaptive';
 export { Checkbox, CheckboxGroup } from './components/Checkbox';
 export { RadioButton, RadioGroup } from './components/RadioButton';
 export { Switch } from './components/Switch';
