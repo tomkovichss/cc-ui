@@ -124,13 +124,15 @@ button.trigger {
   --menu-dy: -6px;
   position: absolute;
   top: calc(100% + 4px);
-  left: 0;
-  right: 0;
+  /* Field focus ring is 2px, so extend the menu by 2px per side to line up with it. */
+  left: -2px;
+  right: -2px;
   z-index: 10;
   transform-origin: top center;
   animation: menuIn 0.28s var(--ease-out) both;
 }
 .menuWrapAuto {
+  left: 0;
   right: auto;
   min-width: 100%;
   width: max-content;
@@ -287,6 +289,9 @@ button.pillTrigger {
   height: 14px;
   transition: transform 0.3s var(--ease-out);
 }
+.buttonTriggerBase.buttonTriggerBase {
+  padding: 0 20px 0 16px;
+}
 .buttonChevron {
   display: flex;
   width: 100%;
@@ -306,6 +311,21 @@ button.pillTrigger {
   gap: 2px;
   max-height: 320px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.list::-webkit-scrollbar {
+  width: 4px;
+}
+.list::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 2px;
+}
+.listScrolling {
+  scrollbar-color: var(--border-input) transparent;
+}
+.listScrolling::-webkit-scrollbar-thumb {
+  background: var(--border-input);
 }
 .search {
   width: 100%;

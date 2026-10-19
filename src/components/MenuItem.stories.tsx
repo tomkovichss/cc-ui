@@ -29,6 +29,17 @@ export const WithIconAndTrailing: Story = {
   ),
 };
 
+export const Base: Story = {
+  render: () => (
+    <Menu style={{ width: 200 }}>
+      <MenuItem size="base">Edit</MenuItem>
+      <MenuItem size="base" icon={<Link />}>
+        Copy link
+      </MenuItem>
+    </Menu>
+  ),
+};
+
 export const Selected: Story = {
   render: () => (
     <Menu style={{ width: 200 }}>

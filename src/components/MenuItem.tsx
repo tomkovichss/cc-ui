@@ -9,11 +9,13 @@ interface MenuItemProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'c
   trailing?: ReactNode;
   selected?: boolean;
   destructive?: boolean;
+  /** `base` (44px) matches a 44px trigger; `sm` (36px) matches a 36px one. */
+  size?: 'sm' | 'base';
   children: ReactNode;
 }
 
-export function MenuItem({ leading, icon, trailing, selected, destructive, children, ...rest }: MenuItemProps) {
-  const classes = [styles.item, selected && styles.selected, destructive && styles.destructive]
+export function MenuItem({ leading, icon, trailing, selected, destructive, size = 'sm', children, ...rest }: MenuItemProps) {
+  const classes = [styles.item, size === 'base' && styles.base, selected && styles.selected, destructive && styles.destructive]
     .filter(Boolean)
     .join(' ');
 

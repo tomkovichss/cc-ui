@@ -18,6 +18,9 @@
     background 0.15s ease-out,
     color 0.15s ease-out;
 }
+.item.base {
+  min-height: var(--control-height-base);
+}
 .item:hover:not(:disabled) {
   background: var(--brand-bg);
   color: var(--brand-dark);

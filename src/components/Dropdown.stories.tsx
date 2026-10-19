@@ -169,6 +169,32 @@ export const Pill: Story = {
   render: () => <VariantDemo variant="pill" />,
 };
 
+const weekRanges = Array.from({ length: 30 }, (_, i) => {
+  const fmt = (d: Date) =>
+    d.toLocaleDateString('en-US', { month: 'short', day: '2-digit', timeZone: 'UTC' });
+  const end = new Date(Date.UTC(2025, 9, 10 - i * 7));
+  const start = new Date(end.getTime() - 6 * 86400000);
+  return { value: `w${i}`, label: `${fmt(start)} - ${fmt(end)}` };
+});
+
+export const LongListScroll: Story = {
+  render: () => {
+    const [value, setValue] = useState<string | undefined>('w0');
+    return (
+      <div style={{ minHeight: 420 }}>
+        <Dropdown
+          variant="secondary"
+          options={weekRanges}
+          value={value}
+          onChange={setValue}
+          defaultOpen
+          aria-label="Week"
+        />
+      </div>
+    );
+  },
+};
+
 export const ButtonSizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
