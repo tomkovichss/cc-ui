@@ -21,7 +21,7 @@ interface PhotoPreviewProps {
   }>;
 }
 
-const SIZE = 120;
+const SIZE = 180;
 const OFFSET = 12;
 const MARGIN = 8;
 

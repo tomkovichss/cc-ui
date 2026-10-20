@@ -20,7 +20,7 @@ const DEFAULT_LABELS: VideoCardLabels = {
   pending: 'Card still in progress',
   inaccessible: 'Inaccessible',
   archived: 'Archived',
-  new: 'New',
+  new: 'Unwatched',
 };
 
 interface VideoCardWorker {
@@ -55,7 +55,7 @@ interface VideoCardProps {
   worker?: VideoCardWorker;
   /** One line, truncated with an ellipsis. */
   comment?: string;
-  /** Seen before. Unset counts as not viewed and shows the "New" badge. */
+  /** Seen before. Unset counts as not viewed and shows the "Unwatched" badge. */
   viewed?: boolean;
   /** Last opened video: blue ring. */
   current?: boolean;

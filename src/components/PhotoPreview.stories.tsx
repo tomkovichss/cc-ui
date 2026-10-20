@@ -13,7 +13,7 @@ const meta: Meta<typeof PhotoPreview> = {
   title: 'Components/PhotoPreview',
   component: PhotoPreview,
   parameters: { layout: 'fullscreen' },
-  args: { src: PHOTO, size: 120 },
+  args: { src: PHOTO, size: 180 },
 };
 export default meta;
 
