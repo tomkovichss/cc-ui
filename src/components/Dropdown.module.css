@@ -196,6 +196,17 @@ button.trigger {
 .list > button:focus-visible {
   outline: none;
 }
+/* The menu opens with focus on the selected item, so the transparent rule above
+   would hide its selected fill and the hover tint would recolor its check.
+   Keep the selected item looking like a selected MenuItem. */
+.list:not([aria-multiselectable]) > button[aria-selected='true']:hover:not(:disabled),
+.list:not([aria-multiselectable]) > button[aria-selected='true']:focus-visible:not(:disabled) {
+  background: var(--depth-5);
+}
+.list:not([aria-multiselectable]) > button[aria-selected='true']:hover:not(:disabled) > span:last-child,
+.list:not([aria-multiselectable]) > button[aria-selected='true']:focus-visible:not(:disabled) > span:last-child {
+  color: var(--brand-main);
+}
 .highlight {
   position: absolute;
   top: 0;
