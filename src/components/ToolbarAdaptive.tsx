@@ -112,7 +112,11 @@ export function ToolbarAdaptive({
       <div className={styles.anchor} aria-hidden="true">
         <div ref={sentinelRef} className={styles.sentinel} style={{ top: threshold }} />
       </div>
-      <header className={styles.header} data-testid={testId}>
+      <header
+        className={[styles.header, animated ? styles.animated : ''].filter(Boolean).join(' ')}
+        data-state={state}
+        data-testid={testId}
+      >
         <div className={cardClass} data-state={state}>
           {children ?? (
             <>

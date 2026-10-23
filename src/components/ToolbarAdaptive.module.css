@@ -25,6 +25,24 @@
   pointer-events: none;
 }
 
+/* Gradient backdrop for the pill: hides content scrolling through the strip above the card and
+   fades out below it. Only visible in the floating state. */
+.header::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 -20px;
+  background: linear-gradient(to bottom, var(--bg) 0, var(--bg) 60%, transparent 100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.header[data-state='floating']::before {
+  opacity: 1;
+}
+.header.animated::before {
+  transition: opacity 0.2s cubic-bezier(0, 0, 0.6, 1);
+}
+
 /* `top`: edge-to-edge, no radius, bottom line. Margin and padding trade places with `floating`
    so the controls stay exactly where they are while the card grows its gutter. */
 .card {
@@ -75,7 +93,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animated {
+  .animated,
+  .header.animated::before {
     transition: none;
   }
 }
