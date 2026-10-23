@@ -174,10 +174,13 @@ button.onDark {
   color: #fff;
 }
 .onDark:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.16);
+}
+.onDark:hover:not(:disabled)::after {
+  box-shadow: none;
 }
 .onDark:active:not(:disabled) {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .dangerous {
