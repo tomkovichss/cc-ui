@@ -1,4 +1,4 @@
-import { useId, useRef, type InputHTMLAttributes, type Ref } from 'react';
+import { useId, type InputHTMLAttributes, type Ref } from 'react';
 import { ChevronDown } from 'lucide-react';
 import styles from './TextField.module.css';
 import { FieldLabel } from './FieldLabel';
@@ -10,7 +10,7 @@ interface DateFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'cl
   helperText?: string;
   error?: string;
   size?: DateFieldSize;
-  /** Accessible name of the button next to the date. */
+  /** Accessible name of the field, used when there is no visible `label`. */
   openLabel?: string;
   /** Extra classes for layout around the field. */
   className?: string;
@@ -37,38 +37,24 @@ export function DateField({
 }: DateFieldProps) {
   const generatedId = useId();
   const inputId = id ?? generatedId;
-  const inputRef = useRef<HTMLInputElement | null>(null);
-
-  function setRefs(el: HTMLInputElement | null) {
-    inputRef.current = el;
-    if (typeof ref === 'function') ref(el);
-    else if (ref) ref.current = el;
-  }
-
   return (
     <div className={[styles.field, className].filter(Boolean).join(' ')}>
       {label && <FieldLabel htmlFor={inputId}>{label}</FieldLabel>}
       <div className={`${styles.inputWrap} ${styles.default} ${styles[size]} ${error ? styles.errorWrap : ''}`}>
         <input
           {...rest}
-          ref={setRefs}
+          ref={ref}
           id={inputId}
           className={`${styles.input} ${styles.pickerInput}`}
           inputMode="none"
           readOnly
           disabled={disabled}
           onClick={onClick}
+          aria-label={label ? undefined : openLabel}
         />
-        <button
-          type="button"
-          tabIndex={-1}
-          className={styles.trailing}
-          aria-label={openLabel}
-          disabled={disabled}
-          onClick={() => inputRef.current?.click()}
-        >
+        <span className={`${styles.pickerChevron} ${size === 'sm' ? styles.pickerChevronSm : ''}`} aria-hidden>
           <ChevronDown />
-        </button>
+        </span>
       </div>
       {error ? (
         <span className={styles.errorText}>{error}</span>
