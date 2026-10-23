@@ -38,3 +38,5 @@ export { formatDuration, formatDurationHMS } from './utils/format';
 import './styles/tokens.css';
 import './styles/fonts.css';
 import './styles/typography.css';
+import './styles/scrollbars.css';
+import './styles/scrollbars';

@@ -148,8 +148,6 @@ export function Dropdown<T extends string>(props: DropdownProps<T>) {
     height: number;
     instant: boolean;
   } | null>(null);
-  const [scrolling, setScrolling] = useState(false);
-  const scrollTimer = useRef<number | undefined>(undefined);
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -273,14 +271,6 @@ export function Dropdown<T extends string>(props: DropdownProps<T>) {
       focusOption(enabledValues[nextIndex]);
     }
   }
-
-  function handleListScroll() {
-    setScrolling(true);
-    window.clearTimeout(scrollTimer.current);
-    scrollTimer.current = window.setTimeout(() => setScrolling(false), 700);
-  }
-
-  useEffect(() => () => window.clearTimeout(scrollTimer.current), []);
 
   function glideTo(el: HTMLElement) {
     setHighlight((prev) => ({
@@ -438,8 +428,7 @@ export function Dropdown<T extends string>(props: DropdownProps<T>) {
               role="listbox"
               aria-multiselectable={multiple || undefined}
               aria-label={label ?? ariaLabel}
-              className={`${styles.list} ${scrolling ? styles.listScrolling : ''}`}
-              onScroll={handleListScroll}
+              className={styles.list}
               onMouseLeave={() => setHighlight(null)}
               onBlur={(e) => {
                 if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setHighlight(null);

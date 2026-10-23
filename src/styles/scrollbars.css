@@ -1,0 +1,73 @@
+/*
+ * Global thin scrollbars: the thumb is hidden at rest and appears while the
+ * scroll container is hovered or scrolling (`data-scrolling`, set by scrollbars.ts). Opt out with `.scrollbar-default`.
+ */
+
+/* Firefox only: Chrome 121+ ignores ::-webkit-scrollbar when these are set. */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  *:hover,
+  *[data-scrolling] {
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+  }
+}
+
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Inset the track ends so the thumb isn't clipped by rounded container corners. */
+*::-webkit-scrollbar-track {
+  margin: var(--scrollbar-inset);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 999px;
+}
+
+*:hover::-webkit-scrollbar-thumb,
+*[data-scrolling]::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+.scrollbar-default,
+.scrollbar-default * {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+}
+
+.scrollbar-default::-webkit-scrollbar-track,
+.scrollbar-default *::-webkit-scrollbar-track {
+  margin: 0;
+}
+
+.scrollbar-default::-webkit-scrollbar,
+.scrollbar-default *::-webkit-scrollbar {
+  width: auto;
+  height: auto;
+}
+
+.scrollbar-default::-webkit-scrollbar-thumb,
+.scrollbar-default *::-webkit-scrollbar-thumb {
+  background-color: initial;
+  background-clip: initial;
+  border: initial;
+  border-radius: initial;
+}

@@ -58,7 +58,7 @@ function useWorkersControls() {
 function Filler({ height = 2000 }: { height?: number }) {
   return (
     <div style={{ height, padding: 24, color: 'var(--text-secondary)' }}>
-      Scroll down: after 16px the bar becomes a floating pill, and back at the top.
+      Scroll down: after 4px the bar becomes a floating pill, and back at the top.
     </div>
   );
 }
@@ -78,7 +78,7 @@ function WorkersBar({
 }
 
 export const Playground: Story = {
-  args: { threshold: 16 },
+  args: { threshold: 4 },
   render: (args) => (
     <Page>
       <WorkersBar {...args} />
@@ -178,6 +178,52 @@ export const ControlsPending: Story = {
     <Page>
       <WorkersBar pending />
       <Filler />
+    </Page>
+  ),
+};
+
+const cards = Array.from({ length: 24 }, (_, i) => ({
+  id: i,
+  name: ['Aguestin Morales', 'Ricardo Bucio', 'Ortega Sanchez', 'Jose Luis Aguilar'][i % 4],
+  hue: (i * 47) % 360,
+}));
+
+/** Real-looking content: scroll and check that nothing shows in the strip above the pill. */
+export const WithContent: Story = {
+  render: () => (
+    <Page>
+      <WorkersBar />
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+          gap: 16,
+          padding: '8px 24px 48px',
+        }}
+      >
+        {cards.map((c) => (
+          <div
+            key={c.id}
+            style={{
+              background: 'var(--card-surface)',
+              borderRadius: 'var(--radius-lg)',
+              boxShadow: 'inset 0 0 0 1px var(--border)',
+              padding: 12,
+            }}
+          >
+            <div
+              style={{
+                height: 180,
+                borderRadius: 12,
+                background: `linear-gradient(135deg, hsl(${c.hue} 40% 45%), hsl(${c.hue} 30% 70%))`,
+              }}
+            />
+            <div style={{ padding: '12px 0 4px', textAlign: 'center', fontWeight: 500 }}>
+              {c.name}
+            </div>
+          </div>
+        ))}
+      </div>
     </Page>
   ),
 };

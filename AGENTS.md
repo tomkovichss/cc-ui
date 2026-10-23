@@ -57,6 +57,9 @@ variables with the same names, whichever stylesheet is imported last wins for th
 is no namespacing. If a collision causes visibly wrong theming, check import order first before
 assuming a bug.
 
+Scrollbars are also styled globally (`*` selector in `scrollbars.css`): thin, and visible only while
+the scroll container is hovered. Add the `scrollbar-default` class to an element to opt out.
+
 ## Do not
 
 - Do not vendor/copy component source files into the consuming repo instead of installing the

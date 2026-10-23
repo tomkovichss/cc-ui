@@ -3,7 +3,7 @@ import styles from './ToolbarAdaptive.module.css';
 
 export type ToolbarAdaptiveState = 'top' | 'floating';
 
-const SCROLL_THRESHOLD = 16;
+const SCROLL_THRESHOLD = 4;
 
 interface ToolbarAdaptiveProps {
   /** Left group: period selector, links, tabs. */

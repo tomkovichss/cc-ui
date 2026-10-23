@@ -69,6 +69,12 @@
   /* Shadows */
   --shadow-soft: 0 2px 36px var(--depth-5);
 
+  /* Scrollbars */
+  --scrollbar-size: 8px;
+  --scrollbar-inset: 12px; /* track end margin; ≈ --radius-base so rounded corners don't clip the thumb */
+  --scrollbar-thumb: var(--depth-20);
+  --scrollbar-thumb-hover: var(--depth-50);
+
   /* Layers */
   --z-popover: 1000;
   --z-modal: 1100;

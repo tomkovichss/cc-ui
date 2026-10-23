@@ -25,14 +25,15 @@
   pointer-events: none;
 }
 
-/* Gradient backdrop for the pill: hides content scrolling through the strip above the card and
-   fades out below it. Only visible in the floating state. */
+/* Backdrop for the pill: covers only the strip above the card (the rest hides behind it), so
+   scrolled content never shows there and nothing bleeds below the bar. Floating state only. */
 .header::before {
   content: '';
   position: absolute;
   z-index: -1;
-  inset: 0 0 -20px;
-  background: linear-gradient(to bottom, var(--bg) 0, var(--bg) 60%, transparent 100%);
+  inset: 0 0 auto;
+  height: 30px;
+  background: var(--bg);
   opacity: 0;
   pointer-events: none;
 }
