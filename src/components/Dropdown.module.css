@@ -323,6 +323,13 @@ button.pillTrigger {
   max-height: 320px;
   overflow-y: auto;
 }
+/* Scrolling lists: the scrollbar sits inside the menu's 4px padding instead of widening it. */
+.list[data-scrollable] {
+  --scrollbar-size: 5px;
+  --scrollbar-thumb-gap: 0 1px 0 0;
+  --scrollbar-inset: 8px;
+  margin-right: -4px;
+}
 .search {
   width: 100%;
   height: var(--control-height-sm);

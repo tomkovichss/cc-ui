@@ -34,7 +34,9 @@
 *::-webkit-scrollbar-thumb {
   background-color: transparent;
   background-clip: padding-box;
-  border: 2px solid transparent;
+  border-style: solid;
+  border-color: transparent;
+  border-width: var(--scrollbar-thumb-gap, 2px);
   border-radius: 999px;
 }
 

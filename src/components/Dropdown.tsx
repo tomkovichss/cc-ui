@@ -1,6 +1,7 @@
 import {
   useEffect,
   useId,
+  useCallback,
   useLayoutEffect,
   useRef,
   useState,
@@ -152,6 +153,22 @@ export function Dropdown<T extends string>(props: DropdownProps<T>) {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
+
+  // Flags the list while it overflows so CSS can tuck the scrollbar into the menu padding.
+  const trackScrollable = useCallback((el: HTMLDivElement | null) => {
+    if (!el) return;
+    const update = () => el.toggleAttribute('data-scrollable', el.scrollHeight > el.clientHeight);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    for (const child of Array.from(el.children)) observer.observe(child);
+    const mutations = new MutationObserver(update);
+    mutations.observe(el, { childList: true });
+    return () => {
+      observer.disconnect();
+      mutations.disconnect();
+    };
+  }, []);
   const triggerId = useId();
   const listboxId = useId();
 
@@ -428,6 +445,7 @@ export function Dropdown<T extends string>(props: DropdownProps<T>) {
               role="listbox"
               aria-multiselectable={multiple || undefined}
               aria-label={label ?? ariaLabel}
+              ref={trackScrollable}
               className={styles.list}
               onMouseLeave={() => setHighlight(null)}
               onBlur={(e) => {
