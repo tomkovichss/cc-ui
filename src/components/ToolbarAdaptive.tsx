@@ -19,6 +19,11 @@ interface ToolbarAdaptiveProps {
   scrollRoot?: HTMLElement | null;
   /** Scroll distance in px that triggers the floating state. */
   threshold?: number;
+  /**
+   * Keep the floating pill on narrow screens (≤639px). By default the bar stays edge-to-edge
+   * there, exactly as at the top of the page.
+   */
+  floatOnMobile?: boolean;
   /** Called when the state changes. */
   onStateChange?: (state: ToolbarAdaptiveState) => void;
   /** Applied to the inner card. */
@@ -43,6 +48,7 @@ export function ToolbarAdaptive({
   children,
   scrollRoot,
   threshold = SCROLL_THRESHOLD,
+  floatOnMobile = false,
   onStateChange,
   className,
   'data-testid': testId = 'header',
@@ -115,9 +121,14 @@ export function ToolbarAdaptive({
       <header
         className={[styles.header, animated ? styles.animated : ''].filter(Boolean).join(' ')}
         data-state={state}
+        data-float-mobile={floatOnMobile ? '' : undefined}
         data-testid={testId}
       >
-        <div className={cardClass} data-state={state}>
+        <div
+          className={cardClass}
+          data-state={state}
+          data-float-mobile={floatOnMobile ? '' : undefined}
+        >
           {children ?? (
             <>
               {left && <div className={styles.left}>{left}</div>}

@@ -227,3 +227,15 @@ export const WithContent: Story = {
     </Page>
   ),
 };
+
+/** `floatOnMobile`: keeps the pill on narrow screens (default: edge-to-edge bar). Resize below 640px. */
+export const FloatOnMobile: Story = {
+  args: { floatOnMobile: true },
+  render: (args) => (
+    <Page>
+      <WorkersBar {...args} />
+      <Filler />
+    </Page>
+  ),
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
