@@ -35,19 +35,27 @@
   background: var(--card-surface);
   box-shadow:
     inset 0 0 0 1px #efefef,
-    0 1px 2px rgba(16, 24, 32, 0.04);
+    0 1px 2px #1018200a,
+    0 0 0 0 var(--brand-main);
   border-radius: 16px;
   padding: 12px 14px;
   cursor: default;
   transition:
     box-shadow 0.2s,
-    transform 0.1s;
+    transform 0.2s;
 }
 .card.interactive {
   cursor: pointer;
 }
+.card.interactive:hover {
+  box-shadow:
+    inset 0 0 0 1px #efefef,
+    0 1px 2px #1018200a,
+    0 0 0 2px var(--brand-main);
+  transform: scale(1.01);
+}
 .card.interactive:active {
-  transform: scale(0.98, 0.95);
+  transform: scale(0.99);
 }
 .card.grabbable {
   cursor: grab;
@@ -59,17 +67,22 @@
 .card.dragging:hover {
   box-shadow:
     inset 0 0 0 1px #efefef,
-    0 1px 2px rgba(16, 24, 32, 0.04);
-}
-.card.interactive:hover {
-  box-shadow:
-    inset 0 0 0 1px #efefef,
-    0 0 0 2px var(--brand-main);
+    0 1px 2px #1018200a,
+    0 0 0 0 var(--brand-main);
+  transform: none;
 }
 .card.completed {
   background: var(--success-bg);
   box-shadow:
     inset 0 0 0 1px #bfe3cc,
-    0 1px 2px rgba(16, 24, 32, 0.04),
-    0 2px 8px rgba(16, 24, 32, 0.06);
+    0 1px 2px #1018200a,
+    0 2px 8px rgba(16, 24, 32, 0.06),
+    0 0 0 0 var(--brand-main);
+}
+.card.completed.interactive:hover {
+  box-shadow:
+    inset 0 0 0 1px #bfe3cc,
+    0 1px 2px #1018200a,
+    0 2px 8px rgba(16, 24, 32, 0.06),
+    0 0 0 2px var(--brand-main);
 }
