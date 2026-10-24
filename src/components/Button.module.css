@@ -147,8 +147,8 @@ button.primary {
 }
 
 .secondary {
-  --btn-ring: rgba(0, 0, 0, 0.08);
-  --btn-ring-width: 1.5px;
+  --btn-ring: rgba(0, 0, 0, 0.1);
+  --btn-ring-width: 1px;
   --btn-glow: var(--brand-main-30);
   background: transparent;
   color: var(--text-primary);
@@ -185,7 +185,7 @@ button.onDark {
 
 .dangerous {
   --btn-ring: rgba(var(--danger-rgb), 0.2);
-  --btn-ring-width: 1.5px;
+  --btn-ring-width: 1px;
   --btn-glow: rgba(var(--danger-rgb), 0.3);
   background: transparent;
   color: var(--danger-text-dark);

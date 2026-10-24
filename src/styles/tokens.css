@@ -23,7 +23,7 @@
   --surface-sunken: #f8f9fa;
   --surface-muted: #e5e7e9;
   --border: #e0e0e0;
-  --border-input: #e0e0e0;
+  --border-input: rgba(0, 0, 0, 0.1);
 
   /* Depth */
   --depth-base: 16, 24, 32;
