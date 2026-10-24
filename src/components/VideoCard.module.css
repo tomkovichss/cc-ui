@@ -114,8 +114,15 @@
 
 /* Text columns */
 .main {
-  display: grid;
+  display: flex;
   flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.columns {
+  display: grid;
   grid-template-columns: minmax(0, 360px) minmax(0, 320px);
   justify-content: space-between;
   gap: 20px;
@@ -152,8 +159,7 @@
 }
 
 .description,
-.meta,
-.comment {
+.meta {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-base);
@@ -169,7 +175,20 @@
   line-clamp: 2;
 }
 
+/* Note pill under the columns: hugs its text, up to the full row width */
 .comment {
+  align-self: flex-start;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius-xs);
+  background: var(--warning-bg);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-style: italic;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  letter-spacing: -0.15px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -236,16 +255,10 @@
 
 /* The worker block is hidden below lg; the text becomes one column. */
 @media (max-width: 1023px) {
-  .main {
+  .columns {
     grid-template-columns: minmax(0, 1fr);
   }
-  .worker {
-    display: none;
-  }
-}
-
-@media (max-width: 1023px) {
-  .aside:not(:has(.comment)) {
+  .aside {
     display: none;
   }
 }

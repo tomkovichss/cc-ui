@@ -53,7 +53,7 @@ interface VideoCardProps {
   /** Extra lines under the description, e.g. a severity line. */
   meta?: ReactNode;
   worker?: VideoCardWorker;
-  /** One line, truncated with an ellipsis. */
+  /** Full-width row under the details and the worker. One line, truncated with an ellipsis. */
   comment?: string;
   /** Seen before. Unset counts as not viewed and shows the "Unwatched" badge. */
   viewed?: boolean;
@@ -174,16 +174,16 @@ function VideoCardRoot({
       </div>
 
       <div className={styles.main}>
-        <div className={styles.info}>
-          {dateTime != null && <div className={styles.date}>{dateTime}</div>}
-          {title != null && <div className={styles.title}>{title}</div>}
-          {description != null && <div className={styles.description}>{description}</div>}
-          {meta != null && <div className={styles.meta}>{meta}</div>}
-        </div>
+        <div className={styles.columns}>
+          <div className={styles.info}>
+            {dateTime != null && <div className={styles.date}>{dateTime}</div>}
+            {title != null && <div className={styles.title}>{title}</div>}
+            {description != null && <div className={styles.description}>{description}</div>}
+            {meta != null && <div className={styles.meta}>{meta}</div>}
+          </div>
 
-        {(worker || comment) && (
-          <div className={styles.aside}>
-            {worker && (
+          {worker && (
+            <div className={styles.aside}>
               <div className={styles.worker}>
                 <div className={styles.label}>{text.worker}</div>
                 <div className={styles.workerRow}>
@@ -209,13 +209,14 @@ function VideoCardRoot({
                   </div>
                 </div>
               </div>
-            )}
-            {comment && (
-              <div className={styles.comment} title={comment}>
-                <span className={styles.srOnly}>{text.comment} </span>
-                {comment}
-              </div>
-            )}
+            </div>
+          )}
+        </div>
+
+        {comment && (
+          <div className={styles.comment} title={comment}>
+            <span className={styles.srOnly}>{text.comment} </span>
+            {comment}
           </div>
         )}
       </div>
