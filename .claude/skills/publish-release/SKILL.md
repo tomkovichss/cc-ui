@@ -10,6 +10,19 @@ This repo (`tomkovichss/cc-ui`, published to npm as `cattle-care-ui`) publishes 
 `master`. "Push to git" alone never updates npm. Follow these steps every time, in order — skipping
 steps is what caused past failures.
 
+## Run every step as its own Bash call
+
+Never chain commit, version bump, `git push` and `gh release create` into one `&&` command. The
+permission classifier gates `gh release create` (it publishes to npm), and if it is part of a chain
+the **whole** command is denied and nothing runs. Do the order below as separate calls:
+1. `git add` + `git commit` (feature commit)
+2. `npm version X --no-git-tag-version`, then `git add package.json` + `git commit` (`Bump to X`)
+3. `git push`
+4. `gh release create vX ...` — alone, in its own call
+5. `gh run list` / `gh run watch`
+If step 4 is denied, stop and tell the user (they can allow `Bash(gh release create:*)` or run it
+themselves); don't retry it inside another chain.
+
 ## Steps
 
 1. **Check git status first.** `git status --short` and `git diff --stat`. If there are local
