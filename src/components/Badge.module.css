@@ -1,0 +1,87 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+  font-weight: var(--font-weight-medium);
+  border-radius: 999px;
+}
+
+/* Colours */
+.neutral {
+  background: var(--depth-5);
+  color: var(--text-tertiary);
+}
+
+.brand {
+  background: var(--brand-bg);
+  color: var(--brand-dark);
+}
+
+.success {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.warning {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.danger {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+/* Sizes */
+.base {
+  height: 36px;
+  padding: 0 14px;
+  gap: 8px;
+  font-size: var(--font-size-base);
+}
+
+.sm {
+  height: 28px;
+  padding: 0 12px;
+  gap: 6px;
+  font-size: var(--font-size-sm);
+}
+
+.xs {
+  height: 20px;
+  padding: 0 8px;
+  gap: 4px;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.icon > svg {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.xs .icon > svg {
+  width: 12px;
+  height: 12px;
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.xs .dot {
+  width: 6px;
+  height: 6px;
+}

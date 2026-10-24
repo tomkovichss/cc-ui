@@ -1,5 +1,6 @@
 export { Button } from './components/Button';
 export { Card } from './components/Card';
+export { Badge } from './components/Badge';
 export { Tag } from './components/Tag';
 export { TagGroup } from './components/TagGroup';
 export { Toolbar } from './components/Toolbar';
