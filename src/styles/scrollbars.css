@@ -36,8 +36,8 @@
   background-clip: padding-box;
   border-style: solid;
   border-color: transparent;
-  border-width: var(--scrollbar-thumb-gap, 2px);
-  border-radius: 999px;
+  border-width: var(--scrollbar-thumb-gap, 0.125rem);
+  border-radius: 62.4375rem;
 }
 
 *:hover::-webkit-scrollbar-thumb,

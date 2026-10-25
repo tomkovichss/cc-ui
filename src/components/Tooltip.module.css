@@ -1,24 +1,24 @@
 .tooltip {
   position: fixed;
   z-index: 1000;
-  padding: 4px 8px;
+  padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
   background: var(--text-primary);
   color: #fff;
   font-family: inherit;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
-  line-height: 16px;
+  line-height: 1rem;
   letter-spacing: 0;
   white-space: nowrap;
   pointer-events: none;
   animation: tooltipIn 0.12s ease-out;
 }
 .bottom {
-  --tooltip-shift: -4px;
+  --tooltip-shift: -0.25rem;
 }
 .top {
-  --tooltip-shift: 4px;
+  --tooltip-shift: 0.25rem;
 }
 @keyframes tooltipIn {
   from {

@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 1rem;
   background: transparent;
   transition: background 0.2s ease-out;
 }
@@ -37,10 +37,10 @@
   transform: none;
 }
 .vertical {
-  width: 320px;
+  width: 20rem;
 }
 .horizontal {
-  width: 520px;
+  width: 32.5rem;
 }
 
 .cover {
@@ -50,15 +50,15 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  height: 200px;
-  padding: 24px;
+  height: 12.5rem;
+  padding: 1.5rem;
   background: var(--depth-10);
   box-shadow: inset 0 -1px 0 var(--border);
 }
 .closeButton {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 0.75rem;
+  right: 0.75rem;
 }
 
 /* The message scrolls; the footer stays visible. */
@@ -68,8 +68,8 @@
   min-height: 0;
   overflow-y: auto;
   box-sizing: border-box;
-  padding: 24px;
-  gap: 12px;
+  padding: 1.5rem;
+  gap: 0.75rem;
   box-shadow: inset 0 -1px 0 var(--border);
 }
 .vertical .message {
@@ -85,12 +85,12 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
   min-width: 0;
 }
 .horizontal .content {
   flex: 1;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .icon {
@@ -98,15 +98,15 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  margin-bottom: 8px;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 0.5rem;
   border-radius: 50%;
   color: var(--text-primary);
 }
 .icon svg {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .tone-neutral {
   background: var(--depth-5);
@@ -126,26 +126,26 @@
 .title {
   margin: 0;
   font-size: var(--font-size-heading-sm);
-  line-height: 24px;
+  line-height: 1.5rem;
   font-weight: var(--font-weight-medium);
   color: var(--text-primary);
 }
 .description {
   margin: 0;
   font-size: var(--font-size-base);
-  line-height: 20px;
+  line-height: 1.25rem;
   font-weight: var(--font-weight-regular);
   color: var(--text-secondary);
 }
 .hint {
   margin: 0;
   font-size: var(--font-size-base);
-  line-height: 20px;
+  line-height: 1.25rem;
   font-weight: var(--font-weight-regular);
   color: var(--text-tertiary);
 }
 .body {
-  margin-top: 8px;
+  margin-top: 0.5rem;
   text-align: left;
 }
 
@@ -153,9 +153,9 @@
 .footer {
   display: flex;
   flex-shrink: 0;
-  gap: 12px;
+  gap: 0.75rem;
   box-sizing: border-box;
-  padding: 16px;
+  padding: 1rem;
 }
 .vertical .footer {
   flex-direction: column;
@@ -183,16 +183,16 @@
     width: 100%;
   }
   .icon {
-    width: 80px;
-    height: 80px;
+    width: 5rem;
+    height: 5rem;
   }
   .icon svg {
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
   }
   .title {
     font-size: var(--font-size-heading-sm);
-    line-height: 24px;
+    line-height: 1.5rem;
   }
   .message {
     flex-direction: column !important;

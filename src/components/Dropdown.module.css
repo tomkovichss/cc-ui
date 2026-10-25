@@ -6,7 +6,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.375rem;
 }
 .fieldInline {
   position: relative;
@@ -32,26 +32,26 @@ button.trigger {
 .trigger:hover:not(:disabled, :focus-visible) {
   box-shadow:
     inset 0 0 0 1px var(--border-input),
-    0 0 0 2px var(--brand-main-30);
+    0 0 0 0.125rem var(--brand-main-30);
 }
 .trigger:focus-visible {
   outline: none;
   box-shadow:
-    inset 0 0 0 1.5px var(--brand-main),
-    0 0 0 2px var(--border-input);
+    inset 0 0 0 0.0938rem var(--brand-main),
+    0 0 0 0.125rem var(--border-input);
 }
 .errorWrap {
   box-shadow: inset 0 0 0 1px rgba(var(--danger-rgb), 0.2);
 }
 .trigger.errorWrap:focus-visible {
   box-shadow:
-    inset 0 0 0 1.5px var(--danger-text),
-    0 0 0 2px rgba(var(--danger-rgb), 0.3);
+    inset 0 0 0 0.0938rem var(--danger-text),
+    0 0 0 0.125rem rgba(var(--danger-rgb), 0.3);
 }
 .trigger.errorWrap:hover:not(:disabled, :focus-visible) {
   box-shadow:
     inset 0 0 0 1px rgba(var(--danger-rgb), 0.2),
-    0 0 0 2px rgba(var(--danger-rgb), 0.3);
+    0 0 0 0.125rem rgba(var(--danger-rgb), 0.3);
 }
 .trigger:disabled {
   background: var(--surface-muted);
@@ -64,7 +64,7 @@ button.trigger {
 }
 .sm.trigger {
   height: var(--control-height-sm);
-  padding: 0 12px;
+  padding: 0 0.75rem;
   font-size: var(--control-font-size);
 }
 .base {
@@ -72,7 +72,7 @@ button.trigger {
 }
 .base.trigger {
   height: var(--control-height-base);
-  padding: 0 14px;
+  padding: 0 0.875rem;
   font-size: var(--control-font-size);
 }
 
@@ -80,9 +80,9 @@ button.trigger {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
   color: var(--text-tertiary);
   flex-shrink: 0;
 }
@@ -105,9 +105,9 @@ button.trigger {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
-  margin-left: 8px;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
   color: var(--text-tertiary);
   flex-shrink: 0;
   transition: transform 0.3s var(--ease-out);
@@ -121,12 +121,12 @@ button.trigger {
 }
 
 .menuWrap {
-  --menu-dy: -6px;
+  --menu-dy: -0.375rem;
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 0.25rem);
   /* Field focus ring is 2px, so extend the menu by 2px per side to line up with it. */
-  left: -2px;
-  right: -2px;
+  left: -0.125rem;
+  right: -0.125rem;
   z-index: 10;
   transform-origin: top center;
   animation: menuIn 0.28s var(--ease-out) both;
@@ -144,9 +144,9 @@ button.trigger {
   transform-origin: top right;
 }
 .menuWrapUp {
-  --menu-dy: 6px;
+  --menu-dy: 0.375rem;
   top: auto;
-  bottom: calc(100% + 4px);
+  bottom: calc(100% + 0.25rem);
   transform-origin: bottom center;
 }
 .menuWrapUp.menuWrapAuto {
@@ -213,7 +213,7 @@ button.trigger {
   left: 0;
   right: 0;
   z-index: 0;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background: var(--brand-bg);
   pointer-events: none;
   transition:
@@ -255,7 +255,7 @@ button.trigger {
 button.pillTrigger {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
   box-sizing: border-box;
   border: none;
   background: transparent;
@@ -265,8 +265,8 @@ button.pillTrigger {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   white-space: nowrap;
-  padding: 3px 8px 3px 11px;
-  border-radius: 999px;
+  padding: 0.1875rem 0.5rem 0.1875rem 0.6875rem;
+  border-radius: 62.4375rem;
   cursor: pointer;
   transition:
     background 0.15s ease-out,
@@ -281,8 +281,8 @@ button.pillTrigger {
   transform: scale(0.96);
 }
 .pillTrigger:focus-visible {
-  outline: 2px solid var(--brand-main);
-  outline-offset: 2px;
+  outline: 0.125rem solid var(--brand-main);
+  outline-offset: 0.125rem;
 }
 .pillTrigger:disabled {
   color: var(--disabled-text);
@@ -290,18 +290,18 @@ button.pillTrigger {
 }
 .pillIcon {
   display: flex;
-  width: 14px;
-  height: 14px;
-  margin-left: -4px;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-left: -0.25rem;
 }
 .pillChevron {
   display: flex;
-  width: 14px;
-  height: 14px;
+  width: 0.875rem;
+  height: 0.875rem;
   transition: transform 0.3s var(--ease-out);
 }
 .buttonTriggerBase.buttonTriggerBase {
-  padding: 0 20px 0 16px;
+  padding: 0 1.25rem 0 1rem;
 }
 .buttonChevron {
   display: flex;
@@ -319,25 +319,25 @@ button.pillTrigger {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  max-height: 320px;
+  gap: 0.125rem;
+  max-height: 20rem;
   overflow-y: auto;
 }
 /* Scrolling lists: the scrollbar sits inside the menu's 4px padding instead of widening it. */
 .list[data-scrollable] {
-  --scrollbar-size: 5px;
+  --scrollbar-size: 0.3125rem;
   --scrollbar-thumb-gap: 0 1px 0 0;
-  --scrollbar-inset: 8px;
-  margin-right: -4px;
+  --scrollbar-inset: 0.5rem;
+  margin-right: -0.25rem;
 }
 .search {
   width: 100%;
   height: var(--control-height-sm);
   box-sizing: border-box;
-  margin-bottom: 4px;
-  padding: 0 10px;
+  margin-bottom: 0.25rem;
+  padding: 0 0.625rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background: var(--card-surface);
   box-shadow: inset 0 0 0 1px var(--border-input);
   font-family: inherit;
@@ -346,17 +346,17 @@ button.pillTrigger {
   outline: none;
 }
 .search:focus {
-  box-shadow: inset 0 0 0 2px var(--brand-main);
+  box-shadow: inset 0 0 0 0.125rem var(--brand-main);
 }
 .noResults {
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   font-size: var(--control-font-size);
   color: var(--text-tertiary);
 }
 .helperText {
   font-size: var(--font-size-sm);
   color: var(--text-tertiary);
-  padding-left: 8px;
+  padding-left: 0.5rem;
 }
 .errorText {
   font-size: var(--font-size-sm);
@@ -368,5 +368,5 @@ button.pillTrigger {
 }
 /* Multi-select menus need room for names like "002 Night shift" */
 .menuWrapMultiple {
-  min-width: max(100%, 240px);
+  min-width: max(100%, 15rem);
 }

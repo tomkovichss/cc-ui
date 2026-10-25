@@ -1,7 +1,7 @@
 .field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.375rem;
 }
 .inputWrap {
   position: relative;
@@ -14,25 +14,25 @@
 .inputWrap:hover:not(:focus-within, :has(.input:disabled), .toolbar) {
   box-shadow:
     inset 0 0 0 1px var(--border-input),
-    0 0 0 2px var(--brand-main-30);
+    0 0 0 0.125rem var(--brand-main-30);
 }
 .inputWrap:focus-within {
   box-shadow:
-    inset 0 0 0 1.5px var(--brand-main),
-    0 0 0 2px var(--border-input);
+    inset 0 0 0 0.0938rem var(--brand-main),
+    0 0 0 0.125rem var(--border-input);
 }
 .errorWrap {
   box-shadow: inset 0 0 0 1px rgba(var(--danger-rgb), 0.2);
 }
 .errorWrap:focus-within {
   box-shadow:
-    inset 0 0 0 1.5px var(--danger-text),
-    0 0 0 2px rgba(var(--danger-rgb), 0.3);
+    inset 0 0 0 0.0938rem var(--danger-text),
+    0 0 0 0.125rem rgba(var(--danger-rgb), 0.3);
 }
 .inputWrap.errorWrap:hover:not(:focus-within, :has(.input:disabled), .toolbar) {
   box-shadow:
     inset 0 0 0 1px rgba(var(--danger-rgb), 0.2),
-    0 0 0 2px rgba(var(--danger-rgb), 0.3);
+    0 0 0 0.125rem rgba(var(--danger-rgb), 0.3);
 }
 .inputWrap:has(.input:disabled) {
   background: var(--surface-muted);
@@ -48,7 +48,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 2px;
+  height: 0.125rem;
   background: var(--brand-main);
   opacity: 0;
   transition: opacity 0.2s ease-out;
@@ -73,7 +73,7 @@
   border-radius: var(--radius-sm);
 }
 .sm .input {
-  padding: 0 12px;
+  padding: 0 0.75rem;
   font-size: var(--control-font-size);
 }
 .base {
@@ -81,20 +81,20 @@
   border-radius: var(--radius-base);
 }
 .base .input {
-  padding: 0 14px;
+  padding: 0 0.875rem;
   font-size: var(--control-font-size);
 }
 .inputWrap:has(.icon) .input {
-  padding-left: 8px;
+  padding-left: 0.5rem;
 }
 
 .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
-  margin-left: 12px;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.75rem;
   color: var(--text-tertiary);
   flex-shrink: 0;
 }
@@ -125,7 +125,7 @@
 .helperText {
   font-size: var(--font-size-sm);
   color: var(--text-tertiary);
-  padding-left: 8px;
+  padding-left: 0.5rem;
 }
 .errorText {
   font-size: var(--font-size-sm);
@@ -135,12 +135,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  margin-right: 6px;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.375rem;
   padding: 0;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background: none;
   color: var(--text-tertiary);
   cursor: pointer;
@@ -148,16 +148,16 @@
   transition: color 0.15s ease-out, background 0.15s ease-out;
 }
 .trailing svg {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 }
 .trailing:hover:not(:disabled) {
   color: var(--brand-main);
   background: var(--brand-main-5);
 }
 .trailing:focus-visible {
-  outline: 2px solid var(--brand-main);
-  outline-offset: -2px;
+  outline: 0.125rem solid var(--brand-main);
+  outline-offset: -0.125rem;
 }
 .trailing:disabled {
   cursor: not-allowed;
@@ -165,22 +165,22 @@
 .pickerChevron {
   position: absolute;
   top: 50%;
-  right: 14px;
-  width: 16px;
-  height: 16px;
-  margin-top: -8px;
+  right: 0.875rem;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.5rem;
   color: var(--text-tertiary);
   pointer-events: none;
 }
 .pickerChevronSm {
-  right: 12px;
+  right: 0.75rem;
 }
 .pickerChevron svg {
   width: 100%;
   height: 100%;
 }
 .inputWrap .input.pickerInput {
-  padding-right: 38px;
+  padding-right: 2.375rem;
 }
 .pickerInput {
   cursor: pointer;
@@ -193,8 +193,8 @@
 .shortcut {
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-right: 8px;
+  gap: 0.25rem;
+  margin-right: 0.5rem;
   flex-shrink: 0;
   pointer-events: none;
 }
@@ -202,11 +202,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 24px;
-  height: 24px;
-  padding: 0 6px;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.375rem;
   box-sizing: border-box;
-  border-radius: 6px;
+  border-radius: 0.375rem;
   box-shadow: inset 0 0 0 1px var(--border-input);
   font-family: inherit;
   font-size: var(--font-size-sm);

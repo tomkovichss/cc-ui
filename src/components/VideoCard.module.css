@@ -3,10 +3,10 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 1.25rem;
   box-sizing: border-box;
   width: 100%;
-  padding: 20px;
+  padding: 1.25rem;
   border-radius: var(--radius-base);
   background: transparent;
   box-shadow: inset 0 0 0 1px var(--border);
@@ -18,12 +18,12 @@
 }
 
 .root.hasActions {
-  padding-right: 60px;
+  padding-right: 3.75rem;
 }
 
 /* Last opened video */
 .current {
-  box-shadow: inset 0 0 0 2px var(--brand-main-30);
+  box-shadow: inset 0 0 0 0.125rem var(--brand-main-30);
 }
 
 /* Same hover / press feel as Card */
@@ -33,19 +33,19 @@
 .interactive:hover {
   box-shadow:
     inset 0 0 0 1px var(--border),
-    0 0 0 2px var(--brand-main);
+    0 0 0 0.125rem var(--brand-main);
 }
 .interactive.current:hover {
   box-shadow:
-    inset 0 0 0 2px var(--brand-main-30),
-    0 0 0 2px var(--brand-main);
+    inset 0 0 0 0.125rem var(--brand-main-30),
+    0 0 0 0.125rem var(--brand-main);
 }
 .interactive:active {
   transform: scale(0.99, 0.97);
 }
 .interactive:focus-visible {
-  outline: 2px solid var(--brand-main);
-  outline-offset: 2px;
+  outline: 0.125rem solid var(--brand-main);
+  outline-offset: 0.125rem;
 }
 
 /* Thumbnail column */
@@ -54,14 +54,14 @@
   flex: none;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  width: 72px;
+  gap: 0.5rem;
+  width: 4.5rem;
 }
 
 .thumb {
-  width: 72px;
-  height: 48px;
-  border-radius: 4px;
+  width: 4.5rem;
+  height: 3rem;
+  border-radius: 0.25rem;
   overflow: hidden;
 }
 
@@ -77,14 +77,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 0.125rem;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 4px;
+  padding: 0.25rem;
   background: var(--depth-5);
   color: var(--text-secondary);
-  font-size: 7px;
+  font-size: 0.4375rem;
   font-weight: var(--font-weight-semibold);
   line-height: 1;
   letter-spacing: 0.28px;
@@ -102,13 +102,13 @@
 }
 
 .badge {
-  padding: 2px 8px;
-  border-radius: 16px;
+  padding: 0.125rem 0.5rem;
+  border-radius: 1rem;
   background: var(--brand-main);
   color: #fff;
-  font-size: 8px;
+  font-size: 0.5rem;
   font-weight: var(--font-weight-semibold);
-  line-height: 12px;
+  line-height: 0.75rem;
   letter-spacing: 0.32px;
   text-transform: uppercase;
 }
@@ -118,15 +118,15 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
   min-width: 0;
 }
 
 .columns {
   display: grid;
-  grid-template-columns: minmax(0, 360px) minmax(0, 320px);
+  grid-template-columns: minmax(0, 22.5rem) minmax(0, 20rem);
   justify-content: space-between;
-  gap: 20px;
+  gap: 1.25rem;
   min-width: 0;
 }
 
@@ -134,19 +134,19 @@
 .aside {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
   min-width: 0;
 }
 
 .aside {
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .date,
 .label {
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: var(--font-weight-semibold);
-  line-height: 16px;
+  line-height: 1rem;
   letter-spacing: 0.44px;
   text-transform: uppercase;
 }
@@ -181,11 +181,11 @@
   align-self: flex-start;
   box-sizing: border-box;
   max-width: 100%;
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   border-radius: var(--radius-xs);
   background: var(--warning-bg);
   color: var(--text-primary);
-  font-size: var(--font-size-base);
+  font-size: 0.8125rem;
   font-style: italic;
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-base);
@@ -199,19 +199,19 @@
 .worker {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .workerRow {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .photo {
   flex: none;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -236,13 +236,13 @@
 /* Trailing actions: top-right, leaves room for a 44px hit area */
 .actions {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 0.5rem;
+  right: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
 }
 
 .srOnly {

@@ -3,12 +3,12 @@
   --font-family-base: 'Inter', sans-serif;
 
   /* Font size */
-  --font-size-sm: 13px;
-  --font-size-base: 15px;
-  --font-size-lg: 17px;
-  --font-size-heading-sm: 19px;
-  --font-size-heading-base: 24px;
-  --font-size-heading-lg: 32px;
+  --font-size-sm: 0.8125rem;
+  --font-size-base: 0.9375rem;
+  --font-size-lg: 1.0625rem;
+  --font-size-heading-sm: 1.1875rem;
+  --font-size-heading-base: 1.5rem;
+  --font-size-heading-lg: 2rem;
 
   /* Shared size for interactive controls: larger on mobile, smaller on desktop */
   --control-font-size: var(--font-size-base);

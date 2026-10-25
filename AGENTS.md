@@ -49,6 +49,14 @@ this package). Load the full weight range so intermediate `font-weight` values r
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
 ```
 
+## Sizing (rem)
+
+Component sizes (spacing, control heights, radii, font sizes) are in `rem`, assuming the default
+`html` font size of 16px (`1rem = 16px`). The library never sets `font-size` on `html`; the
+consuming app owns that. Leave it at the browser default (or `100%`) so user font-size settings keep
+working. To scale the whole UI (e.g. larger on wide screens), change `html { font-size }` in
+percent, not px. Hairlines (`1px` and below) and `@media`/`@container` breakpoints stay in `px`.
+
 ## Known limitation
 
 This library's design tokens are plain, unprefixed CSS custom properties (`--text-primary`,
