@@ -1,4 +1,5 @@
 .root {
+  container: videocard / inline-size;
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -253,8 +254,10 @@
   white-space: nowrap;
 }
 
-/* The worker block is hidden below lg; the text becomes one column. */
-@media (max-width: 1023px) {
+/* The worker block is hidden when the card itself is narrow; the text becomes
+   one column. Keyed to the card width, not the viewport, so a card in a narrow
+   side panel on a wide screen collapses too. */
+@container videocard (max-width: 760px) {
   .columns {
     grid-template-columns: minmax(0, 1fr);
   }
