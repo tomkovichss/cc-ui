@@ -135,7 +135,7 @@ button.trigger {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: var(--z-popover);
+  z-index: var(--z-popover, 1000);
   display: flex;
   box-sizing: border-box;
   max-width: calc(100vw - 1rem);

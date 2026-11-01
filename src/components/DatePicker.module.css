@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: var(--z-popover);
+  z-index: var(--z-popover, 1000);
   box-sizing: border-box;
   width: 17.25rem; /* 7 × 2.25rem columns + 0.75rem padding either side */
   max-width: calc(100vw - 1rem);

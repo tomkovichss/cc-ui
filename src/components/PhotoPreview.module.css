@@ -1,7 +1,7 @@
 /* Enlarged photo on hover, portaled to body and placed next to the cursor */
 .photoPreview {
   position: fixed;
-  z-index: 1000;
+  z-index: var(--z-tooltip, 1200);
   width: 11.25rem;
   height: 11.25rem;
   border-radius: 1.5rem;

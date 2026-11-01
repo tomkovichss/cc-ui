@@ -76,7 +76,9 @@
   --scrollbar-thumb: var(--depth-20);
   --scrollbar-thumb-hover: var(--depth-50);
 
-  /* Layers */
+  /* Layers: sticky < popover < modal < tooltip */
+  --z-sticky: 20;
   --z-popover: 1000;
   --z-modal: 1100;
+  --z-tooltip: 1200;
 }

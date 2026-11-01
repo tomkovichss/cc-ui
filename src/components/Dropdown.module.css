@@ -127,7 +127,7 @@ button.trigger {
   /* Field focus ring is 2px, so extend the menu by 2px per side to line up with it. */
   left: -0.125rem;
   right: -0.125rem;
-  z-index: 10;
+  z-index: var(--z-popover, 1000);
   transform-origin: top center;
   animation: menuIn 0.28s var(--ease-out) both;
 }
