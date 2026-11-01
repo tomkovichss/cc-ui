@@ -40,5 +40,43 @@
   color: var(--text-tertiary);
 }
 .preview {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   color: var(--text-primary);
+}
+
+.tokenGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.tokenCard {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--border);
+  background: var(--card-surface);
+}
+.tokenPreview {
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  padding: 8px 10px;
+  color: var(--text-primary);
+  font-family: var(--font-family-base);
+}
+.tokenInfo {
+  padding: 8px 10px;
+  box-shadow: inset 0 1px 0 var(--border);
+}
+.tokenName {
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-medium);
+  font-family: inherit;
+}
+.tokenValue {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+  font-family: inherit;
 }
