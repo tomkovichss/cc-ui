@@ -13,6 +13,8 @@ export { TextArea } from './components/TextArea';
 export { PasswordField } from './components/PasswordField';
 export { DateField } from './components/DateField';
 export { DatePicker } from './components/DatePicker';
+export { DateRangePicker } from './components/DateRangePicker';
+export type { DateRange, DateRangePreset } from './components/DateRangePicker';
 export { Calendar } from './components/Calendar';
 export { FieldLabel } from './components/FieldLabel';
 export { NumberField } from './components/NumberField';

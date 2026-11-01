@@ -81,6 +81,25 @@
   color: #fff;
   font-weight: var(--font-weight-medium);
 }
+.day.inRange {
+  border-radius: 0;
+  background: var(--brand-main-10);
+}
+.day.inRange:hover:not(.disabled) {
+  background: var(--brand-main-20);
+}
+.day.rangeStart {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.day.rangeEnd {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.day.hiddenDay {
+  visibility: hidden;
+  pointer-events: none;
+}
 .day.disabled {
   color: var(--disabled-text);
   cursor: not-allowed;

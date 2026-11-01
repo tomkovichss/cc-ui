@@ -1,8 +1,6 @@
 import {
   useCallback,
-  useEffect,
   useId,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -11,6 +9,7 @@ import {
 import { createPortal } from 'react-dom';
 import { Calendar } from './Calendar';
 import { DateField } from './DateField';
+import { usePopup } from './usePopup';
 import type { WeekStart } from '../utils/date';
 import styles from './DatePicker.module.css';
 
@@ -44,11 +43,6 @@ interface DatePickerProps {
   className?: string;
   id?: string;
 }
-
-/** Keep in sync with the bottom-sheet breakpoint in DatePicker.module.css. */
-const SHEET_QUERY = '(max-width: 480px)';
-const GAP = 4;
-const VIEWPORT_MARGIN = 8;
 
 /** A date field that opens a `Calendar` in a popup. The popup is portalled to <body> so no parent can clip it. */
 export function DatePicker({
@@ -86,98 +80,12 @@ export function DatePicker({
   // The visible field box (not the label or helper text) is what the popup attaches to.
   const getAnchor = useCallback(() => inputRef.current?.parentElement ?? inputRef.current, []);
 
-  const reposition = useCallback(() => {
-    const popup = popupRef.current;
-    const anchor = getAnchor();
-    if (!popup || !anchor) return;
-    if (window.matchMedia(SHEET_QUERY).matches) {
-      // CSS docks the popup to the bottom of the screen.
-      popup.style.left = '';
-      popup.style.top = '';
-      return;
-    }
-    const rect = anchor.getBoundingClientRect();
-    const width = popup.offsetWidth;
-    const height = popup.offsetHeight;
-    const viewportWidth = document.documentElement.clientWidth;
-    const viewportHeight = window.innerHeight;
+  const closePopup = useCallback((restoreFocus: boolean) => {
+    setOpen(false);
+    if (restoreFocus) inputRef.current?.focus();
+  }, []);
 
-    let left = placement === 'bottom-end' ? rect.right - width : rect.left;
-    left = Math.max(VIEWPORT_MARGIN, Math.min(left, viewportWidth - width - VIEWPORT_MARGIN));
-
-    let top = rect.bottom + GAP;
-    const fitsBelow = top + height <= viewportHeight - VIEWPORT_MARGIN;
-    const roomAbove = rect.top - GAP - height >= VIEWPORT_MARGIN;
-    if (!fitsBelow && roomAbove) top = rect.top - GAP - height;
-
-    popup.style.left = `${left}px`;
-    popup.style.top = `${top}px`;
-  }, [getAnchor, placement]);
-
-  useLayoutEffect(() => {
-    if (!isOpen) return;
-    reposition();
-    window.addEventListener('resize', reposition);
-    window.addEventListener('scroll', reposition, true);
-    return () => {
-      window.removeEventListener('resize', reposition);
-      window.removeEventListener('scroll', reposition, true);
-    };
-  }, [isOpen, reposition]);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    function close() {
-      setOpen(false);
-      inputRef.current?.focus();
-    }
-
-    function onPointerDown(e: PointerEvent) {
-      const target = e.target as Node;
-      if (popupRef.current?.contains(target) || getAnchor()?.contains(target)) return;
-      setOpen(false);
-    }
-
-    function onKeyDown(e: globalThis.KeyboardEvent) {
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        close();
-        return;
-      }
-      if (e.key !== 'Tab') return;
-      // Focus trap: Tab cycles through the popup's own controls.
-      const popup = popupRef.current;
-      if (!popup) return;
-      const stops = Array.from(
-        popup.querySelectorAll<HTMLElement>('button:not(:disabled):not([tabindex="-1"])'),
-      );
-      if (stops.length === 0) {
-        e.preventDefault();
-        return;
-      }
-      const first = stops[0];
-      const last = stops[stops.length - 1];
-      const active = document.activeElement;
-      if (!popup.contains(active)) {
-        e.preventDefault();
-        (e.shiftKey ? last : first).focus();
-      } else if (e.shiftKey && active === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && active === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    }
-
-    window.addEventListener('pointerdown', onPointerDown);
-    window.addEventListener('keydown', onKeyDown);
-    return () => {
-      window.removeEventListener('pointerdown', onPointerDown);
-      window.removeEventListener('keydown', onKeyDown);
-    };
-  }, [isOpen, getAnchor]);
+  usePopup({ isOpen, popupRef, getAnchor, placement, onClose: closePopup });
 
   function handleFieldKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
