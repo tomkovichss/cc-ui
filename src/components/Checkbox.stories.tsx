@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, within } from 'storybook/test';
 import { Checkbox, CheckboxGroup } from './Checkbox';
 
 const meta: Meta<typeof Checkbox> = {
@@ -33,6 +34,15 @@ function InteractiveCheckbox() {
 
 export const Interactive: Story = {
   render: () => <InteractiveCheckbox />,
+  // Regression guard: the input must be the topmost element at its centre (userEvent skips hit-testing).
+  play: async ({ canvasElement }) => {
+    const el = within(canvasElement).getByRole('checkbox');
+    const { left, top, width, height } = el.getBoundingClientRect();
+    await expect(document.elementFromPoint(left + width / 2, top + height / 2)).toBe(el);
+    await expect(el).not.toBeChecked();
+    await userEvent.click(el);
+    await expect(el).toBeChecked();
+  },
 };
 
 function WithLabelCheckbox() {
