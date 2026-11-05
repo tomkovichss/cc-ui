@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { expect, userEvent, within } from 'storybook/test';
 import { Switch } from './Switch';
 
 const meta: Meta<typeof Switch> = {
@@ -38,6 +39,16 @@ function InteractiveSwitch() {
 
 export const Interactive: Story = {
   render: () => <InteractiveSwitch />,
+  // Regression: the decorative track must not cover the <input>. userEvent skips hit-testing
+  // (Playwright's click() does not), so assert what sits under the input's centre explicitly.
+  play: async ({ canvasElement }) => {
+    const sw = within(canvasElement).getByRole('switch');
+    const { left, top, width, height } = sw.getBoundingClientRect();
+    await expect(document.elementFromPoint(left + width / 2, top + height / 2)).toBe(sw);
+    await expect(sw).not.toBeChecked();
+    await userEvent.click(sw);
+    await expect(sw).toBeChecked();
+  },
 };
 
 function WithLabelSwitch() {
