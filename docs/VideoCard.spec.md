@@ -39,13 +39,13 @@ interface VideoCardProps {
   title?: ReactNode                                   // category
   description?: ReactNode                             // note
   meta?: ReactNode                                    // extra lines under the title (severity)
-  worker?: { name: string; photo?: string; pending?: boolean }
+  worker?: { name: string; photo?: string }
   comment?: string
   viewed?: boolean                                    // default false → tinted
   current?: boolean                                   // last opened glow
   onClick?: () => void                                // makes the row role="button"
   actions?: ReactNode                                 // trailing slot (bookmark)
-  labels?: { worker: string; comment: string; pending: string; inaccessible: string; archived: string }
+  labels?: { worker: string; comment: string; inaccessible: string; archived: string }
   className?: string
   'data-testid'?: string
 }
@@ -63,7 +63,7 @@ Notes:
 - **Bookmark:** the trailing slot sits inside the clickable row. Clicking it must not open the video (stop propagation lives in `FavoriteVideo` today; verify, and in cc-ui document that `actions` content owns this).
 - **Thumbnail fallback chain** (app logic, to be kept in the adapter): `preview` fails → no `dateTime`: Inaccessible; `dateTime` less than 30 days old: Inaccessible; 30 days or older: **Archived**. If the static fallback also fails, stop (no loop). The date is parsed from the part before the first comma. cc-ui takes the result as `previewFallback`; the 30-day rule is not in the component.
 - **Date-time:** the app formats with `formatVideoTime` (short date, then the rest after the comma, e.g. "Oct 09, 12:32AM"). cc-ui receives the string.
-- **Worker photo:** if the photo fails, swap to `WorkerEmptyImage.svg` and show "card still in progress" under the name. cc-ui: `worker.pending` plus an empty-avatar state; the swap happens in the component on `onError`.
+- **Worker photo:** if the photo fails, swap to `WorkerEmptyImage.svg`. cc-ui: empty-avatar state (no pending line); the swap happens in the component on `onError`.
 - **Unviewed / viewed:** `isViewed === false` → tinted. Undefined counts as unviewed (`!isViewed`), keep that.
 - **Last opened:** `current` when the store's `lastViewedVideo.id === uuid`.
 - **Responsive:** the worker block hides below `lg`; the grid wraps by auto-fit at 200 px columns. **New:** below `sm` the row stacks thumbnail on top of text, or keeps the 72 × 48 thumbnail left with one text column (decision for design; see §9).
@@ -133,7 +133,7 @@ The existing story `src/entities/Video/VideoCard/ui/VideoCard.story.tsx` has two
 Tests (vitest, in cc-ui):
 - Enter and Space activate; no role when `onClick` is absent
 - image error swaps to the fallback and does not loop
-- worker photo error shows the pending line
+- worker photo error shows the empty avatar
 - `viewed`, `current` classes
 - worker block hidden below `lg` (class contract)
 - comment placeholder keeps the grid cell count

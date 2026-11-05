@@ -41,7 +41,7 @@
   opacity: 1;
 }
 .header.animated::before {
-  transition: opacity 0.2s cubic-bezier(0, 0, 0.6, 1);
+  transition: opacity 0.05s cubic-bezier(0, 0, 0.6, 1);
 }
 
 /* `top`: edge-to-edge, no radius, bottom line. Margin and padding trade places with `floating`
@@ -78,7 +78,7 @@
     margin 0.2s cubic-bezier(0, 0, 0.6, 1),
     padding 0.2s cubic-bezier(0, 0, 0.6, 1),
     border-radius 0.2s cubic-bezier(0, 0, 0.6, 1),
-    background-color 0.2s cubic-bezier(0, 0, 0.6, 1),
+    background-color 0.05s cubic-bezier(0, 0, 0.6, 1),
     box-shadow 0.2s cubic-bezier(0, 0, 0.6, 1);
 }
 

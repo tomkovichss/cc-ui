@@ -27,6 +27,7 @@
 .grid {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 .row {
   display: grid;

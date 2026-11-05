@@ -162,7 +162,7 @@ export function DateRangePicker({
     setOpen(false);
     if (restoreFocus) triggerRef.current?.focus();
   }, []);
-  usePopup({ isOpen, popupRef, getAnchor, placement, onClose: closePopup, layoutKey: twoMonths });
+  usePopup({ isOpen, popupRef, getAnchor, placement, onClose: closePopup, layoutKey: `${twoMonths}-${anchor.getTime()}` });
 
   function openPopup() {
     if (disabled || loading) return;

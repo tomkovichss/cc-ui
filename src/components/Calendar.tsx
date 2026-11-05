@@ -136,6 +136,10 @@ export function Calendar({
     [locale],
   );
 
+  // Range mode hides neighbouring-month days, so weeks with none of this month's days are dropped
+  // and the calendar is only as tall as the month needs. Other modes keep six rows so the popup never jumps.
+  const visibleWeeks = range ? weeks.filter((week) => week.some((day) => day.inMonth)) : weeks;
+
   // Row 0 of the grid already holds one of each weekday, in display order.
   const weekdays = weeks[0].map(({ date }) => ({
     short: capitalize(format.short.format(date), locale).slice(0, 2),
@@ -250,7 +254,7 @@ export function Calendar({
             </span>
           ))}
         </div>
-        {weeks.map((week) => (
+        {visibleWeeks.map((week) => (
           <div role="row" className={styles.row} key={dayKey(week[0].date)}>
             {week.map(({ date, inMonth }) => {
               const disabled = isDayDisabled(date, minDate, maxDate);

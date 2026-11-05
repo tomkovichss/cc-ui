@@ -8,7 +8,6 @@ import styles from './VideoCard.module.css';
 interface VideoCardLabels {
   worker: string;
   comment: string;
-  pending: string;
   inaccessible: string;
   archived: string;
   new: string;
@@ -17,7 +16,6 @@ interface VideoCardLabels {
 const DEFAULT_LABELS: VideoCardLabels = {
   worker: 'Worker:',
   comment: 'Comment:',
-  pending: 'Card still in progress',
   inaccessible: 'Inaccessible',
   archived: 'Archived',
   new: 'Unwatched',
@@ -25,10 +23,8 @@ const DEFAULT_LABELS: VideoCardLabels = {
 
 interface VideoCardWorker {
   name: string;
-  /** Photo URL. Missing or broken -> empty avatar and the `pending` line. */
+  /** Photo URL. Missing or broken -> empty avatar. */
   photo?: string;
-  /** Show the `pending` line even when the photo loads. */
-  pending?: boolean;
 }
 
 /**
@@ -100,7 +96,6 @@ function VideoCardRoot({
   const showPreview = !!preview && failedPreview !== preview;
   const photo = worker?.photo;
   const showPhoto = !!photo && failedPhoto !== photo;
-  const pending = !!worker && (worker.pending || !showPhoto);
 
   const interactive = !!onClick;
 
@@ -205,7 +200,6 @@ function VideoCardRoot({
                   )}
                   <div className={styles.workerText}>
                     <div className={styles.workerName}>{worker.name}</div>
-                    {pending && <div className={styles.pending}>{text.pending}</div>}
                   </div>
                 </div>
               </div>

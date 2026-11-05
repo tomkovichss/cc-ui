@@ -81,7 +81,7 @@
   border-radius: var(--radius-base);
 }
 .base .input {
-  padding: 0 0.875rem;
+  padding: 0 0 0 0.875rem;
   font-size: var(--control-font-size);
 }
 .inputWrap:has(.icon) .input {

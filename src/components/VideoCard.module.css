@@ -228,11 +228,6 @@
   min-width: 0;
 }
 
-.pending {
-  font-size: var(--font-size-sm);
-  color: var(--text-tertiary);
-}
-
 /* Trailing actions: top-right, leaves room for a 44px hit area */
 .actions {
   position: absolute;
