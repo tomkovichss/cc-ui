@@ -32,7 +32,7 @@ interface VideoCardProps {
   /** Thumbnail URL. */
   preview: string
   /** Shown if `preview` fails; the card does not decide between inaccessible and archived. */
-  previewFallback?: 'inaccessible' | 'archived'        // default 'inaccessible'
+  previewFallback?: 'inaccessible' | 'archived' | 'unavailable'        // default 'inaccessible'
   onPreviewError?: () => void                         // lets the app log or switch the fallback
   /** Already formatted. */
   dateTime?: string
@@ -45,7 +45,7 @@ interface VideoCardProps {
   current?: boolean                                   // last opened glow
   onClick?: () => void                                // makes the row role="button"
   actions?: ReactNode                                 // trailing slot (bookmark)
-  labels?: { worker: string; comment: string; inaccessible: string; archived: string }
+  labels?: { worker: string; comment: string; inaccessible: string; archived: string; unavailable: string }
   className?: string
   'data-testid'?: string
 }
@@ -83,7 +83,7 @@ Notes:
 | No worker | grid has meta + comment only (Efficiency, Routines, Post-calving, Prep-lag lists; in Issues the worker shows only for `sourceEvent === 'issues'`) |
 | No comment | empty placeholder cell |
 | Severity 1-3 | extra line |
-| Preview inaccessible / archived | grey tile with lock icon / archive icon and caption |
+| Preview inaccessible / archived / unavailable | grey tile with lock icon / archive icon / crossed-out image icon and caption (unavailable = file missing, no lock) |
 | Worker photo failed | empty avatar + "card still in progress" |
 | Loading | **new**: `VideoCard.Skeleton`, 72 × 48 block + 3 text bars (reuse cc-ui `Skeleton`) |
 | Disabled | not applicable |

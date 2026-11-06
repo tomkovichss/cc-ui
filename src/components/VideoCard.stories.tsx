@@ -110,6 +110,15 @@ export const PreviewArchived: Story = {
   args: { ...base, preview: undefined, previewFallback: 'archived' },
 };
 
+export const PreviewUnavailable: Story = {
+  args: { ...base, preview: undefined, previewFallback: 'unavailable' },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText('Preview unavailable')).toBeVisible();
+    await expect(canvas.queryByText('Inaccessible')).toBeNull();
+  },
+};
+
 export const PreviewBrokenUrl: Story = {
   args: { ...base, preview: BROKEN, onPreviewError: fn() },
   play: async ({ canvasElement, args }) => {

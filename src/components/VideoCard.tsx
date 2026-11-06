@@ -1,4 +1,4 @@
-import { Archive, Lock, Play, User } from 'lucide-react';
+import { Archive, ImageOff, Lock, Play, User } from 'lucide-react';
 import { useState } from 'react';
 import type { KeyboardEvent, ReactNode } from 'react';
 import { PhotoPreview } from './PhotoPreview';
@@ -10,6 +10,7 @@ interface VideoCardLabels {
   comment: string;
   inaccessible: string;
   archived: string;
+  unavailable: string;
   new: string;
 }
 
@@ -18,6 +19,7 @@ const DEFAULT_LABELS: VideoCardLabels = {
   comment: 'Comment:',
   inaccessible: 'Inaccessible',
   archived: 'Archived',
+  unavailable: 'Preview unavailable',
   new: 'Unwatched',
 };
 
@@ -29,13 +31,13 @@ interface VideoCardWorker {
 
 /**
  * One row of a video list. Presentational: dates, translations and the choice
- * between "inaccessible" and "archived" are decided by the app and passed in.
+ * between "inaccessible", "archived" and "unavailable" are decided by the app and passed in.
  */
 interface VideoCardProps {
   /** Thumbnail URL. */
   preview?: string;
-  /** Tile shown when `preview` is missing or fails to load: a lock + caption, an archive + caption, or a bare play icon. */
-  previewFallback?: 'inaccessible' | 'archived' | 'play';
+  /** Tile shown when `preview` is missing or fails to load: a lock + caption (access closed), an archive + caption, a crossed-out frame + caption (file missing, no lock), or a bare play icon. */
+  previewFallback?: 'inaccessible' | 'archived' | 'unavailable' | 'play';
   /** Called once when the thumbnail fails, e.g. to log it. */
   onPreviewError?: () => void;
   /** Alt text of the thumbnail. Defaults to "Video preview: {comment}". */
@@ -155,11 +157,19 @@ function VideoCardRoot({
                   <span className={styles.icon}>
                     {previewFallback === 'archived' ? (
                       <Archive size={12} strokeWidth={1} aria-hidden="true" />
+                    ) : previewFallback === 'unavailable' ? (
+                      <ImageOff size={12} strokeWidth={1} aria-hidden="true" />
                     ) : (
                       <Lock size={12} strokeWidth={1} aria-hidden="true" />
                     )}
                   </span>
-                  <span>{previewFallback === 'archived' ? text.archived : text.inaccessible}</span>
+                  <span>
+                    {previewFallback === 'archived'
+                      ? text.archived
+                      : previewFallback === 'unavailable'
+                        ? text.unavailable
+                        : text.inaccessible}
+                  </span>
                 </>
               )}
             </div>
