@@ -128,8 +128,19 @@
   padding-left: 0.5rem;
 }
 .errorText {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding-left: 0.25rem;
   font-size: var(--font-size-sm);
   color: var(--danger-text);
+}
+.errorIcon {
+  flex: none;
+  width: 0.875rem;
+  height: 0.875rem;
+  /* align the icon with the first text line */
+  margin-top: calc((1lh - 0.875rem) / 2);
 }
 .trailing {
   display: flex;

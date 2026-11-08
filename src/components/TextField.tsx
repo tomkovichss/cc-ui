@@ -68,7 +68,14 @@ export function TextField({
         )}
       </div>
       {error ? (
-        <span className={styles.errorText}>{error}</span>
+        <span className={styles.errorText}>
+          <svg className={styles.errorIcon} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M8 4.5v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="8" cy="11" r="0.9" fill="currentColor" />
+          </svg>
+          {error}
+        </span>
       ) : helperText ? (
         <span className={styles.helperText}>{helperText}</span>
       ) : null}

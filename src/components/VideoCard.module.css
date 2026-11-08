@@ -252,7 +252,7 @@
 /* The worker block is hidden when the card itself is narrow; the text becomes
    one column. Keyed to the card width, not the viewport, so a card in a narrow
    side panel on a wide screen collapses too. */
-@container videocard (max-width: 760px) {
+@container videocard (max-width: 560px) {
   .columns {
     grid-template-columns: minmax(0, 1fr);
   }
