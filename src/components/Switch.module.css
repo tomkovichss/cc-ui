@@ -35,8 +35,10 @@
     background-color 0.2s cubic-bezier(0, 0, 0.2, 1),
     box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1);
 }
-.switch:hover .track {
-  box-shadow: inset 0 0 0 1px var(--brand-main);
+@media (hover: hover) {
+  .switch:hover .track {
+    box-shadow: inset 0 0 0 1px var(--brand-main);
+  }
 }
 .input:focus-visible + .track {
   outline: 0.125rem solid var(--brand-main);
@@ -87,8 +89,10 @@
   color: var(--text-primary);
   transition: color 0.2s ease-out;
 }
-.switch:hover .labelText {
-  color: var(--brand-main);
+@media (hover: hover) {
+  .switch:hover .labelText {
+    color: var(--brand-main);
+  }
 }
 .switch:has(.input:disabled) .labelText {
   color: var(--disabled-text);

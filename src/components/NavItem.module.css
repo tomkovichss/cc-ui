@@ -35,12 +35,16 @@
 }
 
 /* Inside NavList the hover fill is the gliding highlight, not the item itself. */
-.item:hover:not(.active):not(:disabled):not([aria-disabled='true']) {
-  color: var(--brand-main);
+@media (hover: hover) {
+  .item:hover:not(.active):not(:disabled):not([aria-disabled='true']) {
+    color: var(--brand-main);
+  }
 }
-.item:hover:not(.active):not(.inList):not(:disabled):not([aria-disabled='true']) {
-  background: var(--brand-main-10);
-  box-shadow: 0 0 0 0.125rem var(--brand-main-10);
+@media (hover: hover) {
+  .item:hover:not(.active):not(.inList):not(:disabled):not([aria-disabled='true']) {
+    background: var(--brand-main-10);
+    box-shadow: 0 0 0 0.125rem var(--brand-main-10);
+  }
 }
 .item:active:not(.active):not(:disabled):not([aria-disabled='true']) {
   background: var(--brand-main-15);

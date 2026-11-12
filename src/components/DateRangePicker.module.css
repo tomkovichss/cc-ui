@@ -22,10 +22,12 @@ button.trigger {
   cursor: pointer;
   transition: box-shadow 0.2s ease-out;
 }
-.trigger:hover:not(:disabled, :focus-visible) {
-  box-shadow:
-    inset 0 0 0 1px var(--border-input),
-    0 0 0 0.125rem var(--brand-main-30);
+@media (hover: hover) {
+  .trigger:hover:not(:disabled, :focus-visible) {
+    box-shadow:
+      inset 0 0 0 1px var(--border-input),
+      0 0 0 0.125rem var(--brand-main-30);
+  }
 }
 .trigger:focus-visible {
   outline: none;
@@ -47,10 +49,12 @@ button.trigger {
     inset 0 0 0 0.0938rem var(--danger-text),
     0 0 0 0.125rem rgba(var(--danger-rgb), 0.3);
 }
-.trigger.errorWrap:hover:not(:disabled, :focus-visible) {
-  box-shadow:
-    inset 0 0 0 1px rgba(var(--danger-rgb), 0.2),
-    0 0 0 0.125rem rgba(var(--danger-rgb), 0.3);
+@media (hover: hover) {
+  .trigger.errorWrap:hover:not(:disabled, :focus-visible) {
+    box-shadow:
+      inset 0 0 0 1px rgba(var(--danger-rgb), 0.2),
+      0 0 0 0.125rem rgba(var(--danger-rgb), 0.3);
+  }
 }
 .trigger:disabled {
   background: var(--surface-muted);
@@ -192,8 +196,10 @@ button.preset {
   cursor: pointer;
   transition: background 0.15s ease-out;
 }
-.preset:hover {
-  background: var(--depth-5);
+@media (hover: hover) {
+  .preset:hover {
+    background: var(--depth-5);
+  }
 }
 .preset:focus-visible {
   outline: 0.125rem solid var(--brand-main);

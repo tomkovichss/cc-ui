@@ -12,8 +12,10 @@ button.chip,
     transform 0.1s ease-out;
 }
 
-.chip:hover:not(:disabled):not(.disabled) {
-  background: var(--surface-muted);
+@media (hover: hover) {
+  .chip:hover:not(:disabled):not(.disabled) {
+    background: var(--surface-muted);
+  }
 }
 
 .chip:active:not(:disabled):not(.disabled) {
@@ -30,8 +32,10 @@ button.chip,
   color: var(--brand-main);
 }
 
-.chip.selected:hover:not(:disabled):not(.disabled) {
-  background: var(--brand-main-20);
+@media (hover: hover) {
+  .chip.selected:hover:not(:disabled):not(.disabled) {
+    background: var(--brand-main-20);
+  }
 }
 
 .chip.selected:active:not(:disabled):not(.disabled) {

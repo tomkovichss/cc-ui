@@ -129,28 +129,40 @@
   cursor: pointer;
 }
 
-.interactive:not(.disabled):hover.neutral {
-  background: var(--depth-10);
+@media (hover: hover) {
+  .interactive:not(.disabled):hover.neutral {
+    background: var(--depth-10);
+  }
 }
 
-.interactive:not(.disabled):hover.accent {
-  background: color-mix(in srgb, var(--brand-main) 12%, var(--brand-bg));
+@media (hover: hover) {
+  .interactive:not(.disabled):hover.accent {
+    background: color-mix(in srgb, var(--brand-main) 12%, var(--brand-bg));
+  }
 }
 
-.interactive:not(.disabled):hover.success {
-  background: color-mix(in srgb, var(--success-text) 12%, var(--success-bg));
+@media (hover: hover) {
+  .interactive:not(.disabled):hover.success {
+    background: color-mix(in srgb, var(--success-text) 12%, var(--success-bg));
+  }
 }
 
-.interactive:not(.disabled):hover.warning {
-  background: color-mix(in srgb, var(--warning-text) 12%, var(--warning-bg));
+@media (hover: hover) {
+  .interactive:not(.disabled):hover.warning {
+    background: color-mix(in srgb, var(--warning-text) 12%, var(--warning-bg));
+  }
 }
 
-.interactive:not(.disabled):hover.danger {
-  background: color-mix(in srgb, var(--danger-text) 12%, var(--danger-bg));
+@media (hover: hover) {
+  .interactive:not(.disabled):hover.danger {
+    background: color-mix(in srgb, var(--danger-text) 12%, var(--danger-bg));
+  }
 }
 
-.interactive:not(.disabled):hover.pill {
-  background: var(--depth-5);
+@media (hover: hover) {
+  .interactive:not(.disabled):hover.pill {
+    background: var(--depth-5);
+  }
 }
 
 .interactive:not(.disabled):active {
@@ -181,8 +193,10 @@ button.warning { background: var(--warning-bg); }
 button.danger { background: var(--danger-bg); }
 button.disabled { background: var(--disabled-bg); }
 
-.disabled.interactive:hover {
-  background: var(--disabled-bg);
+@media (hover: hover) {
+  .disabled.interactive:hover {
+    background: var(--disabled-bg);
+  }
 }
 
 /* Removable: span root holds the look; two sibling buttons inside */
@@ -223,8 +237,10 @@ button.disabled { background: var(--disabled-bg); }
   cursor: pointer;
 }
 
-.remove:hover:not(:disabled) {
-  background: color-mix(in srgb, currentColor 15%, transparent);
+@media (hover: hover) {
+  .remove:hover:not(:disabled) {
+    background: color-mix(in srgb, currentColor 15%, transparent);
+  }
 }
 
 .pill.pressed.disabled {

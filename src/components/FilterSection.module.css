@@ -18,8 +18,10 @@
     box-shadow 0.2s ease-out,
     transform 0.2s ease-out;
 }
-.btn:hover {
-  background: rgba(10, 10, 11, 0.04);
+@media (hover: hover) {
+  .btn:hover {
+    background: rgba(10, 10, 11, 0.04);
+  }
 }
 .btn:active {
   background: var(--brand-bg);
@@ -108,8 +110,10 @@
   color: var(--brand-main, #0a84d8);
   cursor: pointer;
 }
-.allToggle:hover {
-  text-decoration: underline;
+@media (hover: hover) {
+  .allToggle:hover {
+    text-decoration: underline;
+  }
 }
 .allToggle:focus-visible {
   outline: 0.125rem solid var(--brand-main);
@@ -130,8 +134,10 @@
   font-size: var(--font-size-lg);
   cursor: pointer;
 }
-.option:hover {
-  background: var(--bg);
+@media (hover: hover) {
+  .option:hover {
+    background: var(--bg);
+  }
 }
 .search {
   width: calc(100% - 1rem);

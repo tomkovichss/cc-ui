@@ -27,12 +27,14 @@
   outline: 0.125rem solid var(--brand-main);
   outline-offset: 0.125rem;
 }
-.primary:hover:not(:disabled),
-.secondary:hover:not(:disabled),
-.tertiary:hover:not(:disabled),
-.onDark:hover:not(:disabled),
-.dangerous:hover:not(:disabled) {
-  box-shadow: 0 0 0 0.125rem var(--btn-glow, transparent);
+@media (hover: hover) {
+  .primary:hover:not(:disabled),
+  .secondary:hover:not(:disabled),
+  .tertiary:hover:not(:disabled),
+  .onDark:hover:not(:disabled),
+  .dangerous:hover:not(:disabled) {
+    box-shadow: 0 0 0 0.125rem var(--btn-glow, transparent);
+  }
 }
 .primary:active:not(:disabled),
 .secondary:active:not(:disabled),
@@ -126,8 +128,10 @@ button.primary {
   background: var(--brand-dark);
   color: #fff;
 }
-.primary:hover:not(:disabled) {
-  background: var(--brand-main);
+@media (hover: hover) {
+  .primary:hover:not(:disabled) {
+    background: var(--brand-main);
+  }
 }
 .primary:active:not(:disabled) {
   background: var(--brand-dark);
@@ -138,9 +142,11 @@ button.primary {
   background: transparent;
   color: var(--text-secondary);
 }
-.tertiary:hover:not(:disabled) {
-  background: var(--brand-main-10);
-  color: var(--brand-main);
+@media (hover: hover) {
+  .tertiary:hover:not(:disabled) {
+    background: var(--brand-main-10);
+    color: var(--brand-main);
+  }
 }
 .tertiary:active:not(:disabled) {
   background: var(--brand-main-15);
@@ -156,12 +162,16 @@ button.primary {
 .secondary .icon {
   color: var(--text-secondary);
 }
-.secondary:hover:not(:disabled) {
-  background: var(--brand-main-5);
-  color: var(--brand-main);
+@media (hover: hover) {
+  .secondary:hover:not(:disabled) {
+    background: var(--brand-main-5);
+    color: var(--brand-main);
+  }
 }
-.secondary:hover:not(:disabled) .icon {
-  color: var(--brand-main);
+@media (hover: hover) {
+  .secondary:hover:not(:disabled) .icon {
+    color: var(--brand-main);
+  }
 }
 .secondary:active:not(:disabled) {
   background: var(--brand-main-15);
@@ -173,11 +183,15 @@ button.onDark {
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
-.onDark:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.16);
+@media (hover: hover) {
+  .onDark:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.16);
+  }
 }
-.onDark:hover:not(:disabled)::after {
-  box-shadow: none;
+@media (hover: hover) {
+  .onDark:hover:not(:disabled)::after {
+    box-shadow: none;
+  }
 }
 .onDark:active:not(:disabled) {
   background: rgba(255, 255, 255, 0.14);
@@ -190,8 +204,10 @@ button.onDark {
   background: transparent;
   color: var(--danger-text-dark);
 }
-.dangerous:hover:not(:disabled) {
-  background: rgba(var(--danger-rgb), 0.05);
+@media (hover: hover) {
+  .dangerous:hover:not(:disabled) {
+    background: rgba(var(--danger-rgb), 0.05);
+  }
 }
 .dangerous:active:not(:disabled) {
   background: rgba(var(--danger-rgb), 0.15);
@@ -242,8 +258,10 @@ button.onDark {
   text-underline-offset: 0.125rem;
   cursor: pointer;
 }
-.link:hover:not(:disabled) {
-  color: var(--brand-dark);
+@media (hover: hover) {
+  .link:hover:not(:disabled) {
+    color: var(--brand-dark);
+  }
 }
 .link:focus-visible {
   outline: 0.125rem solid var(--brand-main);
@@ -253,7 +271,12 @@ button.onDark {
 .link.underlineHover {
   text-decoration: none;
 }
-.link.underlineHover:hover:not(:disabled),
+@media (hover: hover) {
+  .link.underlineHover:hover:not(:disabled) {
+    text-decoration: underline;
+    text-underline-offset: 0.125rem;
+  }
+}
 .link.underlineHover:focus-visible {
   text-decoration: underline;
   text-underline-offset: 0.125rem;

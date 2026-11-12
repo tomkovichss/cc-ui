@@ -19,8 +19,10 @@
   color: var(--text-primary);
   transition: color 0.2s ease-out;
 }
-.checkbox:hover .labelText {
-  color: var(--brand-main);
+@media (hover: hover) {
+  .checkbox:hover .labelText {
+    color: var(--brand-main);
+  }
 }
 .input {
   position: absolute;
@@ -44,8 +46,10 @@
     box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1),
     transform 0.1s cubic-bezier(0, 0, 0.2, 1);
 }
-.checkbox:hover .box {
-  box-shadow: 0 0 0 1px var(--brand-main);
+@media (hover: hover) {
+  .checkbox:hover .box {
+    box-shadow: 0 0 0 1px var(--brand-main);
+  }
 }
 .input:focus-visible + .box {
   outline: 0.125rem solid var(--brand-main);
@@ -58,8 +62,10 @@
   background: var(--brand-main);
   box-shadow: inset 0 0 0 1px var(--brand-main);
 }
-.checkbox:hover .input:checked + .box {
-  box-shadow: 0 0 0 1px var(--brand-main);
+@media (hover: hover) {
+  .checkbox:hover .input:checked + .box {
+    box-shadow: 0 0 0 1px var(--brand-main);
+  }
 }
 .icon {
   width: 0.625rem;
@@ -104,7 +110,12 @@
 .indicator[data-checked='true'] .icon polyline {
   stroke-dashoffset: 0px;
 }
-button:is(:hover, :focus-visible):not(:disabled) .indicator {
+@media (hover: hover) {
+  button:hover:not(:disabled) .indicator {
+    box-shadow: 0 0 0 1px var(--brand-main);
+  }
+}
+button:focus-visible:not(:disabled) .indicator {
   box-shadow: 0 0 0 1px var(--brand-main);
 }
 .indicator[data-disabled] {

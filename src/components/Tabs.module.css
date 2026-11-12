@@ -59,8 +59,10 @@
   pointer-events: none;
   background: rgba(var(--brand-main-rgb), 0.08);
 }
-.tab:hover:not(:disabled)::before {
-  opacity: 1;
+@media (hover: hover) {
+  .tab:hover:not(:disabled)::before {
+    opacity: 1;
+  }
 }
 .tab:active:not(:disabled)::before {
   background: rgba(var(--brand-main-rgb), 0.28);
@@ -74,8 +76,10 @@
   display: none;
 }
 
-.tab.selected:hover::before {
-  display: none;
+@media (hover: hover) {
+  .tab.selected:hover::before {
+    display: none;
+  }
 }
 
 .tab:focus-visible {
@@ -116,8 +120,10 @@
   font-size: var(--control-font-size);
   color: var(--text-secondary);
 }
-.line .tab:hover:not(:disabled) {
-  color: var(--brand-main);
+@media (hover: hover) {
+  .line .tab:hover:not(:disabled) {
+    color: var(--brand-main);
+  }
 }
 .line .tab.selected {
   color: var(--text-primary);
@@ -152,9 +158,11 @@
   background: transparent;
   color: var(--text-secondary);
 }
-.box .tab:hover:not(:disabled) {
-  color: var(--brand-main);
-  /* box-shadow: 0 0 0px 1px var(--brand-main-30); */
+@media (hover: hover) {
+  .box .tab:hover:not(:disabled) {
+    color: var(--brand-main);
+    /* box-shadow: 0 0 0px 1px var(--brand-main-30); */
+  }
 }
 .box .tab.selected {
   color: var(--text-primary);

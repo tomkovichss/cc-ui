@@ -30,15 +30,19 @@
 .interactive {
   cursor: pointer;
 }
-.interactive:hover {
-  box-shadow:
-    inset 0 0 0 1px var(--border),
-    0 0 0 0.125rem var(--brand-main);
+@media (hover: hover) {
+  .interactive:hover {
+    box-shadow:
+      inset 0 0 0 1px var(--border),
+      0 0 0 0.125rem var(--brand-main);
+  }
 }
-.interactive.current:hover {
-  box-shadow:
-    inset 0 0 0 0.125rem var(--brand-main-30),
-    0 0 0 0.125rem var(--brand-main);
+@media (hover: hover) {
+  .interactive.current:hover {
+    box-shadow:
+      inset 0 0 0 0.125rem var(--brand-main-30),
+      0 0 0 0.125rem var(--brand-main);
+  }
 }
 .interactive:active {
   transform: scale(0.99, 0.97);

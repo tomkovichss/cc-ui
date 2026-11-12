@@ -59,8 +59,10 @@
   cursor: pointer;
   transition: background 0.15s ease-out;
 }
-.day:hover:not(.selected, .disabled) {
-  background: var(--brand-main-5);
+@media (hover: hover) {
+  .day:hover:not(.selected, .disabled) {
+    background: var(--brand-main-5);
+  }
 }
 .day:focus-visible {
   outline: 0.125rem solid var(--brand-main);
@@ -86,8 +88,10 @@
   border-radius: 0;
   background: var(--brand-main-10);
 }
-.day.inRange:hover:not(.disabled) {
-  background: var(--brand-main-20);
+@media (hover: hover) {
+  .day.inRange:hover:not(.disabled) {
+    background: var(--brand-main-20);
+  }
 }
 .day.rangeStart {
   border-top-right-radius: 0;

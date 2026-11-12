@@ -21,13 +21,17 @@
 .item.base {
   min-height: var(--control-height-base);
 }
-.item:hover:not(:disabled) {
-  background: var(--brand-bg);
-  color: var(--brand-dark);
+@media (hover: hover) {
+  .item:hover:not(:disabled) {
+    background: var(--brand-bg);
+    color: var(--brand-dark);
+  }
 }
-.item:hover:not(:disabled) .icon,
-.item:hover:not(:disabled) .check {
-  color: var(--brand-dark);
+@media (hover: hover) {
+  .item:hover:not(:disabled) .icon,
+  .item:hover:not(:disabled) .check {
+    color: var(--brand-dark);
+  }
 }
 .item:active:not(:disabled) {
   background: var(--brand-main-20);
@@ -106,10 +110,14 @@
 .destructive .icon {
   color: var(--danger-text);
 }
-.destructive:hover:not(:disabled) {
-  background: var(--danger-bg);
-  color: var(--danger-text);
+@media (hover: hover) {
+  .destructive:hover:not(:disabled) {
+    background: var(--danger-bg);
+    color: var(--danger-text);
+  }
 }
-.destructive:hover:not(:disabled) .icon {
-  color: var(--danger-text);
+@media (hover: hover) {
+  .destructive:hover:not(:disabled) .icon {
+    color: var(--danger-text);
+  }
 }
