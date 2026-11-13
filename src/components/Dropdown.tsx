@@ -487,7 +487,7 @@ export function Dropdown<T extends string>(props: DropdownProps<T>) {
                     selected={!multiple && opt.value === value}
                     disabled={opt.disabled}
                     onClick={() => select(opt.value)}
-                    onMouseEnter={(e) => !opt.disabled && glideTo(e.currentTarget)}
+                    onPointerEnter={(e) => e.pointerType === 'mouse' && !opt.disabled && glideTo(e.currentTarget)}
                     onFocus={(e) => glideTo(e.currentTarget)}
                     onKeyDown={(e) => handleOptionKeyDown(e, opt.value)}
                   >

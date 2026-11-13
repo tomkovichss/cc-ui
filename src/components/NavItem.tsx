@@ -9,7 +9,7 @@ import {
   type ElementType,
   type FocusEvent,
   type HTMLAttributes,
-  type MouseEvent,
+  type PointerEvent,
   type ReactNode,
 } from 'react';
 import styles from './NavItem.module.css';
@@ -117,7 +117,7 @@ export function NavList({ children, className, ...rest }: NavListProps) {
       <div
         ref={rootRef}
         className={[styles.list, className].filter(Boolean).join(' ')}
-        onMouseOver={(event: MouseEvent) => moveTo(event.target)}
+        onPointerOver={(event: PointerEvent) => event.pointerType === 'mouse' && moveTo(event.target)}
         onMouseLeave={() => setVisible(false)}
         onFocus={(event: FocusEvent) => event.target.matches(':focus-visible') && moveTo(event.target)}
         onBlur={() => setVisible(false)}

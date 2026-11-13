@@ -293,7 +293,7 @@ export function Calendar({
                   // Keeps a click on an unavailable day from stealing focus.
                   onMouseDown={disabled ? (e) => e.preventDefault() : undefined}
                   onClick={disabled || hidden ? undefined : () => pick(date)}
-                  onMouseEnter={onDayHover && !hidden ? () => onDayHover(date) : undefined}
+                  onPointerEnter={onDayHover && !hidden ? (e) => e.pointerType === 'mouse' && onDayHover(date) : undefined}
                   onFocus={onDayHover && !hidden ? () => onDayHover(date) : undefined}
                 >
                   {date.getDate()}
