@@ -22,6 +22,7 @@
   --card-surface: #fff;
   --surface-sunken: #f8f9fa;
   --surface-muted: #e5e7e9;
+  --surface-muted-inverse: rgba(255, 255, 255, 0.12);
   --border: #e0e0e0;
   --border-subtle: #efefef;
   --border-input: rgba(0, 0, 0, 0.1);

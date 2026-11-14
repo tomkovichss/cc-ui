@@ -19,6 +19,8 @@ interface SkeletonProps {
   size?: number | string;
   /** Turn the pulse off, e.g. for a screenshot or when many blocks are on screen. */
   animated?: boolean;
+  /** `default` sits on light surfaces; `inverse` on dark ones (video, overlays). */
+  tone?: 'default' | 'inverse';
   className?: string;
   'data-testid'?: string;
 }
@@ -29,10 +31,17 @@ export function Skeleton({
   height,
   size,
   animated = true,
+  tone = 'default',
   className,
   'data-testid': dataTestId,
 }: SkeletonProps) {
-  const classes = [styles.skeleton, styles[variant], animated && styles.animated, className]
+  const classes = [
+    styles.skeleton,
+    styles[variant],
+    tone === 'inverse' && styles.inverse,
+    animated && styles.animated,
+    className,
+  ]
     .filter(Boolean)
     .join(' ');
 

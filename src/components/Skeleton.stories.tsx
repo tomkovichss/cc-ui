@@ -19,6 +19,7 @@ const meta: Meta<typeof Skeleton> = {
     height: { control: 'text' },
     size: { control: 'text' },
     animated: { control: 'boolean' },
+    tone: { control: 'inline-radio', options: ['default', 'inverse'] },
   },
 };
 export default meta;
@@ -39,6 +40,35 @@ export const Variants: Story = {
         <Skeleton variant="text" />
       </div>
       <Skeleton variant="circle" size={48} />
+    </div>
+  ),
+};
+
+const dark: CSSProperties = {
+  ...row,
+  padding: 24,
+  borderRadius: 12,
+  background:
+    'linear-gradient(var(--depth-75), var(--depth-75)), linear-gradient(135deg, #3a4a5c 0%, #101820 60%, #2b2118 100%)',
+};
+
+export const OnDark: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div style={{ ...dark, background: '#101820' }}>
+        <Skeleton tone="inverse" variant="rect" width={160} height={48} />
+        <div style={{ width: 160 }}>
+          <Skeleton tone="inverse" variant="text" />
+        </div>
+        <Skeleton tone="inverse" variant="circle" size={48} />
+      </div>
+      <div style={dark}>
+        <Skeleton tone="inverse" variant="rect" width={160} height={48} />
+        <div style={{ width: 160 }}>
+          <Skeleton tone="inverse" variant="text" />
+        </div>
+        <Skeleton tone="inverse" variant="circle" size={48} />
+      </div>
     </div>
   ),
 };
