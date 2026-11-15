@@ -75,6 +75,8 @@ interface DateRangePickerProps {
 
 /** Two months side by side fit from this width up. */
 const TWO_MONTHS_QUERY = '(min-width: 640px)';
+/** Bottom-sheet layout; matches the phone breakpoint in DateRangePicker.module.css. */
+const PHONE_QUERY = '(max-width: 480px)';
 
 function useMediaQuery(query: string): boolean {
   return useSyncExternalStore(
@@ -142,6 +144,7 @@ export function DateRangePicker({
   const fieldId = id ?? generatedId;
   const popupId = useId();
   const twoMonths = useMediaQuery(TWO_MONTHS_QUERY);
+  const phone = useMediaQuery(PHONE_QUERY);
   const isOpen = open && !disabled && !loading;
 
   const activePreset = activePresetId ? presets.find((p) => p.id === activePresetId) : undefined;
@@ -295,14 +298,26 @@ export function DateRangePicker({
                   </div>
                 )}
               </div>
-              <div className={styles.footer}>
-                <Button variant="tertiary" size="sm" onClick={() => closePopup(true)}>
-                  {cancelLabel}
-                </Button>
-                <Button variant="primary" size="sm" disabled={!isComplete(draft)} onClick={apply}>
-                  {applyLabel}
-                </Button>
-              </div>
+              {phone ? (
+                // Phones: bigger, half-width buttons with Apply first, under the thumb.
+                <div className={styles.footer}>
+                  <Button variant="primary" size="base" fullWidth disabled={!isComplete(draft)} onClick={apply}>
+                    {applyLabel}
+                  </Button>
+                  <Button variant="tertiary" size="base" fullWidth onClick={() => closePopup(true)}>
+                    {cancelLabel}
+                  </Button>
+                </div>
+              ) : (
+                <div className={styles.footer}>
+                  <Button variant="tertiary" size="sm" onClick={() => closePopup(true)}>
+                    {cancelLabel}
+                  </Button>
+                  <Button variant="primary" size="sm" disabled={!isComplete(draft)} onClick={apply}>
+                    {applyLabel}
+                  </Button>
+                </div>
+              )}
             </div>
           </div>,
           document.body,

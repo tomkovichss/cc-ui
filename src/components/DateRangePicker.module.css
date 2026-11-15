@@ -263,6 +263,10 @@ button.preset[aria-pressed='true'] {
   .month {
     width: 100%;
   }
+  .footer > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .popup {
