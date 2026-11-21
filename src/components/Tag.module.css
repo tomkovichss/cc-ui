@@ -39,7 +39,7 @@
 /* Accent pill — e.g. "current" stat, read-only banner badge */
 .accent {
   background: var(--brand-bg);
-  color: var(--brand-dark);
+  color: var(--brand-text);
   font-size: var(--font-size-sm);
   padding: 0.1875rem 0.6875rem;
   border-radius: 62.4375rem;

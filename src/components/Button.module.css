@@ -153,7 +153,7 @@ button.primary {
 }
 
 .secondary {
-  --btn-ring: rgba(0, 0, 0, 0.1);
+  --btn-ring: var(--border-input);
   --btn-ring-width: 1px;
   --btn-glow: var(--brand-main-30);
   background: transparent;
@@ -260,7 +260,7 @@ button.onDark {
 }
 @media (hover: hover) {
   .link:hover:not(:disabled) {
-    color: var(--brand-dark);
+    color: var(--brand-text);
   }
 }
 .link:focus-visible {

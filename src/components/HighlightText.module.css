@@ -1,6 +1,6 @@
 .highlight {
   background: var(--brand-bg);
-  color: var(--brand-dark);
+  color: var(--brand-text);
   border-radius: 0.1875rem;
   padding: 0 1px;
 }

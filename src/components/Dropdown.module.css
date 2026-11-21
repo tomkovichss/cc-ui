@@ -292,7 +292,7 @@ button.pillTrigger {
 @media (hover: hover) {
   .pillTrigger:hover:not(:disabled) {
     background: var(--brand-bg);
-    color: var(--brand-dark);
+    color: var(--brand-text);
   }
 }
 .pillTrigger:active:not(:disabled) {

@@ -11,7 +11,7 @@
   background: var(--card-surface);
   box-shadow:
     inset 0 0 0 1px var(--border),
-    0 0.5rem 1.5rem var(--depth-10);
+    0 0.5rem 1.5rem var(--shadow-popover-color);
 }
 
 /* Phones: a bottom sheet spanning the screen with 8px margins. */

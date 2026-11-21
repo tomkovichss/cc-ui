@@ -24,13 +24,13 @@
 @media (hover: hover) {
   .item:hover:not(:disabled) {
     background: var(--brand-bg);
-    color: var(--brand-dark);
+    color: var(--brand-text);
   }
 }
 @media (hover: hover) {
   .item:hover:not(:disabled) .icon,
   .item:hover:not(:disabled) .check {
-    color: var(--brand-dark);
+    color: var(--brand-text);
   }
 }
 .item:active:not(:disabled) {

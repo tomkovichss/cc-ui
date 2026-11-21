@@ -3,6 +3,7 @@
   --brand-main: #0090d9;
   --brand-dark: #007ebd;
   --brand-bg: #e0f5ff;
+  --brand-text: var(--brand-dark); /* brand-coloured text (links, selected labels) */
   --brand-main-rgb: 0, 144, 217;
   --brand-main-5: rgba(var(--brand-main-rgb), 0.05);
   --brand-main-10: rgba(var(--brand-main-rgb), 0.1);
@@ -26,6 +27,10 @@
   --border: #e0e0e0;
   --border-subtle: #efefef;
   --border-input: rgba(0, 0, 0, 0.1);
+  --track-bg: var(--depth-5); /* segmented-control track (Tabs box, Toggle, Sidebar switcher) */
+  --track-selected: var(--card-surface); /* selected pill on the track */
+  --border-control: var(--border); /* outline of checkbox / radio / switch */
+  --border-track: #e3e3e3; /* hairline around the grey segmented-control track */
 
   /* Depth */
   --depth-base: 16, 24, 32;
@@ -50,6 +55,7 @@
   --success-text-dark: #167006;
   --success-rgb: 31, 145, 8;
   --success-border: rgba(var(--success-rgb), 0.1);
+  --success-border-strong: #bfe3cc;
   --warning-surface: #fff8eb;
   --warning-bg: #fff1d6;
   --warning-text: #8f5d00;
@@ -69,7 +75,12 @@
   --radius-lg: 1rem;
 
   /* Shadows */
-  --shadow-soft: 0 0.125rem 2.25rem var(--depth-5);
+  --shadow-rgb: 16, 24, 32;
+  --shadow-soft: 0 0.125rem 2.25rem rgba(var(--shadow-rgb), 0.05);
+  --shadow-card-edge: 0 1px 0.125rem rgba(var(--shadow-rgb), 0.04);
+  --shadow-card-lift: 0 0.125rem 0.5rem rgba(var(--shadow-rgb), 0.06);
+  --shadow-popover-color: rgba(var(--shadow-rgb), 0.1);
+  --overlay: rgba(var(--shadow-rgb), 0.1); /* modal backdrop */
 
   /* Scrollbars */
   --scrollbar-size: 0.5rem;
@@ -82,4 +93,56 @@
   --z-popover: 1000;
   --z-modal: 1100;
   --z-tooltip: 1200;
+}
+
+/* Dark theme: opt in with <html data-theme="dark"> (or any ancestor). */
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --brand-bg: #0d2a3b;
+  --brand-text: #4db8f2;
+
+  --text-primary: #f2f4f5;
+  --text-secondary: #a8adb0;
+  --text-tertiary: #8f979c;
+
+  --bg: #111315;
+  --card-surface: #1b1e21;
+  --surface-sunken: #16181a;
+  --surface-muted: #2a2e32;
+  --border: #2f3438;
+  --border-subtle: #272b2f;
+  --border-input: rgba(255, 255, 255, 0.14);
+  --border-control: #4a5056;
+  --border-track: #33383c;
+  --track-bg: #0d0f10; /* darker than the page */
+  --track-selected: #2a2e32; /* lighter than the track */
+
+  /* Depth overlays flip from dark-on-light to light-on-dark. */
+  --depth-base: 255, 255, 255;
+
+  --danger-surface: #2a1716;
+  --danger-bg: #3a1c1a;
+  --danger-text: #ff7b70;
+  --danger-text-dark: #ff9188;
+  --danger-rgb: 255, 123, 112;
+  --success-surface: #14241a;
+  --success-bg: #17301d;
+  --success-text: #5fd248;
+  --success-text-dark: #7ee06a;
+  --success-rgb: 95, 210, 72;
+  --success-border-strong: #2a5a36;
+  --warning-surface: #2a2111;
+  --warning-bg: #3a2c0f;
+  --warning-text: #f0b43c;
+  --warning-rgb: 240, 180, 60;
+  --disabled-bg: #3a3e42;
+  --disabled-text: #6b7276;
+
+  --shadow-rgb: 0, 0, 0;
+  --shadow-soft: 0 0.125rem 2.25rem rgba(var(--shadow-rgb), 0.4);
+  --shadow-card-edge: 0 1px 0.125rem rgba(var(--shadow-rgb), 0.3);
+  --shadow-card-lift: 0 0.125rem 0.5rem rgba(var(--shadow-rgb), 0.3);
+  --shadow-popover-color: rgba(var(--shadow-rgb), 0.5);
+  --overlay: rgba(var(--shadow-rgb), 0.55);
 }

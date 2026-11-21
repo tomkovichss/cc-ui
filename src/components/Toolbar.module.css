@@ -8,8 +8,8 @@
   border-radius: 1rem;
   box-shadow:
     inset 0 0 0 1px var(--border),
-    0 1px 0.125rem rgba(16, 24, 32, 0.04),
-    0 0.125rem 0.5rem rgba(16, 24, 32, 0.06);
+    var(--shadow-card-edge),
+    var(--shadow-card-lift);
 }
 .searchWrap {
   position: relative;

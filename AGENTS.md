@@ -57,6 +57,13 @@ consuming app owns that. Leave it at the browser default (or `100%`) so user fon
 working. To scale the whole UI (e.g. larger on wide screens), change `html { font-size }` in
 percent, not px. Hairlines (`1px` and below) and `@media`/`@container` breakpoints stay in `px`.
 
+## Dark theme
+
+Set `data-theme="dark"` on `<html>` (or any ancestor) to switch every token to its dark value; remove
+it (or use `"light"`) for the default theme. The library does not follow `prefers-color-scheme` on
+its own — the consuming app decides when to switch. Dark values live in the `[data-theme='dark']`
+block of `src/styles/tokens.css`; use tokens, never hardcoded colours, in new component CSS.
+
 ## Known limitation
 
 This library's design tokens are plain, unprefixed CSS custom properties (`--text-primary`,

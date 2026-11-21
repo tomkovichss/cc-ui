@@ -6,6 +6,27 @@ import '../src/styles/scrollbars.css';
 import '../src/styles/scrollbars';
 
 const preview: Preview = {
+  globalTypes: {
+    theme: {
+      description: 'Color theme',
+      toolbar: {
+        title: 'Theme',
+        icon: 'circlehollow',
+        items: [
+          { value: 'light', title: 'Light', icon: 'sun' },
+          { value: 'dark', title: 'Dark', icon: 'moon' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: { theme: 'light' },
+  decorators: [
+    (Story, context) => {
+      document.documentElement.setAttribute('data-theme', context.globals.theme ?? 'light');
+      return Story();
+    },
+  ],
   parameters: {
     controls: {
       matchers: {

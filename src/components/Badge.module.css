@@ -16,7 +16,7 @@
 
 .brand {
   background: var(--brand-bg);
-  color: var(--brand-dark);
+  color: var(--brand-text);
 }
 
 .success {

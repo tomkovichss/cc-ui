@@ -31,7 +31,7 @@
   border-radius: 62.4375rem;
   background: var(--depth-10);
   /* Two layers in every state (inner border + outer hover ring) so the ring animates in. */
-  box-shadow: inset 0 0 0 1px var(--border), 0 0 0 0 var(--border);
+  box-shadow: inset 0 0 0 1px var(--border-control), 0 0 0 0 var(--border-control);
   transition:
     background-color 0.2s cubic-bezier(0, 0, 0.2, 1),
     box-shadow 0.2s cubic-bezier(0, 0, 0.2, 1);
@@ -47,7 +47,7 @@
 /* Hover: 1px outer ring, grey when off, blue when on. */
 @media (hover: hover) {
   .switch:hover .input:not(:disabled) + .track {
-    box-shadow: inset 0 0 0 1px var(--border), 0 0 0 1px var(--border);
+    box-shadow: inset 0 0 0 1px var(--border-control), 0 0 0 1px var(--border-control);
   }
   .switch:hover .input:checked:not(:disabled) + .track {
     box-shadow: inset 0 0 0 1px var(--brand-main), 0 0 0 1px var(--brand-main);
@@ -55,7 +55,7 @@
 }
 .input:disabled + .track {
   background: var(--surface-muted);
-  box-shadow: inset 0 0 0 1px var(--border), 0 0 0 0 var(--border);
+  box-shadow: inset 0 0 0 1px var(--border-control), 0 0 0 0 var(--border-control);
 }
 .thumb {
   position: absolute;

@@ -4,7 +4,7 @@
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
   background: var(--text-primary);
-  color: #fff;
+  color: var(--card-surface);
   font-family: inherit;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);

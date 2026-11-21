@@ -56,8 +56,8 @@
   background: transparent;
   box-shadow:
     inset 0 -1px 0 var(--border),
-    0 1px 0.125rem rgba(var(--depth-base), 0),
-    0 0.125rem 0.5rem rgba(var(--depth-base), 0);
+    0 1px 0.125rem rgba(var(--shadow-rgb), 0),
+    0 0.125rem 0.5rem rgba(var(--shadow-rgb), 0);
   pointer-events: auto;
 }
 .card[data-state='floating'] {
@@ -67,8 +67,8 @@
   background: var(--card-surface);
   box-shadow:
     inset 0 0 0 1px var(--border),
-    0 1px 0.125rem rgba(var(--depth-base), 0.04),
-    0 0.125rem 0.5rem rgba(var(--depth-base), 0.06);
+    0 1px 0.125rem rgba(var(--shadow-rgb), 0.04),
+    0 0.125rem 0.5rem rgba(var(--shadow-rgb), 0.06);
 }
 .animated {
   transition:
@@ -92,8 +92,8 @@
     background: var(--card-surface);
     box-shadow:
       inset 0 -1px 0 var(--border),
-      0 1px 0.125rem rgba(var(--depth-base), 0),
-      0 0.125rem 0.5rem rgba(var(--depth-base), 0);
+      0 1px 0.125rem rgba(var(--shadow-rgb), 0),
+      0 0.125rem 0.5rem rgba(var(--shadow-rgb), 0);
   }
 }
 
