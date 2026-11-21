@@ -3,9 +3,11 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   BarChart3,
   Clock,
+  CornerUpLeft,
   FileChartLine,
   Film,
-  MoreVertical,
+  LogOut,
+  EllipsisVertical,
   TrendingUp,
   Users,
 } from 'lucide-react';
@@ -74,17 +76,21 @@ function MoreMenu() {
       <Button
         variant="tertiary"
         size="sm"
-        aria-label="More"
+        aria-label="User menu"
         aria-haspopup="menu"
         aria-expanded={open}
-        leadingIcon={<MoreVertical size={24} />}
+        leadingIcon={<EllipsisVertical />}
         onClick={() => setOpen((v) => !v)}
       />
       {open && (
         <div style={{ position: 'absolute', bottom: '100%', right: 0, zIndex: 10 }}>
           <Menu>
-            <MenuItem onClick={() => setOpen(false)}>Settings</MenuItem>
-            <MenuItem onClick={() => setOpen(false)}>Sign out</MenuItem>
+            <MenuItem icon={<CornerUpLeft />} onClick={() => setOpen(false)}>
+              Back to dashboard
+            </MenuItem>
+            <MenuItem destructive icon={<LogOut />} onClick={() => setOpen(false)}>
+              Log Out
+            </MenuItem>
           </Menu>
         </div>
       )}
@@ -99,8 +105,8 @@ interface DemoProps {
   email?: string;
   initialLang?: string;
   initialBarn?: string;
-  /** Line tabs flush under the header instead of box tabs. */
-  lineSwitcher?: boolean;
+  /** Three barns: the switcher becomes a dropdown instead of tabs. */
+  manyBarns?: boolean;
 }
 
 function Demo({
@@ -110,7 +116,7 @@ function Demo({
   email = 'farmermail@gmail.com',
   initialLang = 'en',
   initialBarn = 'milk',
-  lineSwitcher = false,
+  manyBarns = false,
 }: DemoProps) {
   const [farm, setFarm] = useState(farmOptions[0].value);
   const [barn, setBarn] = useState(initialBarn);
@@ -122,10 +128,9 @@ function Demo({
   return (
     <Sidebar
       aria-label="Main navigation"
-      switcherLayout={lineSwitcher ? 'flush' : 'inset'}
       header={
         <>
-          <Logo size={lineSwitcher ? 32 : 40} />
+          <Logo size={40} />
           <Dropdown
             variant="field"
             size="base"
@@ -138,11 +143,11 @@ function Demo({
       }
       switcher={
         withSwitcher ? (
-          lineSwitcher ? (
-            <Tabs
-              variant="line"
+          manyBarns ? (
+            <Dropdown
+              variant="field"
               size="sm"
-              items={barnsWithFeed}
+              options={barnsWithFeed}
               value={barn}
               onChange={setBarn}
               aria-label="Barn"
@@ -182,7 +187,10 @@ export const Default: Story = { render: () => <Demo /> };
 
 export const CalfBarn: Story = { render: () => <Demo initialBarn="calf" /> };
 
-export const LineSwitcher: Story = { render: () => <Demo lineSwitcher /> };
+export const ThreeOrMoreBarns: Story = {
+  name: '3+ Barns (Dropdown)',
+  render: () => <Demo manyBarns />,
+};
 
 export const NoSwitcher: Story = { render: () => <Demo withSwitcher={false} /> };
 
@@ -196,6 +204,12 @@ export const LongContent: Story = {
         { id: 'b', label: 'Another extremely long navigation label', icon: <Film size={20} /> },
       ]}
     />
+  ),
+};
+
+export const LongEmail: Story = {
+  render: () => (
+    <Demo email="sergey.tomkovich.dairy.operations.manager@cattle-care-enterprise-solutions.com" />
   ),
 };
 

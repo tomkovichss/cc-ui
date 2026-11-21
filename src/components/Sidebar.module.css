@@ -40,25 +40,17 @@
   justify-content: center;
 }
 
-/* Flush switcher: full-width row under the header with a divider; the tabs keep a 12px side inset. */
-.flush {
-  padding: 1rem 0 0;
+/* Dropdown switcher (3+ barns): the field sits in the same grey track as box tabs. */
+.switcher:not(:has(> [role='tablist'])) {
+  box-sizing: border-box;
+  padding: 0.25rem;
+  border-radius: var(--radius-base);
+  background: var(--depth-5);
+  box-shadow: inset 0 0 0.5px 1px #e3e3e3;
 }
-.flush .header {
-  padding: 0 1rem 0.75rem;
-}
-.flush .switcher {
-  margin-top: 0.25rem;
-  padding: 0 0.75rem;
-  box-shadow: inset 0 -1px 0 var(--border-input);
-}
-.flush .switcher > [role='tablist'] {
-  box-shadow: none;
-  gap: 0;
-}
-.flush .switcher > [role='tablist'] > [role='tab'] {
-  min-width: 0;
-  padding-inline: 0.125rem;
+/* The field reads as the selected "pill": white, like the box-tabs indicator. */
+.switcher:not(:has(> [role='tablist'])) button[aria-haspopup] {
+  background: var(--card-surface);
 }
 
 /* Only the navigation scrolls; the header, switcher and footer stay put. */
@@ -81,13 +73,9 @@
 
 .footerRow {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.5rem;
   padding: 1rem 1rem 1rem 1.25rem;
-}
-.footerText {
-  flex: 1;
-  min-width: 0;
 }
 .title {
   overflow: hidden;
@@ -98,55 +86,18 @@
   font-weight: 550;
   color: var(--text-primary);
 }
+.footerControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .subtitle {
-  margin-top: 0.25rem;
+  flex: 1;
+  min-width: 0;
 }
 .action {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 3rem;
-  height: 3rem;
-}
-
-.lang {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--font-size-sm);
-  line-height: 1.25rem;
-  font-weight: 450;
-}
-.langItem {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.langSeparator {
-  font-size: var(--font-size-base);
-  color: #c5c5c5;
-}
-.langCurrent {
-  color: var(--text-secondary);
-}
-.langButton {
-  padding: 0;
-  border: none;
-  background: none;
-  font: inherit;
-  color: var(--brand-main);
-  text-decoration: underline dotted;
-  text-underline-offset: 0.1875rem;
-  cursor: pointer;
-}
-@media (hover: hover) {
-  .langButton:hover {
-    text-decoration-style: solid;
-  }
-}
-.langButton:focus-visible {
-  outline: 0.125rem solid var(--brand-main);
-  outline-offset: 0.125rem;
-  border-radius: 0.25rem;
 }

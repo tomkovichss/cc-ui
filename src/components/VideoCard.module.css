@@ -220,14 +220,6 @@
   object-fit: cover;
 }
 
-.emptyPhoto {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--depth-5);
-  color: var(--text-secondary);
-}
-
 .workerText {
   min-width: 0;
 }

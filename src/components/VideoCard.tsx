@@ -1,8 +1,9 @@
-import { Archive, FileClock, ImageOff, Lock, Play, User } from 'lucide-react';
+import { Archive, FileClock, ImageOff, Lock, Play } from 'lucide-react';
 import { useState } from 'react';
 import type { KeyboardEvent, ReactNode } from 'react';
 import { PhotoPreview } from './PhotoPreview';
 import { Skeleton } from './Skeleton';
+import workerEmpty from '../assets/worker-empty.webp?inline';
 import styles from './VideoCard.module.css';
 
 interface VideoCardLabels {
@@ -20,7 +21,7 @@ const DEFAULT_LABELS: VideoCardLabels = {
   comment: 'Comment:',
   inaccessible: 'Inaccessible',
   archived: 'Archived',
-  unavailable: 'Preview unavailable',
+  unavailable: 'Unavailable',
   notReady: 'Not ready',
   new: 'Unwatched',
 };
@@ -210,9 +211,8 @@ function VideoCardRoot({
                       />
                     </PhotoPreview>
                   ) : (
-                    <div className={`${styles.photo} ${styles.emptyPhoto}`} aria-hidden="true">
-                      <User size={20} />
-                    </div>
+                    <img className={styles.photo} src={workerEmpty} alt="" aria-hidden="true" />
+
                   )}
                   <div className={styles.workerText}>
                     <div className={styles.workerName}>{worker.name}</div>

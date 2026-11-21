@@ -1,12 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import workerEmpty from '../assets/worker-empty.webp?inline';
 import { PhotoPreview } from './PhotoPreview';
 
-const svgUri = (bg: string, fg: string) =>
-  `data:image/svg+xml;utf8,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240"><rect width="240" height="240" fill="${bg}"/><circle cx="120" cy="96" r="44" fill="${fg}"/><rect x="50" y="150" width="140" height="90" rx="40" fill="${fg}"/></svg>`,
-  )}`;
-
-const PHOTO = svgUri('#4b5560', '#9aa6b1');
+const PHOTO = workerEmpty;
 const BROKEN = '/this-image-does-not-exist.jpg';
 
 const meta: Meta<typeof PhotoPreview> = {

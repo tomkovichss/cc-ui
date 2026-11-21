@@ -122,7 +122,7 @@ export const PreviewUnavailable: Story = {
   args: { ...base, preview: undefined, previewFallback: 'unavailable' },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByText('Preview unavailable')).toBeVisible();
+    await expect(canvas.getByText('Unavailable')).toBeVisible();
     await expect(canvas.queryByText('Inaccessible')).toBeNull();
   },
 };
