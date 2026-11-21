@@ -9,11 +9,14 @@
   padding: 1.25rem;
   border-radius: var(--radius-base);
   background: transparent;
-  box-shadow: inset 0 0 0 1px var(--border);
+  box-shadow:
+    inset 0 0 0 1px var(--border),
+    0 0 0 0 var(--brand-main);
   font-family: var(--font-family-base);
   color: var(--text-primary);
   transition:
     box-shadow 0.2s,
+    background-color 0.1s,
     transform 0.1s;
 }
 
@@ -32,6 +35,7 @@
 }
 @media (hover: hover) {
   .interactive:hover {
+    transform: scale(1.005);
     box-shadow:
       inset 0 0 0 1px var(--border),
       0 0 0 0.125rem var(--brand-main);
@@ -45,7 +49,16 @@
   }
 }
 .interactive:active {
-  transform: scale(0.99, 0.97);
+  transform: scale(1);
+  background: var(--press-brand);
+  box-shadow:
+    inset 0 0 0 1px var(--brand-main),
+    0 0 0 0.0625rem var(--brand-main);
+}
+.interactive.current:active {
+  box-shadow:
+    inset 0 0 0 0.125rem var(--brand-main),
+    0 0 0 0.0625rem var(--brand-main);
 }
 .interactive:focus-visible {
   outline: 0.125rem solid var(--brand-main);
