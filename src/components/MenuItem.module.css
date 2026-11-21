@@ -34,7 +34,8 @@
   }
 }
 .item:active:not(:disabled) {
-  background: var(--brand-main-20);
+  background: var(--press-brand-mid);
+  opacity: var(--press-opacity);
 }
 .item:focus-visible {
   outline: 0.125rem solid var(--brand-main);

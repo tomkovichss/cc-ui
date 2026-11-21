@@ -41,6 +41,7 @@
 .tertiary:active:not(:disabled),
 .onDark:active:not(:disabled),
 .dangerous:active:not(:disabled) {
+  opacity: var(--press-opacity);
   box-shadow: 0 0 0 0 var(--btn-glow, transparent);
 }
 
@@ -149,7 +150,7 @@ button.primary {
   }
 }
 .tertiary:active:not(:disabled) {
-  background: var(--brand-main-15);
+  background: var(--press-brand);
 }
 
 .secondary {
@@ -174,7 +175,7 @@ button.primary {
   }
 }
 .secondary:active:not(:disabled) {
-  background: var(--brand-main-15);
+  background: var(--press-brand);
 }
 
 button.onDark {
@@ -210,7 +211,7 @@ button.onDark {
   }
 }
 .dangerous:active:not(:disabled) {
-  background: rgba(var(--danger-rgb), 0.15);
+  background: var(--press-danger);
 }
 
 .primary:disabled {

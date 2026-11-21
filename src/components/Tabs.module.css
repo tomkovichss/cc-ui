@@ -65,7 +65,10 @@
   }
 }
 .tab:active:not(:disabled)::before {
-  background: rgba(var(--brand-main-rgb), 0.28);
+  background: var(--press-brand-strong);
+}
+.tab:active:not(:disabled) {
+  opacity: var(--press-opacity);
 }
 
 .tab:disabled {

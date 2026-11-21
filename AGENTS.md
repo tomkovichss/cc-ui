@@ -62,7 +62,9 @@ percent, not px. Hairlines (`1px` and below) and `@media`/`@container` breakpoin
 Set `data-theme="dark"` on `<html>` (or any ancestor) to switch every token to its dark value; remove
 it (or use `"light"`) for the default theme. The library does not follow `prefers-color-scheme` on
 its own — the consuming app decides when to switch. Dark values live in the `[data-theme='dark']`
-block of `src/styles/tokens.css`; use tokens, never hardcoded colours, in new component CSS.
+block of `src/styles/tokens.css`. Interaction rule: hover is lighter, pressed is darker than hover —
+use the `--press-*` tokens for `:active` backgrounds (a stronger translucent brand tint reads lighter
+on dark, so never use `--brand-main-NN` for pressed). Use tokens, never hardcoded colours, in new component CSS.
 
 ## Known limitation
 

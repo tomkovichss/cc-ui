@@ -19,7 +19,8 @@ button.chip,
 }
 
 .chip:active:not(:disabled):not(.disabled) {
-  background: var(--surface-muted);
+  background: var(--press-neutral);
+  opacity: var(--press-opacity);
 }
 
 .chip:focus-visible {
@@ -39,7 +40,8 @@ button.chip,
 }
 
 .chip.selected:active:not(:disabled):not(.disabled) {
-  background: var(--brand-main-30);
+  background: var(--press-brand-strong);
+  opacity: var(--press-opacity);
 }
 
 .chip:disabled,

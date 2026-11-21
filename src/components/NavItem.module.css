@@ -47,7 +47,8 @@
   }
 }
 .item:active:not(.active):not(:disabled):not([aria-disabled='true']) {
-  background: var(--brand-main-15);
+  background: var(--press-brand);
+  opacity: var(--press-opacity);
   box-shadow: 0 0 0 0 var(--brand-main-10);
 }
 

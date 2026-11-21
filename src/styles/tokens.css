@@ -27,6 +27,14 @@
   --border: #e0e0e0;
   --border-subtle: #efefef;
   --border-input: rgba(0, 0, 0, 0.1);
+  /* Pressed states. Rule: hover is lighter, pressed is darker than hover. In light theme a
+     stronger brand tint reads darker; in dark theme it would read lighter, so these flip. */
+  --press-opacity: 1; /* content (text, icons) dims on press in dark theme */
+  --press-neutral: var(--surface-muted);
+  --press-brand: var(--brand-main-15);
+  --press-brand-mid: var(--brand-main-20);
+  --press-brand-strong: var(--brand-main-30);
+  --press-danger: rgba(var(--danger-rgb), 0.15);
   --track-bg: var(--depth-5); /* segmented-control track (Tabs box, Toggle, Sidebar switcher) */
   --track-selected: var(--card-surface); /* selected pill on the track */
   --border-control: var(--border); /* outline of checkbox / radio / switch */
@@ -115,6 +123,12 @@
   --border-input: rgba(255, 255, 255, 0.14);
   --border-control: #4a5056;
   --border-track: #33383c;
+  --press-opacity: 0.75;
+  --press-neutral: #1e2124;
+  --press-brand: #0c1f2a;
+  --press-brand-mid: #091f2b;
+  --press-brand-strong: #0a2433;
+  --press-danger: #1a1213;
   --track-bg: #0d0f10; /* darker than the page */
   --track-selected: #2a2e32; /* lighter than the track */
 
