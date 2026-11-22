@@ -147,6 +147,11 @@
   min-width: 0;
 }
 
+/* No worker column: let the details use the full row (needed for metrics) */
+.columnsWide {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .info,
 .aside {
   display: flex;
@@ -191,6 +196,31 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-clamp: 2;
+}
+
+/* "label = value" pairs */
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.metric {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  letter-spacing: -0.15px;
+  color: var(--text-primary);
+}
+
+.tone-success {
+  color: var(--success-text);
+}
+.tone-warning {
+  color: var(--warning-text);
+}
+.tone-danger {
+  color: var(--danger-text);
 }
 
 /* Note pill under the columns: hugs its text, up to the full row width */
@@ -247,6 +277,17 @@
   justify-content: center;
   min-width: 2.75rem;
   min-height: 2.75rem;
+}
+
+/* Dot under the actions, centred on the same axis (actions box is 2.75rem wide at right 0.5rem) */
+.indicator {
+  position: absolute;
+  right: 1.625rem;
+  bottom: 1.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--brand-main);
 }
 
 .srOnly {

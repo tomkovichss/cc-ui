@@ -14,6 +14,7 @@ interface VideoCardLabels {
   unavailable: string;
   notReady: string;
   new: string;
+  indicator: string;
 }
 
 const DEFAULT_LABELS: VideoCardLabels = {
@@ -24,7 +25,17 @@ const DEFAULT_LABELS: VideoCardLabels = {
   unavailable: 'Unavailable',
   notReady: 'Not ready',
   new: 'Unwatched',
+  indicator: 'Marked',
 };
+
+interface VideoCardMetric {
+  /** Shown before " = ", e.g. "Time from predip to attach". */
+  label: ReactNode;
+  /** Already formatted, e.g. "0:58s". */
+  value: ReactNode;
+  /** Colours the value. Omit for the default text colour. */
+  tone?: 'success' | 'warning' | 'danger';
+}
 
 interface VideoCardWorker {
   name: string;
@@ -53,6 +64,8 @@ interface VideoCardProps {
   description?: ReactNode;
   /** Extra lines under the description, e.g. a severity line. */
   meta?: ReactNode;
+  /** "label = value" pairs in one wrapping row under the date, values coloured by `tone`. Without `worker` the row spans the full width. */
+  metrics?: VideoCardMetric[];
   worker?: VideoCardWorker;
   /** Full-width row under the details and the worker. One line, truncated with an ellipsis. */
   comment?: string;
@@ -64,6 +77,8 @@ interface VideoCardProps {
   onClick?: () => void;
   /** Hover / press feedback without making the row a button. For rows inside a link, which owns navigation and focus. Implied by `onClick`. */
   hoverable?: boolean;
+  /** Dot in the bottom-right corner, under `actions`. Its caption is `labels.indicator`. */
+  indicator?: boolean;
   /** Trailing slot, e.g. a bookmark button. It must stop click propagation itself. */
   actions?: ReactNode;
   /** Visible strings, for translation. Missing keys fall back to English. */
@@ -82,12 +97,14 @@ function VideoCardRoot({
   title,
   description,
   meta,
+  metrics,
   worker,
   comment,
   viewed = false,
   current,
   onClick,
   hoverable,
+  indicator,
   actions,
   labels,
   'aria-label': ariaLabel,
@@ -186,9 +203,19 @@ function VideoCardRoot({
       </div>
 
       <div className={styles.main}>
-        <div className={styles.columns}>
+        <div className={`${styles.columns} ${metrics?.length && !worker ? styles.columnsWide : ''}`}>
           <div className={styles.info}>
             {dateTime != null && <div className={styles.date}>{dateTime}</div>}
+            {metrics && metrics.length > 0 && (
+              <div className={styles.metrics}>
+                {metrics.map((metric, i) => (
+                  <span key={i} className={styles.metric}>
+                    {metric.label} ={' '}
+                    <span className={metric.tone ? styles[`tone-${metric.tone}`] : undefined}>{metric.value}</span>
+                  </span>
+                ))}
+              </div>
+            )}
             {title != null && <div className={styles.title}>{title}</div>}
             {description != null && <div className={styles.description}>{description}</div>}
             {meta != null && <div className={styles.meta}>{meta}</div>}
@@ -232,6 +259,7 @@ function VideoCardRoot({
       </div>
 
       {actions != null && <div className={styles.actions}>{actions}</div>}
+      {indicator && <span className={styles.indicator} role="img" aria-label={text.indicator} />}
     </div>
   );
 }

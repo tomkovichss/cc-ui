@@ -98,6 +98,30 @@ export const WithSeverity: Story = {
   },
 };
 
+export const WithMetrics: Story = {
+  args: {
+    ...base,
+    title: undefined,
+    description: undefined,
+    worker: undefined,
+    dateTime: '12:00:01 AM',
+    metrics: [
+      { label: 'Time from predip to attach', value: '0:58s', tone: 'success' },
+      { label: 'Time from wiping to attach', value: '0:28s', tone: 'warning' },
+    ],
+    onClick: fn(),
+    actions: <Bookmarker />,
+  },
+};
+
+export const WithIndicator: Story = {
+  args: { ...WithMetrics.args, indicator: true },
+};
+
+export const MetricsWithComment: Story = {
+  args: { ...WithMetrics.args, comment: 'Cow slipped near the gate', viewed: true },
+};
+
 export const PreviewInaccessible: Story = {
   args: { ...base, preview: undefined, previewFallback: 'inaccessible' },
 };
