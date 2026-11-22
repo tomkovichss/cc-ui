@@ -118,6 +118,10 @@ export const WithIndicator: Story = {
   args: { ...WithMetrics.args, indicator: true },
 };
 
+export const WithToneIndicator: Story = {
+  args: { ...WithMetrics.args, indicator: 'success', labels: { indicator: 'Within goal' } },
+};
+
 export const MetricsWithComment: Story = {
   args: { ...WithMetrics.args, comment: 'Cow slipped near the gate', viewed: true },
 };

@@ -28,13 +28,15 @@ const DEFAULT_LABELS: VideoCardLabels = {
   indicator: 'Marked',
 };
 
+type VideoCardTone = 'success' | 'warning' | 'danger';
+
 interface VideoCardMetric {
   /** Shown before " = ", e.g. "Time from predip to attach". */
   label: ReactNode;
   /** Already formatted, e.g. "0:58s". */
   value: ReactNode;
   /** Colours the value. Omit for the default text colour. */
-  tone?: 'success' | 'warning' | 'danger';
+  tone?: VideoCardTone;
 }
 
 interface VideoCardWorker {
@@ -77,8 +79,12 @@ interface VideoCardProps {
   onClick?: () => void;
   /** Hover / press feedback without making the row a button. For rows inside a link, which owns navigation and focus. Implied by `onClick`. */
   hoverable?: boolean;
-  /** Dot in the bottom-right corner, under `actions`. Its caption is `labels.indicator`. */
-  indicator?: boolean;
+  /**
+   * Dot in the bottom-right corner, under `actions`. `true` is the brand colour; a tone
+   * ('success' | 'warning' | 'danger') colours it like a metric value. Its caption is
+   * `labels.indicator`.
+   */
+  indicator?: boolean | VideoCardTone;
   /** Trailing slot, e.g. a bookmark button. It must stop click propagation itself. */
   actions?: ReactNode;
   /** Visible strings, for translation. Missing keys fall back to English. */
@@ -259,7 +265,13 @@ function VideoCardRoot({
       </div>
 
       {actions != null && <div className={styles.actions}>{actions}</div>}
-      {indicator && <span className={styles.indicator} role="img" aria-label={text.indicator} />}
+      {indicator && (
+        <span
+          className={`${styles.indicator} ${typeof indicator === 'string' ? styles[`dot-${indicator}`] : ''}`}
+          role="img"
+          aria-label={text.indicator}
+        />
+      )}
     </div>
   );
 }

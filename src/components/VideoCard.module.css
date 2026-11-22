@@ -289,6 +289,15 @@
   border-radius: 50%;
   background: var(--brand-main);
 }
+.dot-success {
+  background: var(--success-text);
+}
+.dot-warning {
+  background: var(--warning-text);
+}
+.dot-danger {
+  background: var(--danger-text);
+}
 
 .srOnly {
   position: absolute;
